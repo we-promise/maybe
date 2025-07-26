@@ -17,20 +17,20 @@
 #
 # To run this, you should read the setup guide:
 #
-# https://github.com/maybe-finance/maybe/blob/main/docs/hosting/docker.md
+# https://github.com/we-promise/sure/blob/main/docs/hosting/docker.md
 #
 # Troubleshooting:
 # ----------------
 #
 # If you run into problems, you should open a Discussion here:
 #
-# https://github.com/maybe-finance/maybe/discussions/categories/general
+# https://github.com/we-promise/sure/discussions/categories/general
 #
 
 x-db-env: &db_env
-  POSTGRES_USER: ${POSTGRES_USER:-maybe_user}
-  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-maybe_password}
-  POSTGRES_DB: ${POSTGRES_DB:-maybe_production}
+  POSTGRES_USER: ${POSTGRES_USER:-sure_user}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sure_password}
+  POSTGRES_DB: ${POSTGRES_DB:-sure_production}
 
 x-rails-env: &rails_env
   <<: *db_env
@@ -46,7 +46,7 @@ x-rails-env: &rails_env
 
 services:
   web:
-    image: ghcr.io/maybe-finance/maybe:latest
+    image: ghcr.io/we-promise/sure:latest
     volumes:
       - app-storage:/rails/storage
     ports:
@@ -60,10 +60,10 @@ services:
       redis:
         condition: service_healthy
     networks:
-      - maybe_net
+      - sure_net
 
   worker:
-    image: ghcr.io/maybe-finance/maybe:latest
+    image: ghcr.io/we-promise/sure:latest
     command: bundle exec sidekiq
     restart: unless-stopped
     depends_on:
@@ -72,7 +72,7 @@ services:
     environment:
       <<: *rails_env
     networks:
-      - maybe_net
+      - sure_net
 
   db:
     image: postgres:16
@@ -87,7 +87,7 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - maybe_net
+      - sure_net
 
   redis:
     image: redis:latest
@@ -100,7 +100,7 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - maybe_net
+      - sure_net
 
 volumes:
   app-storage:
@@ -108,5 +108,5 @@ volumes:
   redis-data:
 
 networks:
-  maybe_net:
+  sure_net:
     driver: bridge
