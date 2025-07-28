@@ -62,6 +62,12 @@ tr:
         remove_invitation: Daveti Kaldır
         remove_member: Üyeyi Kaldır
         save: Kaydet
+        unconfirmed_email_warning: You have requested to change your email to %{email}. Please go to your email and confirm for the change to take effect.
+        data_import_export: Data Import/Export
+        export_data: Export data
+        reset_account_confirm_title: Reset account?
+        reset_account_confirm_body: This will delete all data associated with your account. Your user profile will remain active.
+        reset_account_confirm_btn: Reset account
     securities:
       show:
         page_title: Menkul Kıymet

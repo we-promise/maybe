@@ -81,3 +81,7 @@ en:
         equal_to: equal to
         greater_than: greater than
         less_than: less than
+    summary:
+      total_transactions: Total transactions
+      income: Income
+      expenses: Expenses

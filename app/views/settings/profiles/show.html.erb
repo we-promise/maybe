@@ -9,7 +9,7 @@
 
       <% if @user.unconfirmed_email.present? %>
         <p class="mt-2 text-sm text-gray-600">
-          You have requested to change your email to <%= @user.unconfirmed_email %>. Please go to your email and confirm for the change to take effect.
+          <%= t(".unconfirmed_email_warning", email: @user.unconfirmed_email) %>
         </p>
       <% end %>
 
@@ -123,11 +123,11 @@
 <% end %>
 
 <% if Current.user.admin? %>
-  <%= settings_section title: "Data Import/Export" do %>
+  <%= settings_section title: t(".data_import_export") do %>
     <div class="space-y-4">
       <div class="flex gap-4 items-center">
         <%= render DS::Link.new(
-          text: "Export data",
+          text: t(".export_data"),
           icon: "database",
           href: new_family_export_path,
           variant: "secondary",
@@ -160,9 +160,9 @@
           href: reset_user_path(@user),
           method: :delete,
           confirm: CustomConfirm.new(
-            title: "Reset account?",
-            body: "This will delete all data associated with your account. Your user profile will remain active.",
-            btn_text: "Reset account",
+            title: t(".reset_account_confirm_title"),
+            body: t(".reset_account_confirm_body"),
+            btn_text: t(".reset_account_confirm_btn"),
             destructive: true,
             high_severity: true
           )

@@ -80,3 +80,7 @@ tr:
         equal_to: eşit
         greater_than: daha büyük
         less_than: daha küçük
+    summary:
+      total_transactions: Total transactions
+      income: Income
+      expenses: Expenses

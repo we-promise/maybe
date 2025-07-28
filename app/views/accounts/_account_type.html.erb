@@ -7,5 +7,5 @@
     hex_color: accountable.color,
   ) %>
 
-  <%= accountable.display_name.singularize %>
+  <%= t(accountable.model_name.i18n_key, scope: "activerecord.models") %>
 <% end %>
