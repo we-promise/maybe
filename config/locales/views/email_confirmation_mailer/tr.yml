@@ -6,4 +6,4 @@ tr:
       cta: E-posta değişikliğini onayla
       expiry_notice: Bu bağlantı %{hours} saat içinde geçerliliğini yitirecek.
       greeting: Merhaba!
-      subject: 'Maybe: E-posta değişikliğinizi onaylayın'
+      subject: 'Sure: E-posta değişikliğinizi onaylayın'

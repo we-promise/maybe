@@ -1,0 +1,155 @@
+tr:
+  activerecord:
+    attributes:
+      doorkeeper/application:
+        name: 'İsim'
+        redirect_uri: 'Yönlendirme URI'
+    errors:
+      models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              fragment_present: 'bir parça (fragment) içeremez.'
+              invalid_uri: 'geçerli bir URI olmalı.'
+              unspecified_scheme: 'bir şema belirtilmeli.'
+              relative_uri: 'mutlak bir URI olmalı.'
+              secured_uri: 'HTTPS/SSL URI olmalı.'
+              forbidden_uri: 'sunucu tarafından yasaklandı.'
+            scopes:
+              not_match_configured: "sunucuda yapılandırılan ile eşleşmiyor."
+
+  doorkeeper:
+    applications:
+      confirmations:
+        destroy: 'Emin misiniz?'
+      buttons:
+        edit: 'Düzenle'
+        destroy: 'Sil'
+        submit: 'Gönder'
+        cancel: 'İptal'
+        authorize: 'Yetkilendir'
+      form:
+        error: 'Hata! Formunuzu olası hatalar için kontrol edin'
+      help:
+        confidential: 'Uygulama, istemci sırrının gizli tutulabileceği yerlerde kullanılacaktır. Yerel mobil uygulamalar ve Tek Sayfa Uygulamaları gizli olmayan olarak kabul edilir.'
+        redirect_uri: 'Her URI için bir satır kullanın'
+        blank_redirect_uri: "Sağlayıcınızı İstemci Kimlik Bilgileri, Kaynak Sahibi Parola Kimlik Bilgileri veya yönlendirme URI'si gerektirmeyen başka bir yetkilendirme türüyle yapılandırdıysanız boş bırakın."
+        scopes: 'Kapsamları boşluk ile ayırın. Varsayılan kapsamları kullanmak için boş bırakın.'
+      edit:
+        title: 'Uygulamayı düzenle'
+      index:
+        title: 'Uygulamalarınız'
+        new: 'Yeni Uygulama'
+        name: 'İsim'
+        callback_url: 'Geri Çağırma URL’si'
+        confidential: 'Gizli mi?'
+        actions: 'Eylemler'
+        confidentiality:
+          'yes': 'Evet'
+          'no': 'Hayır'
+      new:
+        title: 'Yeni Uygulama'
+      show:
+        title: 'Uygulama: %{name}'
+        application_id: 'UID'
+        secret: 'Gizli Anahtar'
+        secret_hashed: 'Gizli anahtar hashlenmiş'
+        scopes: 'Kapsamlar'
+        confidential: 'Gizli'
+        callback_urls: 'Geri çağırma URL’leri'
+        actions: 'Eylemler'
+        not_defined: 'Tanımlanmadı'
+
+    authorizations:
+      buttons:
+        authorize: 'Yetkilendir'
+        deny: 'Reddet'
+      error:
+        title: 'Bir hata oluştu'
+      new:
+        title: 'Yetkilendirme gerekli'
+        prompt: '%{client_name} uygulamasının hesabınızı kullanmasına izin verilsin mi?'
+        able_to: 'Bu uygulama şunları yapabilecek'
+      show:
+        title: 'Yetkilendirme kodu'
+      form_post:
+        title: 'Bu formu gönder'
+
+    authorized_applications:
+      confirmations:
+        revoke: 'Emin misiniz?'
+      buttons:
+        revoke: 'Geri Al'
+      index:
+        title: 'Yetkilendirilmiş uygulamalarınız'
+        application: 'Uygulama'
+        created_at: 'Oluşturulma Tarihi'
+        date_format: '%Y-%m-%d %H:%M:%S'
+
+    pre_authorization:
+      status: 'Ön yetkilendirme'
+
+    errors:
+      messages:
+        # Ortak hata mesajları
+        invalid_request:
+          unknown: 'İstek, gerekli bir parametreyi içermiyor, desteklenmeyen bir parametre değeri içeriyor veya başka bir şekilde hatalı.'
+          missing_param: 'Gerekli parametre eksik: %{value}.'
+          request_not_authorized: 'İstek yetkilendirilmeli. Yetkilendirme için gerekli parametre eksik veya geçersiz.'
+          invalid_code_challenge: 'Kod doğrulama (code challenge) gerekli.'
+        invalid_redirect_uri: "İstenen yönlendirme URI'si hatalı veya istemci yönlendirme URI'siyle eşleşmiyor."
+        unauthorized_client: 'İstemcinin bu isteği bu yöntemle gerçekleştirme yetkisi yok.'
+        access_denied: 'Kaynak sahibi veya yetkilendirme sunucusu isteği reddetti.'
+        invalid_scope: 'İstenen kapsam geçersiz, bilinmiyor veya hatalı.'
+        invalid_code_challenge_method:
+          zero: 'Yetkilendirme sunucusu PKCE desteklemiyor çünkü kabul edilen code_challenge_method değeri yok.'
+          one: 'code_challenge_method %{challenge_methods} olmalı.'
+          other: 'code_challenge_method şu değerlerden biri olmalı: %{challenge_methods}.'
+        server_error: 'Yetkilendirme sunucusu, isteği yerine getirmesini engelleyen beklenmedik bir durumla karşılaştı.'
+        temporarily_unavailable: 'Yetkilendirme sunucusu şu anda geçici bir aşırı yüklenme veya bakım nedeniyle isteği işleyemiyor.'
+
+        # Yapılandırma hata mesajları
+        credential_flow_not_configured: 'Resource Owner Password Credentials akışı, Doorkeeper.configure.resource_owner_from_credentials yapılandırılmadığı için başarısız oldu.'
+        resource_owner_authenticator_not_configured: 'Kaynak sahibi bulma işlemi, Doorkeeper.configure.resource_owner_authenticator yapılandırılmadığı için başarısız oldu.'
+        admin_authenticator_not_configured: 'Yönetici paneline erişim, Doorkeeper.configure.admin_authenticator yapılandırılmadığı için yasaklandı.'
+
+        # Erişim izni hataları
+        unsupported_response_type: 'Yetkilendirme sunucusu bu yanıt türünü desteklemiyor.'
+        unsupported_response_mode: 'Yetkilendirme sunucusu bu yanıt modunu desteklemiyor.'
+
+        # Erişim anahtarı hataları
+        invalid_client: 'İstemci kimlik doğrulaması, bilinmeyen istemci, kimlik doğrulama eksik veya desteklenmeyen kimlik doğrulama yöntemi nedeniyle başarısız oldu.'
+        invalid_grant: 'Sağlanan yetkilendirme izni geçersiz, süresi dolmuş, iptal edilmiş, yetkilendirme isteğinde kullanılan yönlendirme URI’siyle eşleşmiyor veya başka bir istemciye verilmiş.'
+        unsupported_grant_type: 'Yetkilendirme izni türü yetkilendirme sunucusu tarafından desteklenmiyor.'
+
+        invalid_token:
+          revoked: "Erişim anahtarı iptal edildi"
+          expired: "Erişim anahtarının süresi doldu"
+          unknown: "Erişim anahtarı geçersiz"
+        revoke:
+          unauthorized: "Bu anahtarı iptal etme yetkiniz yok"
+
+        forbidden_token:
+          missing_scope: 'Bu kaynağa erişmek için "%{oauth_scopes}" kapsamı gereklidir.'
+
+    flash:
+      applications:
+        create:
+          notice: 'Uygulama oluşturuldu.'
+        destroy:
+          notice: 'Uygulama silindi.'
+        update:
+          notice: 'Uygulama güncellendi.'
+      authorized_applications:
+        destroy:
+          notice: 'Uygulamanın yetkisi kaldırıldı.'
+
+    layouts:
+      admin:
+        title: 'Doorkeeper'
+        nav:
+          oauth2_provider: 'OAuth2 Sağlayıcı'
+          applications: 'Uygulamalar'
+          home: 'Ana Sayfa'
+      application:
+        title: 'OAuth yetkilendirmesi gerekli'
