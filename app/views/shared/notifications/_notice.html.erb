@@ -1,6 +1,6 @@
 <%# locals: (message:, description: nil) %>
 
-<%= tag.div class: "relative flex gap-3 rounded-lg bg-container p-4 group w-full md:max-w-80 shadow-border-xs",
+<%= tag.div class: "relative flex gap-3 rounded-lg bg-container p-4 group w-full md:max-w-80 shadow-border-xs mt-[env(safe-area-inset-top)]",
             data: {
               controller: "element-removal",
               action: "animationend->element-removal#remove"
