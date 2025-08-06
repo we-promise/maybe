@@ -137,13 +137,13 @@ If you find bugs or have a feature request, be sure to read through our [contrib
 
 ## How to update your app
 
-The mechanism that updates your self-hosted Maybe app is the GHCR (Github Container Registry) Docker image that you see in the `compose.yml` file:
+The mechanism that updates your self-hosted Sure app is the GHCR (Github Container Registry) Docker image that you see in the `compose.yml` file:
 
 ```yml
 image: ghcr.io/we-promise/sure:latest
 ```
 
-We recommend using one of the following images, but you can pin your app to whatever version you'd like (see [packages](https://github.com/we-promise/sure/pkgs/container/maybe)):
+We recommend using one of the following images, but you can pin your app to whatever version you'd like (see [packages](https://github.com/we-promise/sure/pkgs/container/sure)):
 
 - `ghcr.io/we-promise/sure:latest` (latest commit)
 - `ghcr.io/we-promise/sure:stable` (latest release)

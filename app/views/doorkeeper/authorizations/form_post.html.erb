@@ -8,7 +8,7 @@
   </div>
 </div>
 
-<% turbo_disabled = @pre_auth.redirect_uri&.start_with?("maybeapp://") || params[:display] == "mobile" %>
+<% turbo_disabled = @pre_auth.redirect_uri&.start_with?("sureapp://") || params[:display] == "mobile" %>
 <%= form_tag @pre_auth.redirect_uri, method: :post, name: :redirect_form, authenticity_token: false, data: { turbo: !turbo_disabled } do %>
   <% auth.body.compact.each do |key, value| %>
     <%= hidden_field_tag key, value %>

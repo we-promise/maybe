@@ -1,4 +1,4 @@
-<% if params[:redirect_uri]&.start_with?('maybeapp://') || params[:display] == 'mobile' %>
+<% if params[:redirect_uri]&.start_with?('sureapp://') || params[:display] == 'mobile' %>
   <meta name="turbo-visit-control" content="reload">
 <% end %>
 
@@ -24,7 +24,7 @@
   <% end %>
 
   <div class="space-y-3">
-    <% turbo_disabled = params[:redirect_uri]&.start_with?("maybeapp://") || params[:display] == "mobile" %>
+    <% turbo_disabled = params[:redirect_uri]&.start_with?("sureapp://") || params[:display] == "mobile" %>
     <%= form_tag oauth_authorization_path, method: :post, class: "w-full", data: { turbo: !turbo_disabled } do %>
       <%= hidden_field_tag :client_id, @pre_auth.client.uid, id: nil %>
       <%= hidden_field_tag :redirect_uri, @pre_auth.redirect_uri, id: nil %>
@@ -71,6 +71,6 @@
   </div>
 
   <p class="text-xs text-tertiary text-center">
-    By authorizing, you allow this app to access your Maybe data according to the permissions above.
+    By authorizing, you allow this app to access your Sure data according to the permissions above.
   </p>
 </div>

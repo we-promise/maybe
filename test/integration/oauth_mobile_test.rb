@@ -9,7 +9,7 @@ class OauthMobileTest < ActionDispatch::IntegrationTest
 
     @oauth_app = Doorkeeper::Application.create!(
       name: "Maybe Mobile App",
-      redirect_uri: "maybeapp://oauth/callback",
+      redirect_uri: "sureapp://oauth/callback",
       scopes: "read"
     )
   end
@@ -27,13 +27,13 @@ class OauthMobileTest < ActionDispatch::IntegrationTest
 
     # Check that Turbo is disabled in the form
     assert_match(/data-turbo="false"/, response.body)
-    assert_match(/maybeapp:\/\/oauth\/callback/, response.body)
+    assert_match(/sureapp:\/\/oauth\/callback/, response.body)
   end
 
   test "mobile oauth detects custom scheme in redirect_uri" do
     get "/oauth/authorize", params: {
       client_id: @oauth_app.uid,
-      redirect_uri: "maybeapp://oauth/callback",
+      redirect_uri: "sureapp://oauth/callback",
       response_type: "code",
       scope: "read"
     }
@@ -55,7 +55,7 @@ class OauthMobileTest < ActionDispatch::IntegrationTest
 
     # Should redirect to the custom scheme
     assert_response :redirect
-    assert response.location.start_with?("maybeapp://oauth/callback")
+    assert response.location.start_with?("sureapp://oauth/callback")
   end
 
   test "mobile oauth preserves display parameter through forms" do

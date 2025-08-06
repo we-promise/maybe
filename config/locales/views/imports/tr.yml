@@ -21,18 +21,18 @@ tr:
       mappings:
         create_account: Hesap oluştur
         csv_mapping_label: CSV'de %{mapping}
-        maybe_mapping_label: Maybe'de %{mapping}
+        maybe_mapping_label: Sure'de %{mapping}
         no_accounts: Henüz hiç hesabınız yok. Lütfen CSV'nizdeki (atanmamış) satırlar için kullanabileceğimiz bir hesap oluşturun veya Temizle adımına geri dönüp kullanabileceğimiz bir hesap adı girin.
         rows_label: Satırlar
         unassigned_account: Atanmamış satırlar için yeni bir hesap oluşturmak ister misiniz?
       show:
-        account_mapping_description: İçe aktardığınız dosyadaki tüm hesapları Maybe'deki mevcut hesaplara eşleyin. Ayrıca yeni hesaplar ekleyebilir veya kategorize etmeden bırakabilirsiniz.
+        account_mapping_description: İçe aktardığınız dosyadaki tüm hesapları Sure'deki mevcut hesaplara eşleyin. Ayrıca yeni hesaplar ekleyebilir veya kategorize etmeden bırakabilirsiniz.
         account_mapping_title: Hesaplarınızı eşleyin
-        account_type_mapping_description: İçe aktardığınız dosyadaki tüm hesap türlerini Maybe'deki hesap türlerine eşleyin.
+        account_type_mapping_description: İçe aktardığınız dosyadaki tüm hesap türlerini Sure'deki hesap türlerine eşleyin.
         account_type_mapping_title: Hesap türlerinizi eşleyin
-        category_mapping_description: İçe aktardığınız dosyadaki tüm kategorileri Maybe'deki mevcut kategorilere eşleyin. Ayrıca yeni kategoriler ekleyebilir veya kategorize etmeden bırakabilirsiniz.
+        category_mapping_description: İçe aktardığınız dosyadaki tüm kategorileri Sure'deki mevcut kategorilere eşleyin. Ayrıca yeni kategoriler ekleyebilir veya kategorize etmeden bırakabilirsiniz.
         category_mapping_title: Kategorilerinizi eşleyin
-        tag_mapping_description: İçe aktardığınız dosyadaki tüm etiketleri Maybe'deki mevcut etiketlere eşleyin. Ayrıca yeni etiketler ekleyebilir veya kategorize etmeden bırakabilirsiniz.
+        tag_mapping_description: İçe aktardığınız dosyadaki tüm etiketleri Sure'deki mevcut etiketlere eşleyin. Ayrıca yeni etiketler ekleyebilir veya kategorize etmeden bırakabilirsiniz.
         tag_mapping_title: Etiketlerinizi eşleyin
     uploads:
       show:

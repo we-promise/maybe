@@ -14,7 +14,7 @@ class CustomAuth < DerailedBenchmarks::AuthHelper
 
   def call(env)
     # Make sure this user is created in the DB with realistic data before running benchmarks
-    user = User.find_by!(email: "user@maybe.local")
+    user = User.find_by!(email: "user@sure.local")
 
     Rails.logger.debug "Found user for benchmarking: #{user.email}"
 

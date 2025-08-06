@@ -6,7 +6,7 @@
 # --------
 #
 # This file is an example Docker Compose configuration for self hosting
-# Maybe on your local machine or on a cloud VPS.
+# Sure on your local machine or on a cloud VPS.
 #
 # The configuration below is a "standard" setup that works out of the box,
 # but if you're running this outside of a local network, it is recommended
@@ -24,7 +24,7 @@
 #
 # If you run into problems, you should open a Discussion here:
 #
-# https://github.com/maybe-finance/maybe/discussions/categories/general
+# https://github.com/we-promise/sure/discussions/categories/general
 #
 
 x-db-env: &db_env

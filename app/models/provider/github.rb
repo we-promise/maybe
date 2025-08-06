@@ -2,8 +2,8 @@ class Provider::Github
   attr_reader :name, :owner, :branch
 
   def initialize
-    @name = "maybe"
-    @owner = "maybe-finance"
+    @name = "sure"
+    @owner = "we-promise"
     @branch = "main"
   end
 

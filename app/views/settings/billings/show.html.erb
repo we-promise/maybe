@@ -21,14 +21,14 @@
             </p>
           <% elsif @family.trialing? %>
             <p class="text-primary">
-              You are currently trialing Maybe
+              You are currently trialing Sure
               <span class="text-secondary">
                 (<%= @family.days_left_in_trial %> days remaining)
               </span>
             </p>
           <% else %>
             <p class="text-primary">You are currently <span class="font-medium">not subscribed</span></p>
-            <p class="text-secondary">Once you subscribe to Maybe+, you'll see your billing settings here.</p>
+            <p class="text-secondary">Once you subscribe to Sure+, you'll see your billing settings here.</p>
           <% end %>
         </div>
       </div>
