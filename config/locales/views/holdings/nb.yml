@@ -1,0 +1,37 @@
+---
+nb:
+  holdings:
+    cash:
+      brokerage_cash: Meglerkontanter
+    destroy:
+      success: Beholdning slettet
+    holding:
+      per_share: per aksje
+      shares: "%{qty} aksjer"
+    index:
+      average_cost: Gjennomsnittlig kostnad
+      holdings: Beholdninger
+      name: Navn
+      new_holding: Ny transaksjon
+      no_holdings: Ingen beholdninger å vise.
+      return: Total avkastning
+      weight: Vekt
+    missing_price_tooltip:
+      description: Denne investeringen har manglende verdier og vi kunne ikke beregne
+        dens avkastning eller verdi.
+      missing_data: Manglende data
+    show:
+      avg_cost_label: Gjennomsnittlig kostnad
+      current_market_price_label: Gjeldende markedspris
+      delete: Slett
+      delete_subtitle: Dette vil slette beholdningen og alle dine tilknyttede handler
+        på denne kontoen. Denne handlingen kan ikke angres.
+      delete_title: Slett beholdning
+      history: Historikk
+      overview: Oversikt
+      portfolio_weight_label: Porteføljevekt
+      settings: Innstillinger
+      ticker_label: Ticker
+      trade_history_entry: "%{qty} aksjer av %{security} til %{price}"
+      total_return_label: Total avkastning
+      unknown: Ukjent

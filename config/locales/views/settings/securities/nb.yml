@@ -1,0 +1,12 @@
+---
+nb:
+  settings:
+    securities:
+      show:
+        disable_mfa: Deaktiver 2FA
+        disable_mfa_confirm: Er du sikker på at du vil deaktivere to-faktor autentisering?
+          Dette vil gjøre kontoen din mindre sikker.
+        enable_mfa: Aktiver 2FA
+        mfa_description: Legg til et ekstra lag med sikkerhet til kontoen din ved å kreve
+          en kode fra autentiseringsappen din når du logger inn
+        mfa_title: To-faktor autentisering

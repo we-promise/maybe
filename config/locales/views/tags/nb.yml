@@ -1,0 +1,23 @@
+---
+nb:
+  tags:
+    create:
+      created: Tag opprettet
+      error: 'Feil ved opprettelse av tag: %{error}'
+    destroy:
+      deleted: Tag slettet
+    edit:
+      edit: Rediger tag
+    form:
+      placeholder: Tagnavn
+    index:
+      empty: Ingen tagger ennå
+      new: Ny tag
+      tags: Tagger
+    new:
+      new: Ny tag
+    tag:
+      delete: Slett
+      edit: Rediger
+    update:
+      updated: Tag oppdatert

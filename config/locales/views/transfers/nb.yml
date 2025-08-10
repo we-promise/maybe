@@ -1,0 +1,31 @@
+---
+nb:
+  transfers:
+    create:
+      success: Overføring opprettet
+    destroy:
+      success: Overføring fjernet
+    form:
+      amount: Beløp
+      date: Dato
+      expense: Utgift
+      from: Fra
+      income: Inntekt
+      select_account: Velg konto
+      submit: Opprett overføring
+      to: Til
+      transfer: Overføring
+    new:
+      title: Ny overføring
+    show:
+      delete: Fjern overføring
+      delete_subtitle: Dette fjerner overføringen. Det vil ikke slette de underliggende
+        transaksjonene.
+      delete_title: Fjern overføring?
+      details: Detaljer
+      note_label: Notater
+      note_placeholder: Legg til et notat til denne overføringen
+      overview: Oversikt
+      settings: Innstillinger
+    update:
+      success: Overføring oppdatert

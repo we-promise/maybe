@@ -12,10 +12,10 @@
         <%= icon("chevron-down", color: "warning", class: "group-open:transform group-open:rotate-180") %>
       </summary>
       <div class="text-xs py-2 space-y-2">
-        <p>Maybe uses Synth API to fetch historical exchange rates, security prices, and more.  This data is required to calculate accurate historical account balances.</p>
+        <p>Sure uses third party providers to fetch historical exchange rates, security prices, and more.  This data is required to calculate accurate historical account balances.</p>
 
         <p>
-          <%= link_to "Add your Synth API key here.", settings_hosting_path, class: "text-yellow-600 underline" %>
+          <%= link_to "Configure your providers here.", settings_hosting_path, class: "text-yellow-600 underline" %>
         </p>
       </div>
     </details>
@@ -23,9 +23,9 @@
 
   <%= render DS::Tabs.new(active_tab: active_tab, session_key: "account_sidebar_tab", testid: "account-sidebar-tabs") do |tabs| %>
     <% tabs.with_nav do |nav| %>
+      <% nav.with_btn(id: "all", label: "All") %>
       <% nav.with_btn(id: "asset", label: "Assets") %>
       <% nav.with_btn(id: "liability", label: "Debts") %>
-      <% nav.with_btn(id: "all", label: "All") %>
     <% end %>
 
     <% tabs.with_panel(tab_id: "asset") do %>

@@ -1,0 +1,34 @@
+---
+nb:
+  mfa:
+    backup_codes:
+      backup_codes_description: Hver kode kan bare brukes én gang. Oppbevar disse kodene trygt og sikkert.
+      backup_codes_title: Dine sikkerhetskoder
+      continue: Fortsett til sikkerhetsinnstillinger
+      description: Lagre disse sikkerhetskodene på et trygt sted - du trenger dem hvis du mister tilgangen til autentiseringsappen din
+      page_title: Sikkerhetskoder
+      title: Lagre dine sikkerhetskoder
+    create:
+      invalid_code: Ugyldig verifiseringskode. Prøv igjen.
+    disable:
+      success: To-faktor autentisering er deaktivert
+    new:
+      code_label: Verifiseringskode
+      code_placeholder: Angi 6-sifret kode
+      description: Forbedre kontoens sikkerhet ved å sette opp to-faktor autentisering
+      page_title: Oppsett av to-faktor autentisering
+      scan_description: Bruk en autentiseringsapp som Google Authenticator eller 1Password for å skanne denne QR-koden
+      scan_title: 1. Skann QR-kode
+      secret_description: Hvis du ikke kan skanne QR-koden, angi denne hemmelige nøkkelen manuelt i autentiseringsappen din
+      secret_title: Manuell inntastingskode
+      title: Sett opp to-faktor autentisering
+      verify_button: Verifiser og aktiver 2FA
+      verify_description: Angi den 6-sifrede koden fra autentiseringsappen din
+      verify_title: 2. Angi verifiseringskode
+    verify:
+      description: Angi koden fra autentiseringsappen din for å fortsette
+      page_title: Verifiser to-faktor autentisering
+      title: To-faktor autentisering
+      verify_button: Verifiser
+    verify_code:
+      invalid_code: Ugyldig autentiseringskode. Prøv igjen.

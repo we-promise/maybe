@@ -52,6 +52,7 @@ gem "ostruct"
 gem "bcrypt", "~> 3.1"
 gem "jwt"
 gem "jbuilder"
+gem "countries"
 
 # OAuth & API Security
 gem "doorkeeper"
@@ -67,7 +68,6 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 gem "csv"
 gem "redcarpet"
 gem "stripe"
-gem "intercom-rails"
 gem "plaid"
 gem "rotp", "~> 6.3"
 gem "rqrcode", "~> 3.0"
@@ -80,6 +80,7 @@ gem "after_commit_everywhere", "~> 1.0"
 
 # AI
 gem "ruby-openai"
+gem "langfuse-ruby", "~> 0.1.4", require: "langfuse"
 
 group :development, :test do
   gem "debug", platforms: %i[mri windows]

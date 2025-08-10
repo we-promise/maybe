@@ -6,7 +6,9 @@
         <%= tag.p @holding.ticker, class: "text-sm text-secondary" %>
       </div>
 
-      <%= image_tag "https://logo.synthfinance.com/ticker/#{@holding.ticker}", loading: "lazy", class: "w-9 h-9 rounded-full" %>
+      <% if @holding.security.logo_url.present? %>
+        <%= image_tag @holding.security.logo_url, loading: "lazy", class: "w-9 h-9 rounded-full" %>
+      <% end %>
     </div>
   <% end %>
 
@@ -61,7 +63,7 @@
                   <div>
                     <p class="text-secondary text-xs uppercase"><%= l(trade_entry.date, format: :long) %></p>
 
-                    <p><%= t(
+                    <p class="text-primary"><%= t(
                       ".trade_history_entry",
                       qty: trade_entry.trade.qty,
                       security: trade_entry.trade.security.ticker,

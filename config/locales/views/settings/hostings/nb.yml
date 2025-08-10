@@ -1,0 +1,28 @@
+---
+nb:
+  settings:
+    hostings:
+      invite_code_settings:
+        description: Hver ny bruker som blir med i din instans av Sure kan bare bli med via en invitasjonskode
+        email_confirmation_description: Når aktivert, må brukere bekrefte e-postadressen
+          sin når de endrer den.
+        email_confirmation_title: Krev e-postbekreftelse
+        generate_tokens: Generer ny kode
+        generated_tokens: Genererte koder
+        title: Krev invitasjonskode for registrering
+      show:
+        general: Generelle innstillinger
+        invites: Invitasjonskoder
+        title: Selvhosting
+        danger_zone: Fareområde
+        clear_cache: Tøm cache
+        clear_cache_warning: Tømming av cache vil fjerne alle valutakurser, verdipapirpriser, kontobalanser og andre data. Dette vil ikke slette kontoer, transaksjoner, kategorier eller andre bruker-eide data.
+        confirm_clear_cache:
+          title: Tøm cache?
+          body: Er du sikker på at du vil tømme cache? Dette vil fjerne alle valutakurser, verdipapirpriser, kontobalanser og andre data. Denne handlingen kan ikke angres.
+      update:
+        failure: Ugyldig innstillingsverdi
+        success: Innstillinger oppdatert
+      clear_cache:
+        cache_cleared: Cachen er tømt. Dette kan ta noen øyeblikk å fullføre.
+      not_authorized: Du er ikke autorisert til å utføre denne handlingen

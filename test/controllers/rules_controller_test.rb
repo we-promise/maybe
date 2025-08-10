@@ -71,7 +71,7 @@ class RulesControllerTest < ActionDispatch::IntegrationTest
     assert_equal "set_transaction_category", rule.actions.first.action_type
     assert_equal categories(:food_and_drink).id, rule.actions.first.value
 
-    assert_redirected_to confirm_rule_url(rule)
+    assert_redirected_to confirm_rule_url(rule, reload_on_close: true)
   end
 
   test "can update rule" do

@@ -1,0 +1,49 @@
+<div class="space-y-4">
+  <div>
+    <h2 class="font-medium mb-1"><%= t(".title") %></h2>
+    <% if ENV["TWELVE_DATA_API_KEY"].present? %>
+      <p class="text-sm text-secondary">You have successfully configured your Twelve Data API key through the TWELVE_DATA_API_KEY environment variable.</p>
+    <% else %>
+      <p class="text-secondary text-sm mb-4"><%= t(".description") %></p>
+    <% end %>
+  </div>
+
+  <%= styled_form_with model: Setting.new,
+                       url: settings_hosting_path,
+                       method: :patch,
+                       data: {
+                         controller: "auto-submit-form",
+                         "auto-submit-form-trigger-event-value": "blur"
+                       } do |form| %>
+    <%= form.text_field :twelve_data_api_key,
+                        label: t(".label"),
+                        type: "password",
+                        placeholder: t(".placeholder"),
+                        value: ENV.fetch("TWELVE_DATA_API_KEY", Setting.twelve_data_api_key),
+                        disabled: ENV["TWELVE_DATA_API_KEY"].present?,
+                        container_class: @twelve_data_usage.present? && !@twelve_data_usage.success? ? "border-red-500" : "",
+                        data: { "auto-submit-form-target": "auto" } %>
+  <% end %>
+
+  <% if @twelve_data_usage.present? && @twelve_data_usage.success? %>
+    <div class="space-y-4">
+      <div class="space-y-2">
+        <p class="text-sm text-secondary">
+          <%= t(".api_calls_used",
+                used: number_with_delimiter(@twelve_data_usage.data.used),
+                limit: number_with_delimiter(@twelve_data_usage.data.limit),
+                percentage: number_to_percentage(@twelve_data_usage.data.utilization, precision: 1)) %>
+        </p>
+        <div class="w-52 h-1.5 bg-gray-100 rounded-2xl">
+          <div class="h-full bg-green-500 rounded-2xl"
+               style="width: <%= [@twelve_data_usage.data.utilization, 2].max %>%;"></div>
+        </div>
+      </div>
+      <div class="bg-gray-100 rounded-md px-1.5 py-0.5 w-fit">
+        <p class="text-xs font-medium text-secondary uppercase">
+          <%= t(".plan", plan: @twelve_data_usage.data.plan) %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+---
+nb:
+  tag:
+    deletions:
+      create:
+        deleted: Tag slettet
+      new:
+        delete_and_leave_uncategorized: Slett "%{tag_name}"
+        delete_and_recategorize: Slett "%{tag_name}" og tildel ny tag
+        delete_tag: Slette tag?
+        explanation: "%{tag_name} vil bli fjernet fra transaksjoner og andre tagbare
+          enheter. I stedet for å la dem være uten tag, kan du også tildele en ny tag
+          nedenfor."
+        replacement_tag_prompt: Velg tag
+        tag: Tag

@@ -1,0 +1,20 @@
+---
+nb:
+  activerecord:
+    attributes:
+      user:
+        email: E-post
+        family: Husholdning
+        family_id: Husholdning
+        first_name: Fornavn
+        last_name: Etternavn
+        password: Passord
+        password_confirmation: Passordbekreftelse
+    errors:
+      models:
+        user:
+          attributes:
+            base:
+              cannot_deactivate_admin_with_other_users: Administrator kan ikke deaktivere kontoen mens andre brukere er til stede. Vennligst slett alle medlemmer først.
+            profile_image:
+              invalid_file_size: filstørrelsen må være mindre enn %{max_megabytes} MB

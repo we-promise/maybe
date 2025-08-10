@@ -1,0 +1,12 @@
+---
+nb:
+  users:
+    destroy:
+      success: Kontoen din har blitt slettet.
+    update:
+      email_change_failed: Kunne ikke endre e-postadresse.
+      email_change_initiated: Vennligst sjekk din nye e-postadresse for bekreftelsesinstruksjoner.
+      success: Profilen din har blitt oppdatert.
+    reset:
+      success: Kontoen din har blitt tilbakestilt. Data vil bli slettet i bakgrunnen om en stund.
+      unauthorized: Du er ikke autorisert til å utføre denne handlingen.

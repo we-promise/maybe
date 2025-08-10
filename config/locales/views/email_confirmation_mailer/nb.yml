@@ -1,0 +1,10 @@
+---
+nb:
+  email_confirmation_mailer:
+    confirmation_email:
+      body: Du ba nylig om å endre e-postadressen din. Klikk på knappen
+        nedenfor for å bekrefte denne endringen.
+      cta: Bekreft endring av e-post
+      expiry_notice: Denne lenken vil utløpe om %{hours} timer.
+      greeting: Hei!
+      subject: 'Sure: Bekreft endring av e-posten din'

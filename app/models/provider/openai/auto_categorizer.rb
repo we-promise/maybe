@@ -1,13 +1,14 @@
 class Provider::Openai::AutoCategorizer
-  def initialize(client, transactions: [], user_categories: [])
+  def initialize(client, model: "", transactions: [], user_categories: [])
     @client = client
+    @model = model
     @transactions = transactions
     @user_categories = user_categories
   end
 
   def auto_categorize
     response = client.responses.create(parameters: {
-      model: "gpt-4.1-mini",
+      model: model,
       input: [ { role: "developer", content: developer_message } ],
       text: {
         format: {
@@ -26,7 +27,7 @@ class Provider::Openai::AutoCategorizer
   end
 
   private
-    attr_reader :client, :transactions, :user_categories
+    attr_reader :client, :model, :transactions, :user_categories
 
     AutoCategorization = Provider::LlmConcept::AutoCategorization
 

@@ -1,0 +1,14 @@
+---
+nb:
+  shared:
+    confirm_modal:
+      accept: Bekreft
+      body_html: "<p>Du vil ikke kunne angre denne beslutningen</p>"
+      cancel: Avbryt
+      title: Er du sikker?
+    money_field:
+      label: Beløp
+    syncing_notice:
+      syncing: Synkroniserer kontodata...
+    trend_change:
+      no_change: "ingen endring"

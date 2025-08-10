@@ -20,10 +20,10 @@
         <div class="px-4 py-3 border-t border-tertiary">
           <p class="text-sm">
             <span class="font-medium text-primary">Version:</span>
-            <%= link_to Maybe.version.to_release_tag, "https://github.com/maybe-finance/maybe/releases/tag/#{Maybe.version.to_release_tag}", target: "_blank", class: "hover:underline" %>
+            <%= link_to Maybe.version.to_release_tag, "https://github.com/we-promise/sure/releases/tag/#{Maybe.version.to_release_tag}", target: "_blank", class: "hover:underline" %>
 
             <% if Maybe.commit_sha.present? %>
-              (<%= link_to Maybe.commit_sha.first(7), "https://github.com/maybe-finance/maybe/commit/#{Maybe.commit_sha}", target: "_blank", class: "hover:underline" %>)
+              (<%= link_to Maybe.commit_sha.first(7), "https://github.com/we-promise/sure/commit/#{Maybe.commit_sha}", target: "_blank", class: "hover:underline" %>)
             <% end %>
           </p>
         </div>
@@ -35,10 +35,8 @@
 
     <% if self_hosted? %>
       <% menu.with_item(variant: "link", text: "Feedback", icon: "megaphone", href: feedback_path) %>
-      <% menu.with_item(variant: "link", text: "Contact", icon: "message-square-more", href: "https://link.maybe.co/discord") %>
-    <% else %>
-      <% menu.with_item(variant: "button", text: "Contact", icon: "message-square-more", data: { action: "intercom#show" }) %>
     <% end %>
+    <% menu.with_item(variant: "link", text: "Contact", icon: "message-square-more", href: "https://discord.gg/36ZGBsxYEK") %>
 
     <% menu.with_item(variant: "divider") %>
 

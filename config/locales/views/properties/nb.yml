@@ -1,0 +1,32 @@
+---
+nb:
+  properties:
+    edit:
+      edit: Rediger %{account}
+    form:
+      address_line1: Gateadresse
+      address_line1_placeholder: Slottspplassen 1
+      area: Boareal
+      area_placeholder: '35'
+      area_unit: Måleenhet
+      country: Land
+      country_placeholder: NO
+      locality: By
+      locality_placeholder: Oslo
+      none: Ingen
+      postal_code: Postnummer
+      postal_code_placeholder: '0010'
+      region: Kommune/Fylke
+      region_placeholder: Oslo
+      subtype_prompt: Velg eiendomstype
+      year_built: Byggeår
+      year_built_placeholder: '1849'
+    new:
+      title: Angi eiendomsdetaljer
+    overview:
+      living_area: Boareal
+      market_value: Markedsverdi
+      purchase_price: Kjøpspris
+      trend: Trend
+      unknown: Ukjent
+      year_built: Byggeår

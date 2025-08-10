@@ -1,0 +1,25 @@
+---
+nb:
+  plaid_items:
+    create:
+      success: Konto tilkobling vellykket. Vennligst vent mens kontoer synkroniseres.
+    destroy:
+      success: Kontoer planlagt for sletting.
+    plaid_item:
+      add_new: Legg til ny tilkobling
+      confirm_accept: Slett institusjon
+      confirm_body: Dette vil permanent slette alle kontoene i denne gruppen og
+        alle tilknyttede data.
+      confirm_title: Slett institusjon?
+      connection_lost: Tilkobling mistet
+      connection_lost_description: Denne tilkoblingen er ikke lenger gyldig. Du må
+        slette denne tilkoblingen og legge den til igjen for å fortsette synkronisering av data.
+      delete: Slett
+      error: Feil oppsto under synkronisering av data
+      no_accounts_description: Vi kunne ikke laste inn noen kontoer fra denne finansinstitusjonen.
+      no_accounts_title: Ingen kontoer funnet
+      requires_update: Krever re-autentisering
+      status: Sist synkronisert for %{timestamp} siden
+      status_never: Krever datasynkronisering
+      syncing: Synkroniserer...
+      update: Oppdater tilkobling

@@ -1,0 +1,10 @@
+---
+nb:
+  passwords:
+    edit:
+      password: Nytt passord
+      password_challenge: Gjeldende passord
+      submit: Tilbakestill passord
+      title: Oppdater passord
+    update:
+      success: Passordet ditt er tilbakestilt.

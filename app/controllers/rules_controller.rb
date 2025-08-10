@@ -25,7 +25,7 @@ class RulesController < ApplicationController
     @rule = Current.family.rules.build(rule_params)
 
     if @rule.save
-      redirect_to confirm_rule_path(@rule)
+      redirect_to confirm_rule_path(@rule, reload_on_close: true)
     else
       render :new, status: :unprocessable_entity
     end

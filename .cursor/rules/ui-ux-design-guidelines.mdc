@@ -1,5 +1,5 @@
 ---
-description: This file describes Maybe's design system and how views should be styled
+description: This file describes Sure's design system and how views should be styled
 globs: app/views/**,app/helpers/**,app/javascript/controllers/**
 alwaysApply: true
 ---

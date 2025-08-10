@@ -1,0 +1,11 @@
+---
+nb:
+  address:
+    attributes:
+      country: Land
+      line1: Adresselinje 1
+      line2: Adresselinje 2
+      locality: Sted
+      postal_code: Postnummer
+      region: Region
+    format: "%{line1} %{line2}, %{locality}, %{region} %{postal_code} %{country}"

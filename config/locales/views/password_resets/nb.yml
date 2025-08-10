@@ -1,0 +1,12 @@
+---
+nb:
+  password_resets:
+    edit:
+      title: Tilbakestill passord
+    new:
+      requested: Vennligst sjekk e-posten din for en lenke til å tilbakestille passordet ditt.
+      submit: Tilbakestill passord
+      title: Tilbakestill passord
+    update:
+      invalid_token: Ugyldig token.
+      success: Passordet ditt er tilbakestilt.

@@ -1,0 +1,83 @@
+---
+nb:
+  transactions:
+    form:
+      account: Konto
+      account_prompt: Velg en konto
+      amount: Beløp
+      category: Kategori
+      category_prompt: Velg en kategori
+      date: Dato
+      description: Beskrivelse
+      description_placeholder: Beskriv transaksjonen
+      expense: Utgift
+      income: Inntekt
+      none: (ingen)
+      note_label: Notater
+      note_placeholder: Skriv et notat
+      submit: Legg til transaksjon
+      tags_label: Tagger
+      transfer: Overføring
+    new:
+      new_transaction: Ny transaksjon
+    show:
+      account_label: Konto
+      amount: Beløp
+      category_label: Kategori
+      date_label: Dato
+      delete: Slett
+      delete_subtitle: Dette sletter transaksjonen permanent, påvirker dine historiske
+        saldoer og kan ikke angres.
+      delete_title: Slett transaksjon
+      details: Detaljer
+      merchant_label: Selger
+      name_label: Navn
+      nature: Type
+      none: (ingen)
+      note_label: Notater
+      note_placeholder: Skriv et notat
+      overview: Oversikt
+      settings: Innstillinger
+      tags_label: Tagger
+      uncategorized: "(ukategorisert)"
+    header:
+      edit_categories: Rediger kategorier
+      edit_imports: Rediger importer
+      edit_merchants: Rediger selgere
+      edit_tags: Rediger tagger
+      import: Importer
+    index:
+      transaction: transaksjon
+      transactions: transaksjoner
+    searches:
+      filters:
+        amount_filter:
+          equal_to: Lik
+          greater_than: Større enn
+          less_than: Mindre enn
+          placeholder: '0'
+        badge:
+          expense: Utgift
+          income: Inntekt
+          on_or_after: på eller etter %{date}
+          on_or_before: på eller før %{date}
+          transfer: Overføring
+        type_filter:
+          expense: Utgift
+          income: Inntekt
+          transfer: Overføring
+      menu:
+        account_filter: Konto
+        amount_filter: Beløp
+        apply: Bruk
+        cancel: Avbryt
+        category_filter: Kategori
+        clear_filters: Fjern filtre
+        date_filter: Dato
+        merchant_filter: Selger
+        tag_filter: Tag
+        type_filter: Type
+      search:
+        equal_to: lik
+        greater_than: større enn
+        less_than: mindre enn

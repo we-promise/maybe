@@ -158,20 +158,11 @@ app/models/
     registry.rb <- Defines available providers by concept
     concepts/
       exchange_rate.rb <- defines the interface required for the exchange rate concept
-    synth.rb # <- Concrete provider implementation
 ```
 
 ### One-off data
 
-For data that does not fit neatly into a "concept", an interface is not required and the concrete provider may implement ad-hoc methods called directly in code.  For example, the [synth.rb](mdc:app/models/provider/synth.rb) provider has a `usage` method that is only applicable to this specific provider.  This should be called directly without any abstractions:
-
-```rb
-class SomeModel < Application
-  def synth_usage
-    Provider::Registry.get_provider(:synth)&.usage
-  end
-end
-```
+For data that does not fit neatly into a "concept", an interface is not required and the concrete provider may implement ad-hoc methods called directly in code.
 
 ## "Provided" Concerns
 

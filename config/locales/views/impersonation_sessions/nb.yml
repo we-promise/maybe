@@ -1,0 +1,15 @@
+---
+nb:
+  impersonation_sessions:
+    approve:
+      success: Forespørsel godkjent
+    complete:
+      success: Økt fullført
+    create:
+      success: Forespørsel sendt til bruker. Venter på godkjenning.
+    join:
+      success: Ble med i økt
+    leave:
+      success: Forlot økt
+    reject:
+      success: Forespørsel avvist

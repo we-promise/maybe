@@ -5,7 +5,7 @@
       <%= link_to new_trade_path(account_id: @account.id),
                   id: dom_id(@account, "new_trade"),
                   data: { turbo_frame: :modal },
-                  class: "flex gap-1 font-medium items-center bg-gray-50 text-primary p-2 rounded-lg" do %>
+                  class: "flex gap-1 font-medium items-center bg-gray-50 theme-dark:bg-gray-700 hover:bg-gray-100 theme-dark:hover:bg-gray-600 text-primary p-2 rounded-lg" do %>
         <span class="text-primary">
           <%= icon("plus", color: "current") %>
         </span>

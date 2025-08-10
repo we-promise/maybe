@@ -2,7 +2,7 @@
 class Setting < RailsSettings::Base
   cache_prefix { "v1" }
 
-  field :synth_api_key, type: :string, default: ENV["SYNTH_API_KEY"]
+  field :twelve_data_api_key, type: :string, default: ENV["TWELVE_DATA_API_KEY"]
   field :openai_access_token, type: :string, default: ENV["OPENAI_ACCESS_TOKEN"]
 
   field :require_invite_for_signup, type: :boolean, default: false

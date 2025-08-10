@@ -1,0 +1,19 @@
+---
+nb:
+  invitations:
+    create:
+      failure: Kunne ikke sende invitasjon
+      success: Invitasjon sendt vellykket
+    destroy:
+      failure: Det oppsto et problem med å fjerne invitasjonen.
+      not_authorized: Du er ikke autorisert til å administrere invitasjoner.
+      success: Invitasjonen ble fjernet vellykket.
+    new:
+      email_label: E-postadresse
+      email_placeholder: Angi e-postadresse
+      role_admin: Administrator
+      role_label: Rolle
+      role_member: Medlem
+      submit: Send invitasjon
+      subtitle: Send en invitasjon for å bli med i din familiekonto på Sure
+      title: Inviter noen

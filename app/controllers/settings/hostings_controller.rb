@@ -6,8 +6,8 @@ class Settings::HostingsController < ApplicationController
   before_action :ensure_admin, only: :clear_cache
 
   def show
-    synth_provider = Provider::Registry.get_provider(:synth)
-    @synth_usage = synth_provider&.usage
+    twelve_data_provider = Provider::Registry.get_provider(:twelve_data)
+    @twelve_data_usage = twelve_data_provider&.usage
   end
 
   def update
@@ -19,8 +19,8 @@ class Settings::HostingsController < ApplicationController
       Setting.require_email_confirmation = hosting_params[:require_email_confirmation]
     end
 
-    if hosting_params.key?(:synth_api_key)
-      Setting.synth_api_key = hosting_params[:synth_api_key]
+    if hosting_params.key?(:twelve_data_api_key)
+      Setting.twelve_data_api_key = hosting_params[:twelve_data_api_key]
     end
 
     redirect_to settings_hosting_path, notice: t(".success")
@@ -36,7 +36,7 @@ class Settings::HostingsController < ApplicationController
 
   private
     def hosting_params
-      params.require(:setting).permit(:require_invite_for_signup, :require_email_confirmation, :synth_api_key)
+      params.require(:setting).permit(:require_invite_for_signup, :require_email_confirmation, :twelve_data_api_key)
     end
 
     def ensure_admin

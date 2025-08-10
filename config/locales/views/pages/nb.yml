@@ -1,0 +1,14 @@
+---
+nb:
+  pages:
+    changelog:
+      title: Hva er nytt
+    dashboard:
+      net_worth_chart:
+        data_not_available: Data ikke tilgjengelig for den valgte perioden
+        title: Nettoformue
+      no_account_empty_state:
+        new_account: Ny konto
+        no_account_subtitle: Siden ingen kontoer er lagt til, er det ingen data å
+          vise. Legg til dine første kontoer for å begynne å vise dashboard-data.
+        no_account_title: Ingen kontoer enda

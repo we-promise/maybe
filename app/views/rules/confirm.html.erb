@@ -1,4 +1,4 @@
-<%= render DS::Dialog.new(reload_on_close: true) do |dialog| %>
+<%= render DS::Dialog.new(reload_on_close: params[:reload_on_close].present?) do |dialog| %>
   <%
     title = if @rule.name.present?
               "Confirm changes to \"#{@rule.name}\""

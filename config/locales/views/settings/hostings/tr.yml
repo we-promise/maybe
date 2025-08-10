@@ -1,0 +1,34 @@
+---
+tr:
+  settings:
+    hostings:
+      invite_code_settings:
+        description: Maybe uygulamanıza katılan her yeni kullanıcı yalnızca bir davet kodu ile katılabilir
+        email_confirmation_description: Etkinleştirildiğinde, kullanıcılar e-posta adreslerini değiştirirken e-posta onayı yapmak zorundadır.
+        email_confirmation_title: E-posta onayı gerektir
+        generate_tokens: Yeni kod oluştur
+        generated_tokens: Oluşturulan kodlar
+        title: Kayıt için davet kodu gerektir
+      show:
+        general: Genel Ayarlar
+        invites: Davet Kodları
+        title: Kendi Sunucunda Barındırma
+        danger_zone: Tehlikeli Bölge
+        clear_cache: Veri önbelleğini temizle
+        clear_cache_warning: Veri önbelleğini temizlemek tüm döviz kurları, menkul kıymet fiyatları, hesap bakiyeleri ve diğer verileri kaldıracaktır. Bu işlem hesapları, işlemleri, kategorileri veya diğer kullanıcıya ait verileri silmez.
+        confirm_clear_cache:
+          title: Veri önbelleği temizlensin mi?
+          body: Veri önbelleğini temizlemek istediğinizden emin misiniz? Bu işlem tüm döviz kurları, menkul kıymet fiyatları, hesap bakiyeleri ve diğer verileri kaldıracaktır. Bu işlem geri alınamaz.
+      synth_settings:
+        api_calls_used: "%{used} / %{limit} API çağrısı kullanıldı (%{percentage})"
+        description: Synth tarafından sağlanan API anahtarını girin
+        label: API Anahtarı
+        placeholder: API anahtarınızı buraya girin
+        plan: "%{plan} planı"
+        title: Synth Ayarları
+      update:
+        failure: Geçersiz ayar değeri
+        success: Ayarlar güncellendi
+      clear_cache:
+        cache_cleared: Veri önbelleği temizlendi. Bu işlemin tamamlanması birkaç dakika sürebilir.
+      not_authorized: Bu işlemi gerçekleştirmek için yetkiniz yok

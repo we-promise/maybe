@@ -1,0 +1,10 @@
+---
+nb:
+  activerecord:
+    errors:
+      models:
+        entry:
+          attributes:
+            base:
+              invalid_sell_quantity: kan ikke selge %{sell_qty} aksjer av %{ticker} fordi
+                du bare eier %{current_qty} aksjer

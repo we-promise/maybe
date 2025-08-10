@@ -1,0 +1,18 @@
+---
+nb:
+  investments:
+    edit:
+      edit: Rediger %{account}
+    form:
+      none: Ingen
+      subtype_prompt: Velg investeringstype
+    new:
+      title: Angi kontobalanse
+    show:
+      chart_title: Total verdi
+    value_tooltip:
+      cash: Kontanter
+      holdings: Beholdninger
+      total: Porteføljebalanse
+      total_value_tooltip: Den totale porteføljebalansen er summen av meglerkontanter
+        (tilgjengelig for handel) og gjeldende markedsverdi av beholdningene dine.

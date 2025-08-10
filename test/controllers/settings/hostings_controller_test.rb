@@ -8,7 +8,7 @@ class Settings::HostingsControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:family_admin)
 
     @provider = mock
-    Provider::Registry.stubs(:get_provider).with(:synth).returns(@provider)
+    Provider::Registry.stubs(:get_provider).with(:twelve_data).returns(@provider)
     @usage_response = provider_success_response(
       OpenStruct.new(
         used: 10,
@@ -40,9 +40,9 @@ class Settings::HostingsControllerTest < ActionDispatch::IntegrationTest
 
   test "can update settings when self hosting is enabled" do
     with_self_hosting do
-      patch settings_hosting_url, params: { setting: { synth_api_key: "1234567890" } }
+      patch settings_hosting_url, params: { setting: { twelve_data_api_key: "1234567890" } }
 
-      assert_equal "1234567890", Setting.synth_api_key
+      assert_equal "1234567890", Setting.twelve_data_api_key
     end
   end
 

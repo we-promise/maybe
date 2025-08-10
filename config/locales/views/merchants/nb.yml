@@ -1,0 +1,27 @@
+---
+nb:
+  family_merchants:
+    create:
+      error: 'Feil ved oppretting av forhandler: %{error}'
+      success: Ny forhandler opprettet vellykket
+    destroy:
+      success: Forhandler slettet vellykket
+    edit:
+      title: Rediger forhandler
+    form:
+      name_placeholder: Forhandlernavn
+    index:
+      empty: Ingen forhandlere ennå
+      new: Ny forhandler
+      title: Forhandlere
+    merchant:
+      confirm_accept: Slett forhandler
+      confirm_body: Er du sikker på at du vil slette denne forhandleren? Fjerning av denne forhandleren
+        vil fjerne koblingen til alle tilknyttede transaksjoner og kan påvirke rapporteringen din.
+      confirm_title: Slett forhandler?
+      delete: Slett forhandler
+      edit: Rediger forhandler
+    new:
+      title: Ny forhandler
+    update:
+      success: Forhandler oppdatert vellykket

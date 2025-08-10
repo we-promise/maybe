@@ -1,0 +1,155 @@
+nb:
+  activerecord:
+    attributes:
+      doorkeeper/application:
+        name: 'Navn'
+        redirect_uri: 'Omdirigerings-URI'
+    errors:
+      models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              fragment_present: 'kan ikke inneholde et fragment.'
+              invalid_uri: 'må være en gyldig URI.'
+              unspecified_scheme: 'må angi et skjema.'
+              relative_uri: 'må være en absolutt URI.'
+              secured_uri: 'må være en HTTPS/SSL URI.'
+              forbidden_uri: 'er forbudt av serveren.'
+            scopes:
+              not_match_configured: "samsvarer ikke med det som er konfigurert på serveren."
+
+  doorkeeper:
+    applications:
+      confirmations:
+        destroy: 'Er du sikker?'
+      buttons:
+        edit: 'Rediger'
+        destroy: 'Slett'
+        submit: 'Send inn'
+        cancel: 'Avbryt'
+        authorize: 'Autoriser'
+      form:
+        error: 'Ops! Sjekk skjemaet for mulige feil'
+      help:
+        confidential: 'Applikasjonen vil bli brukt der klienthemmeligheten kan holdes konfidensiell. Native mobilapper og enkeltside-apper anses som ikke-konfidensielle.'
+        redirect_uri: 'Bruk én linje per URI'
+        blank_redirect_uri: "La det stå tomt hvis du har konfigurert leverandøren til å bruke Client Credentials, Resource Owner Password Credentials eller en annen tilgangstype som ikke krever omdirigerings-URI."
+        scopes: 'Skill scopes med mellomrom. La stå tomt for å bruke standard scopes.'
+      edit:
+        title: 'Rediger applikasjon'
+      index:
+        title: 'Dine applikasjoner'
+        new: 'Ny applikasjon'
+        name: 'Navn'
+        callback_url: 'Tilbakekallings-URL'
+        confidential: 'Konfidensiell?'
+        actions: 'Handlinger'
+        confidentiality:
+          'yes': 'Ja'
+          'no': 'Nei'
+      new:
+        title: 'Ny applikasjon'
+      show:
+        title: 'Applikasjon: %{name}'
+        application_id: 'UID'
+        secret: 'Hemmelighet'
+        secret_hashed: 'Hemmelighet hashet'
+        scopes: 'Scopes'
+        confidential: 'Konfidensiell'
+        callback_urls: 'Tilbakekallings-URLer'
+        actions: 'Handlinger'
+        not_defined: 'Ikke definert'
+
+    authorizations:
+      buttons:
+        authorize: 'Autoriser'
+        deny: 'Avslå'
+      error:
+        title: 'En feil har oppstått'
+      new:
+        title: 'Autorisasjon kreves'
+        prompt: 'Autoriser %{client_name} til å bruke kontoen din?'
+        able_to: 'Denne applikasjonen vil kunne'
+      show:
+        title: 'Autorisasjonskode'
+      form_post:
+        title: 'Send inn dette skjemaet'
+
+    authorized_applications:
+      confirmations:
+        revoke: 'Er du sikker?'
+      buttons:
+        revoke: 'Opphev'
+      index:
+        title: 'Dine autoriserte applikasjoner'
+        application: 'Applikasjon'
+        created_at: 'Opprettet'
+        date_format: '%Y-%m-%d %H:%M:%S'
+
+    pre_authorization:
+      status: 'Forhåndsautorisasjon'
+
+    errors:
+      messages:
+        # Vanlige feilmeldinger
+        invalid_request:
+          unknown: 'Forespørselen mangler en påkrevd parameter, inkluderer en ikke-støttet parameterverdi, eller er på annen måte feilformet.'
+          missing_param: 'Mangler påkrevd parameter: %{value}.'
+          request_not_authorized: 'Forespørselen må autoriseres. Påkrevd parameter for autorisering av forespørsel mangler eller er ugyldig.'
+          invalid_code_challenge: 'Kodeutfordring kreves.'
+        invalid_redirect_uri: "Den forespurte omdirigerings-URIen er feilformet eller samsvarer ikke med klientens omdirigerings-URI."
+        unauthorized_client: 'Klienten er ikke autorisert til å utføre denne forespørselen med denne metoden.'
+        access_denied: 'Ressurseieren eller autorisasjonsserveren avviste forespørselen.'
+        invalid_scope: 'Det forespurte omfanget er ugyldig, ukjent eller feilformet.'
+        invalid_code_challenge_method:
+          zero: 'Autorisasjonsserveren støtter ikke PKCE da det ikke er noen aksepterte kodeutfordringsmetodeverdier.'
+          one: 'Kodeutfordringsmetoden må være %{challenge_methods}.'
+          other: 'Kodeutfordringsmetoden må være en av %{challenge_methods}.'
+        server_error: 'Autorisasjonsserveren støtte på en uventet tilstand som hindret den i å oppfylle forespørselen.'
+        temporarily_unavailable: 'Autorisasjonsserveren kan for øyeblikket ikke håndtere forespørselen på grunn av midlertidig overbelastning eller vedlikehold av serveren.'
+
+        # Konfigurasjonsfeilmeldinger
+        credential_flow_not_configured: 'Ressurseier-passord-legitimasjonsflyt mislyktes på grunn av at Doorkeeper.configure.resource_owner_from_credentials ikke er konfigurert.'
+        resource_owner_authenticator_not_configured: 'Finner av ressurseier mislyktes på grunn av at Doorkeeper.configure.resource_owner_authenticator ikke er konfigurert.'
+        admin_authenticator_not_configured: 'Tilgang til adminpanelet er forbudt på grunn av at Doorkeeper.configure.admin_authenticator ikke er konfigurert.'
+
+        # Tilgangsbevilgningsfeil
+        unsupported_response_type: 'Autorisasjonsserveren støtter ikke denne responstypen.'
+        unsupported_response_mode: 'Autorisasjonsserveren støtter ikke denne responsmodusen.'
+
+        # Tilgangstokenfeil
+        invalid_client: 'Klientautentisering mislyktes på grunn av ukjent klient, ingen klientautentisering inkludert, eller ikke-støttet autentiseringsmetode.'
+        invalid_grant: 'Den oppgitte autorisasjonsbevilgningen er ugyldig, utløpt, opphevet, samsvarer ikke med omdirigerings-URIen brukt i autorisasjonsforespørselen, eller ble utstedt til en annen klient.'
+        unsupported_grant_type: 'Autorisasjonsbevilgningstypen støttes ikke av autorisasjonsserveren.'
+
+        invalid_token:
+          revoked: "Tilgangstokenet ble opphevet"
+          expired: "Tilgangstokenet utløp"
+          unknown: "Tilgangstokenet er ugyldig"
+        revoke:
+          unauthorized: "Du er ikke autorisert til å oppheve dette tokenet"
+
+        forbidden_token:
+          missing_scope: 'Tilgang til denne ressursen krever omfang "%{oauth_scopes}".'
+
+    flash:
+      applications:
+        create:
+          notice: 'Applikasjon opprettet.'
+        destroy:
+          notice: 'Applikasjon slettet.'
+        update:
+          notice: 'Applikasjon oppdatert.'
+      authorized_applications:
+        destroy:
+          notice: 'Applikasjon opphevet.'
+
+    layouts:
+      admin:
+        title: 'Doorkeeper'
+        nav:
+          oauth2_provider: 'OAuth2-leverandør'
+          applications: 'Applikasjoner'
+          home: 'Hjem'
+      application:
+        title: 'OAuth-autorisasjon kreves'

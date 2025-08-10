@@ -32,12 +32,12 @@ class Provider::Registry
         Provider::Stripe.new(secret_key:, webhook_secret:)
       end
 
-      def synth
-        api_key = ENV.fetch("SYNTH_API_KEY", Setting.synth_api_key)
+      def twelve_data
+        api_key = ENV.fetch("TWELVE_DATA_API_KEY", Setting.twelve_data_api_key)
 
         return nil unless api_key.present?
 
-        Provider::Synth.new(api_key)
+        Provider::TwelveData.new(api_key)
       end
 
       def plaid_us
@@ -92,13 +92,13 @@ class Provider::Registry
     def available_providers
       case concept
       when :exchange_rates
-        %i[synth]
+        %i[twelve_data]
       when :securities
-        %i[synth]
+        %i[twelve_data]
       when :llm
         %i[openai]
       else
-        %i[synth plaid_us plaid_eu github openai]
+        %i[plaid_us plaid_eu github openai]
       end
     end
 end

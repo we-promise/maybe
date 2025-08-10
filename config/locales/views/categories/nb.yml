@@ -1,0 +1,34 @@
+---
+nb:
+  categories:
+    bootstrap:
+      success: Standardkategorier opprettet vellykket
+    category:
+      delete: Slett kategori
+      edit: Rediger kategori
+    create:
+      success: Kategori opprettet vellykket
+    destroy:
+      success: Kategori slettet vellykket
+    edit:
+      edit: Rediger kategori
+    form:
+      placeholder: Kategorinavn
+    index:
+      bootstrap: Bruk standarder (anbefalt)
+      categories: Kategorier
+      categories_expenses: Utgiftskategorier
+      categories_incomes: Inntektskategorier
+      empty: Ingen kategorier funnet
+      new: Ny kategori
+    menu:
+      loading: Laster...
+    new:
+      new_category: Ny kategori
+    update:
+      success: Kategori oppdatert vellykket
+  category:
+    dropdowns:
+      show:
+        bootstrap: Generer standardkategorier
+        empty: Ingen kategorier funnet

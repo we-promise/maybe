@@ -1,0 +1,90 @@
+---
+nb:
+  import:
+    cleans:
+      show:
+        description: Rediger dataene dine i tabellen nedenfor. Røde celler er ugyldige.
+        errors_notice: Du har feil i dataene dine. Hold musepekeren over feilen for å se
+          detaljer.
+        errors_notice_mobile: Du har feil i dataene dine. Trykk på feilverktøytipset for å se
+          detaljer.
+        title: Rengjør dataene dine
+    configurations:
+      mint_import:
+        date_format_label: Datoformat
+      show:
+        description: Velg kolonnene som tilsvarer hvert felt i CSV-filen din.
+        title: Konfigurer importen din
+      trade_import:
+        date_format_label: Datoformat
+      transaction_import:
+        date_format_label: Datoformat
+    confirms:
+      mappings:
+        create_account: Opprett konto
+        csv_mapping_label: "%{mapping} i CSV"
+        maybe_mapping_label: "%{mapping} i Sure"
+        no_accounts: Du har ingen kontoer ennå. Vennligst opprett en konto som
+          vi kan bruke for (utilordnede) rader i CSV-filen din eller gå tilbake til Rengjør-trinnet
+          og oppgi et kontonavn vi kan bruke.
+        rows_label: Rader
+        unassigned_account: Trenger å opprette en ny konto for utilordnede rader?
+      show:
+        account_mapping_description: Tilordne alle kontoene i den importerte filen din til
+          Maybes eksisterende kontoer. Du kan også legge til nye kontoer eller la dem
+          være ukategorisert.
+        account_mapping_title: Tilordne kontoene dine
+        account_type_mapping_description: Tilordne alle kontotypene i den importerte filen din til
+          Maybes
+        account_type_mapping_title: Tilordne kontotypene dine
+        category_mapping_description: Tilordne alle kategoriene i den importerte filen din til
+          Maybes eksisterende kategorier. Du kan også legge til nye kategorier eller la dem
+          være ukategorisert.
+        category_mapping_title: Tilordne kategoriene dine
+        tag_mapping_description: Tilordne alle tagene i den importerte filen din til
+          Maybes eksisterende tagger. Du kan også legge til nye tagger eller la dem
+          være ukategorisert.
+        tag_mapping_title: Tilordne tagene dine
+    uploads:
+      show:
+        description: Lim inn eller last opp CSV-filen din nedenfor. Vennligst gjennomgå instruksjonene
+          i tabellen nedenfor før du begynner.
+        instructions_1: Nedenfor er et eksempel på CSV med kolonner tilgjengelig for import.
+        instructions_2: CSV-filen din må ha en overskriftsrad
+        instructions_3: Du kan navngi kolonnene dine hva du vil. Du vil tilordne
+          dem på et senere trinn.
+        instructions_4: Kolonner merket med en stjerne (*) er obligatoriske data.
+        instructions_5: Ingen komma, ingen valutasymboler og ingen parenteser i tall.
+        title: Importer dataene dine
+  imports:
+    empty:
+      message: Ingen importer ennå.
+      new: Ny import
+    import:
+      complete: Fullført
+      delete: Slett
+      failed: Mislykket
+      in_progress: Pågår
+      label: "%{type}: %{datetime}"
+      revert_failed: Tilbakestilling mislykket
+      reverting: Tilbakestiller
+      uploading: Behandler rader
+      view: Vis
+    index:
+      imports: Importer
+      new: Ny import
+      title: Importer
+    new:
+      description: Du kan manuelt importere ulike typer data via CSV eller bruke en av
+        våre importmaler som Mint.
+      import_accounts: Importer kontoer
+      import_mint: Importer fra Mint
+      import_portfolio: Importer investeringer
+      import_transactions: Importer transaksjoner
+      resume: Fortsett %{type}
+      sources: Kilder
+      title: Ny CSV-import
+    ready:
+      description: Her er en oppsummering av de nye elementene som vil bli lagt til kontoen din
+        når du publiserer denne importen.
+      title: Bekreft importdataene dine

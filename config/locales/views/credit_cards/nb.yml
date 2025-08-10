@@ -1,0 +1,26 @@
+---
+nb:
+  credit_cards:
+    edit:
+      edit: Rediger %{account}
+    form:
+      annual_fee: Årsgebyr
+      annual_fee_placeholder: '99'
+      apr: Effektiv rente
+      apr_placeholder: '15.99'
+      available_credit: Tilgjengelig kreditt
+      available_credit_placeholder: '10000'
+      expiration_date: Utløpsdato
+      minimum_payment: Minimumsbetaling
+      minimum_payment_placeholder: '100'
+    new:
+      title: Angi kredittkortdetaljer
+    overview:
+      amount_owed: Skyldig beløp
+      annual_fee: Årsgebyr
+      apr: Eff. rente
+
+      available_credit: Tilgjengelig kreditt
+      expiration_date: Utløpsdato
+      minimum_payment: Minimumsbetaling
+      unknown: Ukjent

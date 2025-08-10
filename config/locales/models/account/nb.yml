@@ -1,0 +1,21 @@
+---
+nb:
+  activerecord:
+    attributes:
+      account:
+        balance: Balanse
+        currency: Valuta
+        family: Husholdning
+        family_id: Husholdning
+        name: Navn
+        subtype: Undertype
+    models:
+      account: Konto
+      account/credit: Kredittkort
+      account/depository: Bankkonto
+      account/investment: Investering
+      account/loan: Lån
+      account/other_asset: Annet aktivum
+      account/other_liability: Annen gjeld
+      account/property: Eiendom
+      account/vehicle: Kjøretøy

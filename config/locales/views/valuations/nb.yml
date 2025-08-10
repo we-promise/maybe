@@ -1,0 +1,30 @@
+---
+nb:
+  valuations:
+    form:
+      amount: Beløp
+      submit: Legg til saldooppdatering
+    header:
+      balance: Saldo
+    index:
+      change: endring
+      date: dato
+      new_entry: Ny oppføring
+      no_valuations: Ingen verdivurderinger for denne kontoen ennå
+      valuations: Verdi
+      value: verdi
+    new:
+      title: Ny saldo
+    show:
+      amount: Beløp
+      date_label: Dato
+      delete: Slett
+      delete_subtitle: Denne handlingen kan ikke angres
+      delete_title: Slett oppføring
+      details: Detaljer
+      name_label: Navn
+      name_placeholder: Skriv inn et navn for denne oppføringen
+      note_label: Notater
+      note_placeholder: Legg til eventuelle tilleggsdetaljer om denne oppføringen
+      overview: Oversikt
+      settings: Innstillinger

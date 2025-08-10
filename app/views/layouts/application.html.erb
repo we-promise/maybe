@@ -60,10 +60,11 @@
         </ul>
 
         <div class="pl-2 mt-auto mx-auto flex flex-col gap-2">
-          <%= render DS::Button.new(
+          <%= render DS::Link.new(
             variant: "icon",
             icon: "message-circle-question",
-            data: { action: "intercom#show" }
+            href: "https://discord.gg/36ZGBsxYEK",
+            target: "_blank"
           ) %>
 
           <%= render "users/user_menu", user: Current.user %>

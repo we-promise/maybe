@@ -1,9 +1,10 @@
 {
-  "name": "Maybe",
+  "name": "Sure",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/workspace",
   "containerEnv": {
+    "GIT_EDITOR": "code --wait",
     "GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}",
     "GITHUB_USER": "${localEnv:GITHUB_USER}"
   },
@@ -15,8 +16,14 @@
     "vscode": {
       "extensions": [
         "biomejs.biome",
-        "EditorConfig.EditorConfig"
-      ]
+        "EditorConfig.EditorConfig",
+        "Shopify.ruby-extensions-pack"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.defaultProfile.osx": "zsh",
+        "terminal.integrated.defaultProfile.windows": "pwsh"
+      }
     }
   }
 }

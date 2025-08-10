@@ -1,0 +1,13 @@
+---
+nb:
+  layouts:
+    auth:
+      existing_account: Har du allerede en konto?
+      no_account: Ny hos Sure?
+      sign_in: Logg inn
+      sign_up: Opprett konto
+      your_account: Din konto
+    shared:
+      footer:
+        privacy_policy: Personvernerklæring
+        terms_of_service: Vilkår for bruk

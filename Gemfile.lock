@@ -140,6 +140,8 @@ GEM
     climate_control (1.2.0)
     concurrent-ruby (1.3.5)
     connection_pool (2.5.3)
+    countries (8.0.3)
+      unaccent (~> 0.3)
     crack (1.0.0)
       bigdecimal
       rexml
@@ -260,9 +262,6 @@ GEM
     inline_svg (1.10.0)
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
-    intercom-rails (1.0.6)
-      activesupport (> 4.0)
-      jwt (~> 2.0)
     io-console (0.8.0)
     irb (1.15.2)
       pp (>= 0.6.0)
@@ -275,6 +274,11 @@ GEM
     json (2.12.2)
     jwt (2.10.2)
       base64
+    langfuse-ruby (0.1.4)
+      concurrent-ruby (~> 1.0)
+      faraday (>= 1.8, < 3.0)
+      faraday-net_http (>= 1.0, < 4.0)
+      json (~> 2.0)
     language_server-protocol (3.17.0.5)
     launchy (3.1.1)
       addressable (~> 2.8)
@@ -569,13 +573,14 @@ GEM
     tailwindcss-ruby (4.1.8-x86_64-linux-musl)
     terminal-table (4.0.0)
       unicode-display_width (>= 1.1.1, < 4)
-    thor (1.3.2)
+    thor (1.4.0)
     timeout (0.4.3)
     turbo-rails (2.0.16)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    unaccent (0.4.0)
     unicode (0.4.4.5)
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
@@ -629,6 +634,7 @@ DEPENDENCIES
   brakeman
   capybara
   climate_control
+  countries
   csv
   debug
   derailed_benchmarks
@@ -646,9 +652,9 @@ DEPENDENCIES
   image_processing (>= 1.2)
   importmap-rails
   inline_svg
-  intercom-rails
   jbuilder
   jwt
+  langfuse-ruby (~> 0.1.4)
   letter_opener
   logtail-rails
   lookbook (= 2.3.11)
@@ -697,4 +703,4 @@ RUBY VERSION
    ruby 3.4.4p34
 
 BUNDLED WITH
-   2.6.9
+   2.6.7

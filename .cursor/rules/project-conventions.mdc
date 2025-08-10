@@ -18,8 +18,7 @@ This rule serves as high-level documentation for how you should write code for t
 - Jobs: Sidekiq + Redis
 - External
   - Payments: Stripe
-  - User bank data syncing: Plaid 
-  - Market data: Synth (our custom API)
+  - User bank data syncing: Plaid
 
 ## Project conventions
 

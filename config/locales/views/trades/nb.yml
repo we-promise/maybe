@@ -1,0 +1,38 @@
+---
+nb:
+  trades:
+    form:
+      account: Overføringskonto (valgfritt)
+      account_prompt: Søk etter konto
+      amount: Beløp
+      holding: Ticker-symbol
+      price: Pris per aksje
+      qty: Antall
+      submit: Legg til transaksjon
+      ticker_placeholder: AAPL
+      type: Type
+    header:
+      buy: Kjøp
+      current_market_price_label: Gjeldende markedspris
+      overview: Oversikt
+      purchase_price_label: Kjøpspris
+      purchase_qty_label: Kjøpsantall
+      sell: Selg
+      symbol_label: Symbol
+      total_return_label: Urealisert gevinst/tap
+    new:
+      title: Ny transaksjon
+    show:
+      additional: Tillegg
+      cost_per_share_label: Kostnad per aksje
+      date_label: Dato
+      delete: Slett
+      delete_subtitle: Denne handlingen kan ikke angres
+      delete_title: Slett handel
+      details: Detaljer
+      exclude_subtitle: Denne handelen vil ikke inkluderes i rapporter og beregninger
+      exclude_title: Ekskluder fra analyser
+      note_label: Notat
+      note_placeholder: Legg til eventuelle tilleggsnotater her...
+      quantity_label: Antall
+      settings: Innstillinger

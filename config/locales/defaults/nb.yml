@@ -3,7 +3,7 @@ nb:
   activerecord:
     errors:
       messages:
-        record_invalid: 'Det oppstod feil: %{errors}'
+        record_invalid: 'Det oppstod en feil: %{errors}'
         restrict_dependent_destroy:
           has_many: Kan ikke slette registreringen, fordi %{record} avhenger av denne.
           has_one: Kan ikke slette registreringen, fordi %{record} avhenger av denne.
@@ -31,31 +31,31 @@ nb:
     - nov
     - des
     day_names:
-    - søndag
-    - mandag
-    - tirsdag
-    - onsdag
-    - torsdag
-    - fredag
-    - lørdag
+    - Søndag
+    - Mandag
+    - Tirsdag
+    - Onsdag
+    - Torsdag
+    - Fredag
+    - Lørdag
     formats:
       default: "%d.%m.%Y"
       long: "%e. %B %Y"
       short: "%e. %b"
     month_names:
     -
-    - januar
-    - februar
-    - mars
-    - april
-    - mai
-    - juni
-    - juli
-    - august
-    - september
-    - oktober
-    - november
-    - desember
+    - Januar
+    - Februar
+    - Mars
+    - April
+    - Mai
+    - Juni
+    - Juli
+    - August
+    - September
+    - Oktober
+    - November
+    - Desember
     order:
     - :day
     - :month

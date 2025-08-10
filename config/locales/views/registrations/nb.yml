@@ -1,0 +1,25 @@
+---
+nb:
+  helpers:
+    label:
+      user:
+        invite_code: Invitasjonskode
+    submit:
+      user:
+        create: Fortsett
+  registrations:
+    create:
+      failure: Det oppsto et problem med registreringen.
+      invalid_invite_code: Ugyldig invitasjonskode, vennligst prøv igjen.
+      success: Du har blitt registrert.
+    new:
+      invitation_message: "%{inviter} har invitert deg til å bli med som %{role}"
+      join_family_title: Bli med i %{family}
+      role_admin: administrator
+      role_member: medlem
+      submit: Opprett konto
+      title: Opprett kontoen din
+      welcome_body: For å komme i gang må du registrere deg for en ny konto. Du vil
+        da kunne konfigurere flere innstillinger i appen.
+      welcome_title: Velkommen til Self Hosted Sure!
+      password_placeholder: Angi passordet ditt

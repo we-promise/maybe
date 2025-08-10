@@ -2,9 +2,9 @@
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.3"
 	},
-	"name": "maybe",
+	"name": "sure",
 	"version": "1.0.0",
-	"description": "The OS for your personal finances",
+	"description": "The personal finance app for everyone",
 	"scripts": {
 		"style:check": "biome check",
 		"style:fix": "biome check --write",

@@ -1,4 +1,4 @@
-# Self Hosting ~~Maybe~~Sure with Docker
+# Self Hosting Sure with Docker
 
 This guide will help you setup, update, and maintain your self-hosted Sure application with Docker Compose. Docker Compose is the most popular and recommended way to self-host the Sure app.
 
@@ -38,7 +38,7 @@ cd ~/docker-apps/sure
 Make sure you are in the directory you just created and run the following command:
 
 ```bash
-# Download the sample compose.yml file from the Sure Github repository
+# Download the sample compose.yml file from the GitHub repository
 curl -o compose.yml https://raw.githubusercontent.com/we-promise/sure/main/compose.example.yml
 ```
 
@@ -133,7 +133,7 @@ docker compose ls
 
 Your app is now set up. You can visit it at `http://localhost:3000` in your browser.
 
-If you find bugs or have a feature request, be sure to read through our [contributing guide here](https://github.com/we-promise/sure/wiki/How-to-Contribute-Effectively-to-this-Project).
+If you find bugs or have a feature request, be sure to read through our [contributing guide here](https://github.com/we-promise/sure/wiki/How-to-Contribute-Effectively-to-Sure).
 
 ## How to update your app
 
@@ -148,8 +148,7 @@ We recommend using one of the following images, but you can pin your app to what
 - `ghcr.io/we-promise/sure:latest` (latest commit)
 - `ghcr.io/we-promise/sure:stable` (latest release)
 
-By default, your app _will
-NOT_ automatically update. To update your self-hosted app, run the following commands in your terminal:
+By default, your app _will NOT_ automatically update. To update your self-hosted app, run the following commands in your terminal:
 
 ```bash
 cd ~/docker-apps/sure # Navigate to whatever directory you configured the app in
@@ -190,5 +189,5 @@ By running the commands below, you will delete your existing Sure database and "
 docker compose down
 docker volume rm sure_postgres-data # this is the name of the volume the DB is mounted to
 docker compose up
-docker exec -it sure-postgres-1 psql -U sure -d sure_production -c "SELECT 1;" # This will verify that the issue is fixed
+docker exec -it sure-postgres-1 psql -U maybe -d maybe_production -c "SELECT 1;" # This will verify that the issue is fixed
 ```

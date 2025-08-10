@@ -114,13 +114,13 @@ http_interactions:
               "postal_code": "12345",
               "state": null
             },
-            "email": "user@maybe.local",
+            "email": "user@sure.local",
             "name": "Test Checkout User",
             "phone": null,
             "tax_exempt": "none",
             "tax_ids": []
           },
-          "customer_email": "user@maybe.local",
+          "customer_email": "user@sure.local",
           "discounts": [],
           "expires_at": 1746368350,
           "invoice": "in_1RKguoQT2jbOS8G0PuBVklxw",

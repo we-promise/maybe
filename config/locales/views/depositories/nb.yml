@@ -1,0 +1,10 @@
+---
+nb:
+  depositories:
+    edit:
+      edit: Rediger %{account}
+    form:
+      none: Ingen
+      subtype_prompt: Velg kontotype
+    new:
+      title: Angi kontobalanse

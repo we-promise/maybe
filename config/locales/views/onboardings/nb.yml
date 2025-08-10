@@ -1,0 +1,28 @@
+---
+nb:
+  onboardings:
+    header:
+      sign_out: Logg ut
+    preferences:
+      currency: Valuta
+      date_format: Datoformat
+      example: Eksempelkonto
+      locale: Språk
+      preview: Forhåndsvis hvordan data vises basert på preferanser.
+      submit: Fullfør
+      subtitle: La oss konfigurere preferansene dine.
+      title: Konfigurer preferansene dine
+    profile:
+      country: Land
+      first_name: Fornavn
+      household_name: Husholdningsnavn
+      last_name: Etternavn
+      profile_image: Profilbilde
+      submit: Fortsett
+      subtitle: La oss fullføre profilen din.
+      title: La oss sette opp det grunnleggende
+    show:
+      message: Vi er veldig glade for at du er her. I neste trinn vil vi stille deg noen
+        spørsmål for å fullføre profilen din og deretter få deg i gang.
+      setup: Sett opp konto
+      title: Møt Sure

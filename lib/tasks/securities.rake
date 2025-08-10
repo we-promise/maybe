@@ -1,64 +1,6 @@
 # frozen_string_literal: true
 
 namespace :securities do
-  desc "Backfill exchange_operating_mic for securities using Synth API"
-  task backfill_exchange_mic: :environment do
-    puts "Starting exchange_operating_mic backfill..."
-
-    api_key = Rails.application.config.app_mode.self_hosted? ? Setting.synth_api_key : ENV["SYNTH_API_KEY"]
-    unless api_key.present?
-      puts "ERROR: No Synth API key found. Please set SYNTH_API_KEY env var or configure it in Settings for self-hosted mode."
-      exit 1
-    end
-
-    securities = Security.where(exchange_operating_mic: nil).where.not(ticker: nil)
-    total = securities.count
-    processed = 0
-    errors = []
-
-    securities.find_each do |security|
-      processed += 1
-      print "\rProcessing #{processed}/#{total} (#{(processed.to_f/total * 100).round(1)}%)"
-
-      begin
-        response = Faraday.get("https://api.synthfinance.com/tickers/#{security.ticker}") do |req|
-          req.params["country_code"] = security.country_code if security.country_code.present?
-          req.headers["Authorization"] = "Bearer #{api_key}"
-        end
-
-        if response.success?
-          data = JSON.parse(response.body).dig("data")
-          exchange_data = data["exchange"]
-
-          # Update security with exchange info and other metadata
-          security.update!(
-            exchange_operating_mic: exchange_data["operating_mic_code"],
-            exchange_mic: exchange_data["mic_code"],
-            exchange_acronym: exchange_data["acronym"],
-            name: data["name"],
-            logo_url: data["logo_url"],
-            country_code: exchange_data["country_code"]
-          )
-        else
-          errors << "#{security.ticker}: HTTP #{response.status} - #{response.body}"
-        end
-      rescue => e
-        errors << "#{security.ticker}: #{e.message}"
-      end
-
-      # Add a small delay to not overwhelm the API
-      sleep(0.1)
-    end
-
-    puts "\n\nBackfill complete!"
-    puts "Processed #{processed} securities"
-
-    if errors.any?
-      puts "\nErrors encountered:"
-      errors.each { |error| puts "  - #{error}" }
-    end
-  end
-
   desc "De-duplicate securities based on ticker + exchange_operating_mic"
   task :deduplicate, [ :dry_run ] => :environment do |_t, args|
     dry_run = args[:dry_run].present?

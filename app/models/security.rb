@@ -18,7 +18,7 @@ class Security < ApplicationRecord
   end
 
   def to_combobox_option
-    SynthComboboxOption.new(
+    ComboboxOption.new(
       symbol: ticker,
       name: name,
       logo_url: logo_url,

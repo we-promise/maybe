@@ -1,0 +1,15 @@
+---
+nb:
+  sessions:
+    create:
+      invalid_credentials: Ugyldig e-post eller passord.
+    destroy:
+      logout_successful: Du har blitt logget ut.
+    new:
+      email: E-postadresse
+      email_placeholder: meg@example.com
+      forgot_password: Glemt passordet ditt?
+      password: Passord
+      submit: Logg inn
+      title: Logg inn på kontoen din
+      password_placeholder: Angi passordet ditt

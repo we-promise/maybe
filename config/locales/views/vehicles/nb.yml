@@ -1,0 +1,25 @@
+---
+nb:
+  vehicles:
+    edit:
+      edit: Rediger %{account}
+    form:
+      make: Merke
+      make_placeholder: DeLorean
+      mileage: Kilometerstand
+      mileage_placeholder: '15000'
+      mileage_unit: Enhet
+      model: Modell
+      model_placeholder: DMC-12
+      year: År
+      year_placeholder: '1985'
+    new:
+      title: Skriv inn kjøretøydetaljer
+    overview:
+      current_price: Gjeldende pris
+      make_model: Merke og modell
+      mileage: Kilometerstand
+      purchase_price: Kjøpspris
+      trend: Trend
+      unknown: Ukjent
+      year: År

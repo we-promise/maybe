@@ -1,0 +1,7 @@
+---
+nb:
+  invite_codes:
+    index:
+      invite_code_description: Generer en ny kode for å se den vist her. Genererte
+        koder som har blitt brukt vil ikke lenger bli vist.
+      no_invite_codes: Ingen koder å vise

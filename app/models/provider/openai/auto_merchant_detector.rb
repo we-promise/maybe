@@ -1,13 +1,14 @@
 class Provider::Openai::AutoMerchantDetector
-  def initialize(client, transactions:, user_merchants:)
+  def initialize(client, model: "", transactions:, user_merchants:)
     @client = client
+    @model = model
     @transactions = transactions
     @user_merchants = user_merchants
   end
 
   def auto_detect_merchants
     response = client.responses.create(parameters: {
-      model: "gpt-4.1-mini",
+      model: model,
       input: [ { role: "developer", content: developer_message } ],
       text: {
         format: {
@@ -26,7 +27,7 @@ class Provider::Openai::AutoMerchantDetector
   end
 
   private
-    attr_reader :client, :transactions, :user_merchants
+    attr_reader :client, :model, :transactions, :user_merchants
 
     AutoDetectedMerchant = Provider::LlmConcept::AutoDetectedMerchant
 

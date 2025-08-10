@@ -1,0 +1,18 @@
+---
+nb:
+  activerecord:
+    errors:
+      models:
+        transfer:
+          attributes:
+            base:
+              inflow_cannot_be_in_multiple_transfers: Inngående transaksjon kan ikke være del av flere overføringer
+              must_be_from_different_accounts: Overføringen må være mellom ulike kontoer
+              must_be_from_same_family: Overføringen må være innenfor samme husholdning
+              must_be_within_date_range: Datoene for overføringstransaksjoner må være innenfor 4 dager fra hverandre
+              must_have_opposite_amounts: Overføringstransaksjoner må ha motsatte beløp
+              must_have_single_currency: Overføringen må bruke én enkelt valuta
+              outflow_cannot_be_in_multiple_transfers: Utgående transaksjon kan ikke være del av flere overføringer
+  transfer:
+    name: Overføring til %{to_account}
+    payment_name: Betaling til %{to_account}

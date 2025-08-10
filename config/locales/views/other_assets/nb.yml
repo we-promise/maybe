@@ -1,0 +1,7 @@
+---
+nb:
+  other_assets:
+    edit:
+      edit: Rediger %{account}
+    new:
+      title: Angi eiendelsdetaljer

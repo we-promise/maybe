@@ -1,0 +1,10 @@
+---
+nb:
+  password_mailer:
+    password_reset:
+      cta: Tilbakestill passordet ditt
+      ignore_if_not_requested: Hvis du ikke gjorde denne forespørselen, kan du ignorere denne
+        e-posten.
+      request_made: En forespørsel ble gjort for å tilbakestille ditt Sure-passord. Klikk på lenken
+        for å tilbakestille det.
+      subject: 'Sure: Tilbakestill passordet ditt'

@@ -21,7 +21,7 @@
       </div>
 
       <div class="flex justify-end gap-2 mt-auto">
-        <%= render DS::Button.new(text: "Cancel", variant: "ghost", data: { action: "click->dialog#close" }) %>
+        <%= render DS::Button.new(text: "Cancel", variant: "ghost", data: { action: "click->DS--dialog#close" }) %>
         <%= render DS::Button.new(text: "Save", data: { bulk_select_scope_param: "bulk_update", action: "bulk-select#submitBulkRequest" }) %>
       </div>
     <% end %>

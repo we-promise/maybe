@@ -38,7 +38,8 @@
                       multiple: true,
                       label:    t(".tags_label"),
                       container_class: "h-40"
-                    } %>
+                    },
+                    { "data-controller": "multi-select" } %>
     <% end %>
     <%= f.text_area :notes,
                     label: t(".note_label"),

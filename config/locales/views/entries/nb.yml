@@ -1,0 +1,14 @@
+---
+nb:
+  entries:
+    create:
+      success: Oppføring opprettet
+    destroy:
+      success: Oppføring slettet
+    empty:
+      description: Prøv å legge til en oppføring, redigere filtre eller forfine søket ditt
+      title: Ingen oppføringer funnet
+    loading:
+      loading: Laster oppføringer...
+    update:
+      success: Oppføring oppdatert

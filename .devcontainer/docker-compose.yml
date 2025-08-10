@@ -16,19 +16,15 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
-
     volumes:
+      - ./.bashrc:/root/.bashrc:ro,cached
       - ..:/workspace:cached
       - bundle_cache:/bundle
-
     ports:
       - "3000:3000"
-
     command: sleep infinity
-
     environment:
       <<: *rails_env
-
     depends_on:
       - db
       - redis
@@ -37,6 +33,9 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspace:cached
+      - bundle_cache:/bundle
     command: bundle exec sidekiq
     restart: unless-stopped
     environment:
@@ -46,20 +45,21 @@ services:
 
   redis:
     image: redis:latest
+    volumes:
+      - redis-data:/data
     ports:
       - "6379:6379"
     restart: unless-stopped
-    volumes:
-      - redis-data:/data
+  
   db:
     image: postgres:latest
-    restart: unless-stopped
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    environment:
-      <<: *db_env
     ports:
       - "5432:5432"
+    restart: unless-stopped
+    environment:
+      <<: *db_env
 
 volumes:
   postgres-data:

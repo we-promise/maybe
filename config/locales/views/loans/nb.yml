@@ -1,0 +1,23 @@
+---
+nb:
+  loans:
+    edit:
+      edit: Rediger %{account}
+    form:
+      interest_rate: Rente
+      interest_rate_placeholder: '5.25'
+      initial_balance: Opprinnelig lånebalanse
+      rate_type: Rentetype
+      term_months: Løpetid (måneder)
+      term_months_placeholder: '360'
+    new:
+      title: Angi lånedetaljer
+    overview:
+      interest_rate: Rente
+      monthly_payment: Månedlig betaling
+      not_applicable: Ikke Aktuelt
+      original_principal: Opprinnelig hovedstol
+      remaining_principal: Gjenværende hovedstol
+      term: Løpetid
+      type: Type
+      unknown: Ukjent

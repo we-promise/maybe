@@ -1,0 +1,61 @@
+---
+nb:
+  accounts:
+    account:
+      troubleshoot: Feilsøk
+    chart:
+      data_not_available: Data ikke tilgjengelig for den valgte perioden
+    create:
+      success: "%{type} konto opprettet"
+    destroy:
+      success: "%{type} konto planlagt for sletting"
+    empty:
+      empty_message: Legg til en konto enten via tilkobling, importering eller manuell inntasting.
+      new_account: Ny konto
+      no_accounts: Ingen kontoer enda
+    form:
+      balance: Nåværende balanse
+      name_label: Kontonavn
+      name_placeholder: Eksempel på kontonavn
+    index:
+      accounts: Kontoer
+      manual_accounts:
+        other_accounts: Andre kontoer
+      new_account: Ny konto
+      sync: Synkroniser alle
+    new:
+      import_accounts: Importer kontoer
+      method_selector:
+        connected_entry: Koble til konto
+        connected_entry_eu: Koble til EU-konto
+        manual_entry: Angi kontobalanse
+        title: Hvordan vil du legge den til?
+      title: Hva vil du legge til?
+    show:
+      activity:
+        amount: Beløp
+        balance: Balanse
+        date: Dato
+        entries: oppføringer
+        entry: oppføring
+        new: Ny
+        new_balance: Ny balanse
+        new_transaction: Ny transaksjon
+        no_entries: Ingen oppføringer funnet
+        title: Aktivitet
+      chart:
+        balance: Balanse
+        owed: Beløp skyldig
+      menu:
+        confirm_accept: Slett "%{name}"
+        confirm_body_html: "<p>Ved å slette denne kontoen, vil du slette dens verdihistorikk, som påvirker ulike aspekter av din samlede konto. Denne handlingen vil ha en direkte innvirkning på dine nettoverdi-beregninger og kontoens grafer.</p><br /> <p>Etter sletting er det ingen måte å gjenopprette kontoinformasjonen på, fordi du må legge den til som en ny konto.</p>"
+        confirm_title: Slette konto?
+        edit: Rediger
+        import: Importer transaksjoner
+        manage: Administrer kontoer
+    update:
+      success: "%{type} konto oppdatert"
+  email_confirmations:
+    new:
+      invalid_token: Ugyldig eller utløpt bekreftelseslenke.
+      success_login: E-posten din er bekreftet. Vennligst logg inn med din nye e-postadresse.
