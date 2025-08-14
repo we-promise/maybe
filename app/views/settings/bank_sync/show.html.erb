@@ -1,13 +1,29 @@
 <%= content_for :page_title, "Bank Sync" %>
 
-<%= settings_section title: "Providers" do %>
-  <p class="text-secondary">Configure providers used to link your bank accounts.</p>
 
-  <div class="space-y-3">
-    <% @providers.each do |provider| %>
-      <%= render partial: "provider_link", locals: { provider: provider } %>
-    <% end %>
-  </div>
-<% end %>
+<div class="bg-container rounded-xl shadow-border-xs p-4">
+  <% if @providers.any? %>
+    <div class="rounded-xl bg-container-inset space-y-1 p-1">
+      <div class="flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-secondary uppercase">
+        <p>PROVIDERS</p>
+        <span class="text-subdued">&middot;</span>
+        <p><%= @providers.count %></p>
+      </div>
+
+      <div class="bg-container rounded-lg shadow-border-xs">
+        <div class="overflow-hidden rounded-lg">
+          <%= render partial: "provider_link", collection: @providers, spacer_template: "shared/ruler" %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="flex justify-center items-center py-20">
+      <div class="text-center flex flex-col items-center max-w-[300px]">
+        <p class="text-primary mb-1 font-medium text-sm">No providers configured</p>
+        <p class="text-secondary text-sm">Configure providers to link your bank accounts.</p>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 
