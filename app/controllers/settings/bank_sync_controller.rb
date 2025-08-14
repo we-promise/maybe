@@ -23,5 +23,3 @@ class Settings::BankSyncController < ApplicationController
     ]
   end
 end
-
-

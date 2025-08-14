@@ -9,5 +9,3 @@ class Settings::LunchFlowController < ApplicationController
     ]
   end
 end
-
-
