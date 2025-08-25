@@ -1,11 +1,12 @@
 class Account < ApplicationRecord
-  include AASM, Syncable, Monetizable, Chartable, Linkable, Enrichable, Anchorable, Reconcileable
+  include AASM, Syncable, Monetizable, Chartable, Linkable, Enrichable, Anchorable, Reconcileable, WiseOpeningBalance
 
   validates :name, :balance, :currency, presence: true
 
   belongs_to :family
   belongs_to :import, optional: true
   belongs_to :simplefin_account, optional: true
+  belongs_to :wise_account, optional: true
 
   has_many :import_mappings, as: :mappable, dependent: :destroy, class_name: "Import::Mapping"
   has_many :entries, dependent: :destroy
@@ -23,7 +24,7 @@ class Account < ApplicationRecord
   scope :assets, -> { where(classification: "asset") }
   scope :liabilities, -> { where(classification: "liability") }
   scope :alphabetically, -> { order(:name) }
-  scope :manual, -> { where(plaid_account_id: nil, simplefin_account_id: nil) }
+  scope :manual, -> { where(plaid_account_id: nil, simplefin_account_id: nil, wise_account_id: nil) }
 
   has_one_attached :logo
 

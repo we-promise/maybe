@@ -1,0 +1,29 @@
+<%= content_for :page_title, "Wise" %>
+<%= content_for :header_nav_button do %>
+  <%= link_to "/settings/bank-sync", class: "w-9 h-9 rounded-lg bg-container hover:bg-container-hover flex items-center justify-center group", data: { turbo_action: "replace" } do %>
+    <%= icon "arrow-left", class: "w-5 h-5 text-primary group-hover:text-gray-900" %>
+  <% end %>
+<% end %>
+
+<div class="px-4 py-6 bg-container rounded-xl shadow-border-xs">
+  <% if @wise_items.any? %>
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-lg font-semibold text-primary">Wise Connections</h2>
+      <%= link_to "Add New", new_wise_item_path, class: "btn btn--sm btn--secondary", data: { turbo_frame: "modal" } %>
+    </div>
+
+    <div class="space-y-2">
+      <% @wise_items.each do |wise_item| %>
+        <%= render "wise_item_simple", wise_item: wise_item %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="text-center py-12">
+      <div class="mx-auto max-w-sm">
+        <h3 class="text-lg font-semibold text-primary mb-2">No Wise connections</h3>
+        <p class="text-secondary mb-6">Connect your Wise account to sync your transactions automatically.</p>
+        <%= link_to "Connect Wise", new_wise_item_path, class: "btn btn--primary", data: { turbo_frame: "modal" } %>
+      </div>
+    </div>
+  <% end %>
+</div>

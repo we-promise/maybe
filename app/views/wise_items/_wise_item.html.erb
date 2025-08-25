@@ -1,0 +1,102 @@
+<%# locals: (wise_item:) %>
+
+<%= tag.div id: dom_id(wise_item) do %>
+  <details open class="group bg-container p-4 shadow-border-xs rounded-xl">
+    <summary class="flex items-center justify-between gap-2 focus-visible:outline-hidden">
+      <div class="flex items-center gap-2">
+        <%= icon "chevron-right", class: "group-open:transform group-open:rotate-90" %>
+
+        <% if wise_item.logo.attached? %>
+          <div class="flex items-center justify-center h-8 w-8 rounded-full overflow-hidden">
+            <%= image_tag wise_item.logo, class: "rounded-full h-full w-full", loading: "lazy" %>
+          </div>
+        <% else %>
+          <%= render DS::FilledIcon.new(
+            variant: :container,
+            text: "W",
+            size: "md"
+          ) %>
+        <% end %>
+
+        <div class="pl-1 text-sm">
+          <div class="flex items-center gap-2">
+            <div>
+              <%= tag.p wise_item.name, class: "font-medium text-primary" %>
+              <p class="text-secondary text-xs">Wise</p>
+            </div>
+            <% if wise_item.scheduled_for_deletion? %>
+              <p class="text-destructive text-sm animate-pulse">(deletion in progress...)</p>
+            <% end %>
+          </div>
+          <% if wise_item.syncing? %>
+            <div class="text-secondary flex items-center gap-1">
+              <%= icon "loader", size: "sm", class: "animate-pulse" %>
+              <%= tag.span "Syncing..." %>
+            </div>
+          <% elsif wise_item.requires_update? %>
+            <div class="text-warning flex items-center gap-1">
+              <%= icon "alert-triangle", size: "sm", color: "warning" %>
+              <%= tag.span "Requires Update" %>
+            </div>
+          <% elsif wise_item.sync_error.present? %>
+            <div class="text-secondary flex items-center gap-1">
+              <%= icon "alert-circle", size: "sm", color: "destructive" %>
+              <%= tag.span "Error", class: "text-destructive" %>
+            </div>
+          <% else %>
+            <p class="text-secondary">
+              <%= wise_item.last_synced_at ? "Last synced #{time_ago_in_words(wise_item.last_synced_at)} ago" : "Never synced" %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <% if Rails.env.development? %>
+          <%= icon(
+            "refresh-cw",
+            as_button: true,
+            href: sync_wise_item_path(wise_item)
+          ) %>
+        <% end %>
+
+        <%= render DS::Menu.new do |menu| %>
+          <% menu.with_item(
+            variant: "button",
+            text: "Delete",
+            icon: "trash-2",
+            href: wise_item_path(wise_item),
+            method: :delete,
+            confirm: CustomConfirm.for_resource_deletion(wise_item.name, high_severity: true)
+          ) %>
+        <% end %>
+      </div>
+    </summary>
+
+    <% unless wise_item.scheduled_for_deletion? %>
+      <div class="space-y-4 mt-4">
+        <% if wise_item.accounts.any? %>
+          <%= render "accounts/index/account_groups", accounts: wise_item.accounts %>
+        <% end %>
+
+        <% if wise_item.pending_account_setup? %>
+          <div class="p-4 flex flex-col gap-3 items-center justify-center">
+            <p class="text-primary font-medium text-sm">New accounts ready to set up</p>
+            <p class="text-secondary text-sm">Choose account types for your newly imported Wise accounts.</p>
+            <%= render DS::Link.new(
+              text: "Set Up New Accounts",
+              icon: "settings",
+              variant: "primary",
+              href: setup_accounts_wise_item_path(wise_item)
+            ) %>
+          </div>
+        <% elsif wise_item.accounts.empty? %>
+          <div class="p-4 flex flex-col gap-3 items-center justify-center">
+            <p class="text-primary font-medium text-sm">No accounts found</p>
+            <p class="text-secondary text-sm">This connection doesn't have any synchronized accounts yet.</p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </details>
+<% end %>
