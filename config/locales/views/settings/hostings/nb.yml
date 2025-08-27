@@ -4,7 +4,8 @@ nb:
     hostings:
       invite_code_settings:
         description: Hver ny bruker som blir med i din instans av Sure kan bare bli med via en invitasjonskode
-        email_confirmation_description: Når aktivert, må brukere bekrefte e-postadressen
+        email_confirmation_description: >
+          Når aktivert, må brukere bekrefte e-postadressen
           sin når de endrer den.
         email_confirmation_title: Krev e-postbekreftelse
         generate_tokens: Generer ny kode
@@ -12,6 +13,7 @@ nb:
         title: Krev invitasjonskode for registrering
       show:
         general: Generelle innstillinger
+        financial_data_providers: Finansdata-leverandører
         invites: Invitasjonskoder
         title: Selvhosting
         danger_zone: Fareområde
@@ -26,3 +28,10 @@ nb:
       clear_cache:
         cache_cleared: Cachen er tømt. Dette kan ta noen øyeblikk å fullføre.
       not_authorized: Du er ikke autorisert til å utføre denne handlingen
+      yahoo_finance_settings:
+        title: Yahoo Finance
+        description: Yahoo Finance gir gratis tilgang til aksjekurser, valutakurser og finansdata uten å kreve en API-nøkkel.
+        status_active: Yahoo Finance er aktiv og fungerer
+        status_inactive: Yahoo Finance-tilkobling feilet
+        connection_failed: Kunne ikke koble til Yahoo Finance
+        troubleshooting: Sjekk internettilkoblingen og brannmurinnstillingene. Yahoo Finance kan være midlertidig utilgjengelig.

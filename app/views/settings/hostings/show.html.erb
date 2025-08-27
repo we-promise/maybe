@@ -1,17 +1,19 @@
 <%= content_for :page_title, t(".title") %>
-
 <%= settings_section title: t(".general") do %>
     <div class="space-y-6">
     <%= render "settings/hostings/openai_settings" %>
     <%= render "settings/hostings/brand_fetch_settings" %>
+  </div>
+<% end %>
+<%= settings_section title: t(".financial_data_providers") do %>
+  <div class="space-y-6">
+    <%= render "settings/hostings/yahoo_finance_settings" %>
     <%= render "settings/hostings/twelve_data_settings" %>
   </div>
 <% end %>
-
 <%= settings_section title: t(".invites") do %>
   <%= render "settings/hostings/invite_code_settings" %>
 <% end %>
-
 <%= settings_section title: t(".danger_zone") do %>
   <%= render "settings/hostings/danger_zone_settings" %>
 <% end %>

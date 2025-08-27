@@ -1,0 +1,37 @@
+<div class="space-y-4">
+  <div>
+    <h2 class="font-medium mb-1"><%= t(".title") %></h2>
+    <p class="text-secondary text-sm mb-4"><%= t(".description") %></p>
+  </div>
+  <% if @yahoo_finance_provider&.healthy? %>
+    <div class="space-y-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+        <p class="text-sm text-secondary">
+          <%= t(".status_active") %>
+        </p>
+      </div>
+    </div>
+  <% else %>
+    <div class="space-y-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+        <p class="text-sm text-secondary">
+          <%= t(".status_inactive") %>
+        </p>
+      </div>
+      <div class="bg-red-50 border border-red-200 rounded-lg p-3">
+        <div class="flex">
+          <div class="ml-3">
+            <h3 class="text-sm font-medium text-red-800">
+              <%= t(".connection_failed") %>
+            </h3>
+            <div class="mt-2 text-sm text-red-700">
+              <p><%= t(".troubleshooting") %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

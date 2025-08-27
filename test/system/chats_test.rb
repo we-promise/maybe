@@ -30,7 +30,12 @@ class ChatsTest < ApplicationSystemTestCase
   test "sidebar shows last viewed chat" do
     @user.update!(ai_enabled: true)
 
-    click_on @user.chats.first.title
+    visit root_url
+
+    # Navigate to the chat by clicking on it in the sidebar
+    within "#chat-container" do
+      click_on @user.chats.first.title
+    end
 
     # Page refresh
     visit root_url

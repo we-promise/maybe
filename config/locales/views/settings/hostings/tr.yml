@@ -11,6 +11,7 @@ tr:
         title: Kayıt için davet kodu gerektir
       show:
         general: Genel Ayarlar
+        financial_data_providers: Finansal Veri Sağlayıcıları
         invites: Davet Kodları
         title: Kendi Sunucunda Barındırma
         danger_zone: Tehlikeli Bölge
@@ -32,3 +33,10 @@ tr:
       clear_cache:
         cache_cleared: Veri önbelleği temizlendi. Bu işlemin tamamlanması birkaç dakika sürebilir.
       not_authorized: Bu işlemi gerçekleştirmek için yetkiniz yok
+      yahoo_finance_settings:
+        title: Yahoo Finance
+        description: Yahoo Finance, API anahtarı gerektirmeden hisse senedi fiyatları, döviz kurları ve finansal verilere ücretsiz erişim sağlar.
+        status_active: Yahoo Finance aktif ve çalışıyor
+        status_inactive: Yahoo Finance bağlantısı başarısız
+        connection_failed: Yahoo Finance'e bağlanılamıyor
+        troubleshooting: İnternet bağlantınızı ve güvenlik duvarı ayarlarınızı kontrol edin. Yahoo Finance geçici olarak kullanılamayabilir.
