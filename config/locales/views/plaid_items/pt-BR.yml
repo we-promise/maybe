@@ -1,0 +1,26 @@
+---
+pt-BR:
+  plaid_items:
+    create:
+      success: Conta vinculada com sucesso. Por favor, aguarde a sincronização das contas.
+    destroy:
+      success: Contas agendadas para exclusão.
+    plaid_item:
+      add_new: Adicionar nova conexão
+      confirm_accept: Excluir instituição
+      confirm_body: Isso excluirá permanentemente todas as contas deste grupo e
+        todos os dados associados.
+      confirm_title: Excluir instituição?
+      connection_lost: Conexão perdida
+      connection_lost_description: Esta conexão não é mais válida. Você precisará
+        excluir esta conexão e adicioná-la novamente para continuar sincronizando dados.
+      delete: Excluir
+      error: Erro ocorrido durante a sincronização de dados
+      no_accounts_description: Não conseguimos carregar nenhuma conta desta instituição
+        financeira.
+      no_accounts_title: Nenhuma conta encontrada
+      requires_update: Requer re-autenticação
+      status: Última sincronização há %{timestamp}
+      status_never: Requer sincronização de dados
+      syncing: Sincronizando...
+      update: Atualizar conexão

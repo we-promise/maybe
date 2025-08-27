@@ -1,0 +1,14 @@
+---
+pt-BR:
+  pages:
+    changelog:
+      title: Novidades
+    dashboard:
+      net_worth_chart:
+        data_not_available: Dados não disponíveis para o período selecionado
+        title: Patrimônio Líquido
+      no_account_empty_state:
+        new_account: Nova conta
+        no_account_subtitle: Como nenhuma conta foi adicionada, não há dados para
+          exibir. Adicione suas primeiras contas para começar a visualizar dados do dashboard.
+        no_account_title: Nenhuma conta ainda

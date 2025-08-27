@@ -1,0 +1,30 @@
+---
+pt-BR:
+  valuations:
+    form:
+      amount: Valor
+      submit: Adicionar atualização de saldo
+    header:
+      balance: Saldo
+    index:
+      change: alteração
+      date: data
+      new_entry: Nova entrada
+      no_valuations: Nenhuma avaliação para esta conta ainda
+      valuations: Valor
+      value: valor
+    new:
+      title: Novo saldo
+    show:
+      amount: Valor
+      date_label: Data
+      delete: Excluir
+      delete_subtitle: Esta ação não pode ser desfeita
+      delete_title: Excluir Entrada
+      details: Detalhes
+      name_label: Nome
+      name_placeholder: Digite um nome para esta entrada
+      note_label: Notas
+      note_placeholder: Adicione detalhes adicionais sobre esta entrada
+      overview: Visão geral
+      settings: Configurações

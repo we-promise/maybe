@@ -1,0 +1,66 @@
+---
+pt-BR:
+  accounts:
+    account:
+      troubleshoot: Solucionar problemas
+    chart:
+      data_not_available: Dados não disponíveis para o período selecionado
+    create:
+      success: "Conta %{type} criada"
+    destroy:
+      success: "Conta %{type} agendada para exclusão"
+    empty:
+      empty_message: Adicione uma conta via conexão, importação ou inserção manual.
+      new_account: Nova conta
+      no_accounts: Nenhuma conta ainda
+    form:
+      balance: Saldo atual
+      name_label: Nome da conta
+      name_placeholder: Nome da conta exemplo
+    index:
+      accounts: Contas
+      manual_accounts:
+        other_accounts: Outras contas
+      new_account: Nova conta
+      sync: Sincronizar todas
+    new:
+      import_accounts: Importar contas
+      method_selector:
+        connected_entry: Vincular conta
+        connected_entry_eu: Vincular conta EU
+        manual_entry: Inserir saldo da conta
+        title: Como você gostaria de adicionar?
+      title: O que você gostaria de adicionar?
+    show:
+      activity:
+        amount: Valor
+        balance: Saldo
+        date: Data
+        entries: entradas
+        entry: entrada
+        new: Nova
+        new_balance: Novo saldo
+        new_transaction: Nova transação
+        no_entries: Nenhuma entrada encontrada
+        title: Atividade
+      chart:
+        balance: Saldo
+        owed: Valor devido
+      menu:
+        confirm_accept: Excluir "%{name}"
+        confirm_body_html: "<p>Ao excluir esta conta, você apagará seu histórico de valores,
+          afetando vários aspectos de sua conta geral. Esta ação
+          terá um impacto direto nos cálculos de patrimônio líquido e nos
+          gráficos da conta.</p><br /> <p>Após a exclusão, não há como restaurar
+          as informações da conta porque você precisará adicioná-la como uma nova conta.</p>"
+        confirm_title: Excluir conta?
+        edit: Editar
+        import: Importar transações
+        manage: Gerenciar contas
+    update:
+      success: "Conta %{type} atualizada"
+  email_confirmations:
+    new:
+      invalid_token: Link de confirmação inválido ou expirado.
+      success_login: Seu e-mail foi confirmado. Por favor, faça login com seu novo endereço
+        de e-mail.

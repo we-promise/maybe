@@ -1,0 +1,18 @@
+---
+pt-BR:
+  investments:
+    edit:
+      edit: Editar %{account}
+    form:
+      none: Nenhum
+      subtype_prompt: Selecionar tipo de investimento
+    new:
+      title: Inserir saldo da conta
+    show:
+      chart_title: Valor total
+    value_tooltip:
+      cash: Dinheiro
+      holdings: Posições
+      total: Saldo do portfólio
+      total_value_tooltip: O saldo total do portfólio é a soma do dinheiro da corretora
+        (disponível para negociação) e o valor de mercado atual de suas posições.

@@ -1,0 +1,23 @@
+---
+pt-BR:
+  loans:
+    edit:
+      edit: Editar %{account}
+    form:
+      interest_rate: Taxa de juros
+      interest_rate_placeholder: '5,25'
+      initial_balance: Saldo original do empréstimo
+      rate_type: Tipo de taxa
+      term_months: Prazo (meses)
+      term_months_placeholder: '360'
+    new:
+      title: Inserir detalhes do empréstimo
+    overview:
+      interest_rate: Taxa de Juros
+      monthly_payment: Pagamento Mensal
+      not_applicable: N/A
+      original_principal: Principal Original
+      remaining_principal: Principal Restante
+      term: Prazo
+      type: Tipo
+      unknown: Desconhecido

@@ -1,0 +1,97 @@
+---
+pt-BR:
+  settings:
+    billings:
+      show:
+        page_title: Cobrança
+        subscription_subtitle: Atualize sua assinatura e detalhes de cobrança
+        subscription_title: Gerenciar assinatura
+    preferences:
+      show:
+        country: País
+        currency: Moeda
+        date_format: Formato de data
+        general_subtitle: Configure suas preferências
+        general_title: Geral
+        default_period: Período Padrão
+        language: Idioma
+        page_title: Preferências
+        theme_dark: Escuro
+        theme_light: Claro
+        theme_subtitle: Escolha um tema preferido para o aplicativo
+        theme_system: Sistema
+        theme_title: Tema
+        timezone: Fuso horário
+    profiles:
+      destroy:
+        cannot_remove_self: Você não pode se remover da conta.
+        member_removal_failed: Houve um problema ao remover o membro.
+        member_removed: Membro foi removido com sucesso.
+        not_authorized: Você não está autorizado a remover membros.
+      show:
+        confirm_delete:
+          body: Tem certeza de que deseja excluir permanentemente sua conta? Esta ação
+            é irreversível.
+          title: Excluir conta?
+        confirm_reset:
+          body: Tem certeza de que deseja resetar sua conta? Isso excluirá todas as suas contas, categorias, comerciantes, tags e outros dados. Esta ação não pode ser desfeita.
+          title: Resetar conta?
+        confirm_remove_invitation:
+          body: Tem certeza de que deseja remover o convite para %{email}?
+          title: Remover Convite
+        confirm_remove_member:
+          body: Tem certeza de que deseja remover %{name} da sua conta?
+          title: Remover Membro
+        danger_zone_title: Zona de Perigo
+        delete_account: Excluir conta
+        delete_account_warning: Excluir sua conta removerá permanentemente todos
+          os seus dados e não pode ser desfeito.
+        reset_account: Resetar conta
+        reset_account_warning: Resetar sua conta excluirá todas as suas contas, categorias, comerciantes, tags e outros dados, mas manterá sua conta de usuário intacta.
+        email: E-mail
+        first_name: Primeiro Nome
+        household_form_input_placeholder: Digite o nome da família
+        household_form_label: Nome da família
+        household_subtitle: Convide membros da família, parceiros e outros indivíduos. Os convidados
+          podem fazer login na sua família e acessar suas contas compartilhadas.
+        household_title: Família
+        invitation_link: Link de convite
+        invite_member: Adicionar membro
+        last_name: Sobrenome
+        page_title: Conta
+        pending: Pendente
+        profile_subtitle: Personalize como você aparece no Maybe
+        profile_title: Perfil
+        remove_invitation: Remover Convite
+        remove_member: Remover Membro
+        save: Salvar
+    securities:
+      show:
+        page_title: Segurança
+    settings_nav:
+      accounts_label: Contas
+      api_key_label: Chave da API
+      billing_label: Cobrança
+      categories_label: Categorias
+      feedback_label: Feedback
+      general_section_title: Geral
+      imports_label: Importações
+      logout: Sair
+      merchants_label: Comerciantes
+      other_section_title: Mais
+      preferences_label: Preferências
+      profile_label: Conta
+      rules_label: Regras
+      security_label: Segurança
+      self_hosting_label: Auto hospedagem
+      tags_label: Tags
+      transactions_section_title: Transações
+      whats_new_label: Novidades
+    settings_nav_link_large:
+      next: Próximo
+      previous: Voltar
+    user_avatar_field:
+      accepted_formats: JPG ou PNG. Máximo 5MB.
+      choose: Enviar foto
+      choose_label: (opcional)
+      change: Alterar foto

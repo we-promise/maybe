@@ -1,0 +1,5 @@
+---
+pt-BR:
+  invitation_mailer:
+    invite_email:
+      subject: "%{inviter} convidou você para se juntar à sua família no Sure!"

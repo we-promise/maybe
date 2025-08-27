@@ -1,0 +1,13 @@
+---
+pt-BR:
+  layouts:
+    auth:
+      existing_account: Já tem uma conta?
+      no_account: Novo no Maybe?
+      sign_in: Entrar
+      sign_up: Criar conta
+      your_account: Sua conta
+    shared:
+      footer:
+        privacy_policy: Política de Privacidade
+        terms_of_service: Termos de Serviço

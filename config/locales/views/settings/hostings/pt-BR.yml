@@ -1,0 +1,36 @@
+---
+pt-BR:
+  settings:
+    hostings:
+      invite_code_settings:
+        description: Todo novo usuário que se juntar à sua instância do Maybe só pode
+          fazê-lo via código de convite
+        email_confirmation_description: Quando habilitado, os usuários devem confirmar seu endereço
+          de e-mail ao alterá-lo.
+        email_confirmation_title: Exigir confirmação de e-mail
+        generate_tokens: Gerar novo código
+        generated_tokens: Códigos gerados
+        title: Exigir código de convite para cadastro
+      show:
+        general: Configurações Gerais
+        invites: Códigos de Convite
+        title: Auto-Hospedagem
+        danger_zone: Zona de Perigo
+        clear_cache: Limpar cache de dados
+        clear_cache_warning: Limpar o cache de dados removerá todas as taxas de câmbio, preços de títulos, saldos de contas e outros dados. Isso não excluirá contas, transações, categorias ou outros dados do usuário.
+        confirm_clear_cache:
+          title: Limpar cache de dados?
+          body: Tem certeza de que deseja limpar o cache de dados? Isso removerá todas as taxas de câmbio, preços de títulos, saldos de contas e outros dados. Esta ação não pode ser desfeita.
+      twelve_data_settings:
+        api_calls_used: "%{used} / %{limit} chamadas de API diárias usadas (%{percentage})"
+        description: Insira a chave de API fornecida pelo Twelve Data
+        label: Chave de API
+        placeholder: Digite sua chave de API aqui
+        plan: "plano %{plan}"
+        title: Configurações do Twelve Data
+      update:
+        failure: Valor de configuração inválido
+        success: Configurações atualizadas
+      clear_cache:
+        cache_cleared: Cache de dados foi limpo. Isso pode levar alguns momentos para ser concluído.
+      not_authorized: Você não está autorizado a realizar esta ação

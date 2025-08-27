@@ -1,0 +1,14 @@
+---
+pt-BR:
+  shared:
+    confirm_modal:
+      accept: Confirmar
+      body_html: "<p>Você não poderá desfazer esta decisão</p>"
+      cancel: Cancelar
+      title: Tem certeza?
+    money_field:
+      label: Valor
+    syncing_notice:
+      syncing: Sincronizando dados das contas...
+    trend_change:
+      no_change: "sem alteração"

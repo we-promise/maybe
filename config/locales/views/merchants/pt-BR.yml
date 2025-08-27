@@ -1,0 +1,27 @@
+---
+pt-BR:
+  family_merchants:
+    create:
+      error: 'Erro ao criar comerciante: %{error}'
+      success: Novo comerciante criado com sucesso
+    destroy:
+      success: Comerciante excluído com sucesso
+    edit:
+      title: Editar comerciante
+    form:
+      name_placeholder: Nome do comerciante
+    index:
+      empty: Nenhum comerciante ainda
+      new: Novo comerciante
+      title: Comerciantes
+    merchant:
+      confirm_accept: Excluir comerciante
+      confirm_body: Tem certeza de que deseja excluir este comerciante? Remover este comerciante
+        desvinculará todas as transações associadas e pode afetar seus relatórios.
+      confirm_title: Excluir comerciante?
+      delete: Excluir comerciante
+      edit: Editar comerciante
+    new:
+      title: Novo comerciante
+    update:
+      success: Comerciante atualizado com sucesso

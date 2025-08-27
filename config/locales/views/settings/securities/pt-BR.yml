@@ -1,0 +1,12 @@
+---
+pt-BR:
+  settings:
+    securities:
+      show:
+        disable_mfa: Desabilitar 2FA
+        disable_mfa_confirm: Tem certeza de que deseja desabilitar a autenticação de dois fatores?
+          Isso tornará sua conta menos segura.
+        enable_mfa: Habilitar 2FA
+        mfa_description: Adicione uma camada extra de segurança à sua conta exigindo
+          um código do seu aplicativo autenticador ao fazer login
+        mfa_title: Autenticação de Dois Fatores

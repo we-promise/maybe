@@ -1,0 +1,19 @@
+---
+pt-BR:
+  invitations:
+    create:
+      failure: Não foi possível enviar o convite
+      success: Convite enviado com sucesso
+    destroy:
+      failure: Houve um problema ao remover o convite.
+      not_authorized: Você não está autorizado a gerenciar convites.
+      success: Convite foi removido com sucesso.
+    new:
+      email_label: Endereço de E-mail
+      email_placeholder: Digite o endereço de e-mail
+      role_admin: Administrador
+      role_label: Função
+      role_member: Membro
+      submit: Enviar Convite
+      subtitle: Envie um convite para se juntar à sua conta familiar no Maybe
+      title: Convidar Alguém
