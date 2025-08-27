@@ -1,7 +1,7 @@
 module Accountable
   extend ActiveSupport::Concern
 
-  TYPES = %w[Depository Investment Crypto Property Vehicle OtherAsset CreditCard Loan OtherLiability]
+  TYPES = %w[Depository Investment Crypto Property Vehicle OtherAsset CreditCard Loan OtherLiability DirectBankAccount]
 
   # Define empty hash to ensure all accountables have this defined
   SUBTYPES = {}.freeze

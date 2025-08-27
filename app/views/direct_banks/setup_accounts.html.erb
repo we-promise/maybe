@@ -1,0 +1,82 @@
+<%= content_for :page_title, "Set Up Accounts" %>
+
+<div class="max-w-4xl mx-auto">
+  <div class="bg-container rounded-xl shadow-border-xs p-6">
+    <h1 class="text-xl font-semibold text-primary mb-2">Set Up Your Accounts</h1>
+    <p class="text-secondary mb-6">
+      Choose how to add each account to your Sure Finance dashboard.
+    </p>
+
+    <%= form_with url: send("complete_account_setup_direct_bank_#{@provider_type}_path", @connection), local: true do |form| %>
+      <div class="space-y-4">
+        <% @bank_accounts.each do |bank_account| %>
+          <div class="border border-primary rounded-lg p-4 bg-container-inset">
+            <div class="mb-4">
+              <h3 class="font-medium text-primary"><%= bank_account.name %></h3>
+              <p class="text-sm text-secondary">
+                <%= bank_account.currency %> · 
+                Balance: <%= bank_account.formatted_balance %>
+              </p>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <%= label_tag "accounts[#{bank_account.id}][account_type]", 
+                    "Account Type", 
+                    class: "block text-sm font-medium text-primary mb-1" %>
+                <%= select_tag "accounts[#{bank_account.id}][account_type]",
+                    options_for_select(@account_type_options),
+                    class: "w-full px-3 py-2 border border-primary rounded-lg",
+                    onchange: "toggleSubtype(this, '#{bank_account.id}')" %>
+              </div>
+
+              <div id="subtype_<%= bank_account.id %>" style="display: none;">
+                <%= label_tag "accounts[#{bank_account.id}][subtype]", 
+                    "Account Subtype", 
+                    class: "block text-sm font-medium text-primary mb-1" %>
+                <%= text_field_tag "accounts[#{bank_account.id}][subtype]",
+                    nil,
+                    class: "w-full px-3 py-2 border border-primary rounded-lg",
+                    placeholder: "e.g., checking, savings, credit card" %>
+              </div>
+
+              <div id="balance_<%= bank_account.id %>" style="display: none;">
+                <%= label_tag "accounts[#{bank_account.id}][balance]", 
+                    "Opening Balance (optional)", 
+                    class: "block text-sm font-medium text-primary mb-1" %>
+                <%= number_field_tag "accounts[#{bank_account.id}][balance]",
+                    bank_account.current_balance,
+                    step: 0.01,
+                    class: "w-full px-3 py-2 border border-primary rounded-lg",
+                    placeholder: "Leave blank to use current balance" %>
+                <p class="text-xs text-secondary mt-1">
+                  Set a different opening balance if needed.
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="flex justify-between mt-6">
+        <%= link_to "Cancel", send("direct_bank_#{@provider_type}_path", @connection), class: "btn btn-secondary" %>
+        <%= form.submit "Complete Setup", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  function toggleSubtype(select, accountId) {
+    const subtypeDiv = document.getElementById('subtype_' + accountId);
+    const balanceDiv = document.getElementById('balance_' + accountId);
+    
+    if (select.value !== 'Skip') {
+      subtypeDiv.style.display = 'block';
+      balanceDiv.style.display = 'block';
+    } else {
+      subtypeDiv.style.display = 'none';
+      balanceDiv.style.display = 'none';
+    }
+  }
+</script>

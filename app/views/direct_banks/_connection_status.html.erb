@@ -1,0 +1,14 @@
+<%# locals: (connection:) %>
+
+<div id="<%= dom_id(connection, :status) %>" class="flex items-center gap-2">
+  <% if connection.status == "good" %>
+    <span class="inline-block w-2 h-2 bg-green-500 rounded-full"></span>
+    <span class="text-sm text-green-700">Connected</span>
+  <% elsif connection.status == "requires_update" %>
+    <span class="inline-block w-2 h-2 bg-yellow-500 rounded-full"></span>
+    <span class="text-sm text-yellow-700">Requires update</span>
+  <% else %>
+    <span class="inline-block w-2 h-2 bg-gray-500 rounded-full"></span>
+    <span class="text-sm text-gray-700">Unknown</span>
+  <% end %>
+</div>

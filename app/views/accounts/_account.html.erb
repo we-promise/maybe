@@ -28,7 +28,7 @@
         <% end %>
       </div>
 
-      <% unless account.pending_deletion? %>
+      <% unless account.pending_deletion? || account.accountable_type == "DirectBankAccount" %>
         <%= link_to edit_account_path(account, return_to: return_to), data: { turbo_frame: :modal }, class: "group-hover/account:flex hidden hover:opacity-80 items-center justify-center" do %>
           <%= icon("pencil-line", size: "sm") %>
         <% end %>

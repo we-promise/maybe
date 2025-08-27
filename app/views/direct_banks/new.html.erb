@@ -1,0 +1,49 @@
+<%= content_for :page_title, "Connect #{@provider_config[:name]}" %>
+
+<div class="max-w-2xl mx-auto">
+  <div class="bg-container rounded-xl shadow-border-xs p-6">
+    <h1 class="text-xl font-semibold text-primary mb-2">Connect <%= @provider_config[:name] %></h1>
+    <p class="text-secondary mb-6"><%= @provider_config[:setup_instructions] %></p>
+
+    <%= form_with url: send("direct_bank_#{@provider_type}_index_path"), local: true do |form| %>
+      <% if flash[:alert] %>
+        <div class="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+          <p class="text-red-700 text-sm"><%= flash[:alert] %></p>
+        </div>
+      <% end %>
+
+      <% case @provider_config[:auth_type] %>
+      <% when :api_key %>
+        <div class="mb-4">
+          <%= form.label :api_key, "API Key", class: "block text-sm font-medium text-primary mb-1" %>
+          <%= form.password_field :api_key, 
+              class: "w-full px-3 py-2 border border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500",
+              placeholder: "Enter your #{@provider_config[:name]} API key",
+              required: true %>
+        </div>
+      <% when :oauth %>
+        <div class="mb-4">
+          <%= form.label :access_token, "Access Token", class: "block text-sm font-medium text-primary mb-1" %>
+          <%= form.text_field :access_token, 
+              class: "w-full px-3 py-2 border border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500",
+              placeholder: "Enter your #{@provider_config[:name]} access token",
+              required: true %>
+          <p class="text-xs text-secondary mt-1">
+            For testing: Enter your Mercury API access token. Full OAuth flow coming soon.
+          </p>
+        </div>
+        <div class="mb-4">
+          <%= form.label :refresh_token, "Refresh Token (optional)", class: "block text-sm font-medium text-primary mb-1" %>
+          <%= form.text_field :refresh_token, 
+              class: "w-full px-3 py-2 border border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500",
+              placeholder: "Enter refresh token if available" %>
+        </div>
+      <% end %>
+
+      <div class="flex justify-between">
+        <%= link_to "Cancel", send("direct_bank_#{@provider_type}_index_path"), class: "btn btn-secondary" %>
+        <%= form.submit "Connect", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

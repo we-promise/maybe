@@ -178,6 +178,7 @@ Rails.application.routes.draw do
   end
 
   resources :depositories, only: %i[new create edit update]
+  resources :direct_bank_accounts, only: [] # No direct editing - managed through bank sync
   resources :investments, only: %i[new create edit update]
   resources :properties, only: %i[new create edit update] do
     member do
@@ -255,6 +256,31 @@ Rails.application.routes.draw do
   end
 
   resources :simplefin_items, only: %i[index new create show destroy] do
+    member do
+      post :sync
+      get :setup_accounts
+      post :complete_account_setup
+    end
+  end
+
+  # Direct Bank connections (Wise, Mercury, etc.)
+  scope :banks do
+    DirectBankRegistry::PROVIDERS.keys.each do |provider|
+      resources provider, controller: "direct_banks", param: :id,
+                         defaults: { provider_type: provider },
+                         path: provider.to_s.dasherize,
+                         as: "direct_bank_#{provider}" do
+        member do
+          post :sync
+          get :setup_accounts
+          post :complete_account_setup
+        end
+      end
+    end
+  end
+
+  # Legacy Wise routes - redirect to new structure
+  resources :wise_items, only: %i[index new create show destroy] do
     member do
       post :sync
       get :setup_accounts

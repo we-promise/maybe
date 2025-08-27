@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_08_08_143007) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_25_225434) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -221,6 +221,44 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_08_143007) do
     t.datetime "updated_at", null: false
     t.jsonb "locked_attributes", default: {}
     t.string "subtype"
+  end
+
+  create_table "direct_bank_accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "type", default: "DirectBankAccount"
+    t.uuid "direct_bank_connection_id", null: false
+    t.string "external_id", null: false
+    t.string "name", null: false
+    t.string "currency", default: "USD"
+    t.decimal "current_balance", precision: 19, scale: 4
+    t.decimal "available_balance", precision: 19, scale: 4
+    t.string "account_type"
+    t.string "account_subtype"
+    t.jsonb "raw_data"
+    t.datetime "balance_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["direct_bank_connection_id", "external_id"], name: "idx_direct_bank_accounts_connection_external", unique: true
+    t.index ["direct_bank_connection_id"], name: "index_direct_bank_accounts_on_direct_bank_connection_id"
+    t.index ["external_id"], name: "index_direct_bank_accounts_on_external_id"
+    t.index ["type"], name: "index_direct_bank_accounts_on_type"
+  end
+
+  create_table "direct_bank_connections", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "type", null: false
+    t.uuid "family_id", null: false
+    t.string "name", null: false
+    t.jsonb "credentials"
+    t.string "status", default: "good"
+    t.jsonb "metadata"
+    t.boolean "scheduled_for_deletion", default: false
+    t.boolean "pending_account_setup", default: false
+    t.datetime "last_synced_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["family_id", "type"], name: "index_direct_bank_connections_on_family_id_and_type"
+    t.index ["family_id"], name: "index_direct_bank_connections_on_family_id"
+    t.index ["status"], name: "index_direct_bank_connections_on_status"
+    t.index ["type"], name: "index_direct_bank_connections_on_type"
   end
 
   create_table "entries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -889,6 +927,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_08_143007) do
   add_foreign_key "budgets", "families"
   add_foreign_key "categories", "families"
   add_foreign_key "chats", "users"
+  add_foreign_key "direct_bank_accounts", "direct_bank_connections"
+  add_foreign_key "direct_bank_connections", "families"
   add_foreign_key "entries", "accounts"
   add_foreign_key "entries", "imports"
   add_foreign_key "family_exports", "families"

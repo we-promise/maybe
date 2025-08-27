@@ -1,0 +1,39 @@
+<%= content_for :page_title, "#{@provider_config[:name]} Connections" %>
+
+<div class="bg-container rounded-xl shadow-border-xs p-4">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-lg font-semibold text-primary"><%= @provider_config[:name] %> Connections</h1>
+    <%= link_to "Add Connection", send("new_direct_bank_#{@provider_type}_path"), class: "btn btn-primary" %>
+  </div>
+
+  <% if @connections.any? %>
+    <div class="space-y-2">
+      <% @connections.each do |connection| %>
+        <div class="border border-primary rounded-lg p-4 bg-container-inset">
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="font-medium text-primary"><%= connection.name %></h3>
+              <p class="text-xs text-secondary">
+                Last synced: <%= connection.last_synced_at&.strftime("%B %d, %Y at %I:%M %p") || "Never" %>
+              </p>
+              <% if connection.pending_account_setup? %>
+                <span class="inline-block mt-1 px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs rounded">
+                  Account setup required
+                </span>
+              <% end %>
+            </div>
+            <div class="flex gap-2">
+              <%= link_to "View", send("direct_bank_#{@provider_type}_path", connection), class: "btn btn-secondary btn-sm" %>
+              <%= button_to "Sync", send("sync_direct_bank_#{@provider_type}_path", connection), method: :post, class: "btn btn-primary btn-sm" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="text-center py-12">
+      <p class="text-secondary mb-4">No <%= @provider_config[:name] %> connections yet</p>
+      <%= link_to "Add your first connection", send("new_direct_bank_#{@provider_type}_path"), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

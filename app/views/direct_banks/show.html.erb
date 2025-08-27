@@ -1,0 +1,88 @@
+<%= content_for :page_title, @connection.name %>
+
+<div class="bg-container rounded-xl shadow-border-xs p-6">
+  <div class="flex justify-between items-start mb-6">
+    <div>
+      <h1 class="text-xl font-semibold text-primary"><%= @connection.name %></h1>
+      <p class="text-sm text-secondary mt-1">
+        Connected <%= @connection.created_at.strftime("%B %d, %Y") %>
+      </p>
+    </div>
+    <div class="flex gap-2">
+      <%= button_to "Sync Now", send("sync_direct_bank_#{@provider_type}_path", @connection), 
+          method: :post, 
+          class: "btn btn-primary btn-sm" %>
+      <%= button_to "Remove", send("direct_bank_#{@provider_type}_path", @connection), 
+          method: :delete,
+          data: { confirm: "Are you sure you want to remove this connection?" },
+          class: "btn btn-secondary btn-sm" %>
+    </div>
+  </div>
+
+  <% if @connection.pending_account_setup? %>
+    <div class="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+      <h3 class="font-medium text-yellow-900 mb-2">Account Setup Required</h3>
+      <p class="text-yellow-700 text-sm mb-3">
+        Some accounts need to be set up before they can sync.
+      </p>
+      <%= link_to "Set Up Accounts", send("setup_accounts_direct_bank_#{@provider_type}_path", @connection), 
+          class: "btn btn-primary btn-sm" %>
+    </div>
+  <% end %>
+
+  <div class="border-t border-primary pt-6">
+    <h2 class="text-lg font-semibold text-primary mb-4">Connected Accounts</h2>
+    
+    <% if @connection.direct_bank_accounts.any? %>
+      <div class="space-y-3">
+        <% @connection.direct_bank_accounts.each do |bank_account| %>
+          <div class="border border-primary rounded-lg p-4 bg-container-inset">
+            <div class="flex justify-between items-center">
+              <div>
+                <h3 class="font-medium text-primary"><%= bank_account.name %></h3>
+                <p class="text-xs text-secondary">
+                  <%= bank_account.currency %> · <%= bank_account.account_type&.humanize %>
+                </p>
+                <% if bank_account.connected? %>
+                  <span class="inline-block mt-1 px-2 py-0.5 bg-green-100 text-green-800 text-xs rounded">
+                    Syncing to: <%= bank_account.account.name %>
+                  </span>
+                <% else %>
+                  <span class="inline-block mt-1 px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded">
+                    Not connected
+                  </span>
+                <% end %>
+              </div>
+              <div class="text-right">
+                <p class="text-lg font-semibold text-primary">
+                  <%= bank_account.formatted_balance %>
+                </p>
+                <p class="text-xs text-secondary">
+                  as of <%= bank_account.balance_date&.strftime("%m/%d/%Y") || "unknown" %>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-secondary">No accounts found. Try syncing to fetch accounts.</p>
+    <% end %>
+  </div>
+
+  <div class="border-t border-primary pt-6 mt-6">
+    <h3 class="text-sm font-medium text-primary mb-2">Connection Status</h3>
+    <div class="flex items-center gap-2">
+      <% if @connection.status == "good" %>
+        <span class="inline-block w-2 h-2 bg-green-500 rounded-full"></span>
+        <span class="text-sm text-green-700">Connected</span>
+      <% else %>
+        <span class="inline-block w-2 h-2 bg-yellow-500 rounded-full"></span>
+        <span class="text-sm text-yellow-700">Requires update</span>
+      <% end %>
+    </div>
+    <p class="text-xs text-secondary mt-1">
+      Last synced: <%= @connection.last_synced_at&.strftime("%B %d, %Y at %I:%M %p") || "Never" %>
+    </p>
+  </div>
+</div>
