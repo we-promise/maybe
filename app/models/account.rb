@@ -85,10 +85,19 @@ class Account < ApplicationRecord
         balance = balance.abs
       end
 
+      # Calculate cash balance correctly for investment accounts
+      cash_balance = if account_type == "Investment"
+        calculator = SimplefinAccount::Investments::BalanceCalculator.new(simplefin_account)
+        calculator.cash_balance
+      else
+        balance
+      end
+
       attributes = {
         family: simplefin_account.simplefin_item.family,
         name: simplefin_account.name,
         balance: balance,
+        cash_balance: cash_balance,
         currency: simplefin_account.currency,
         accountable_type: account_type,
         accountable_attributes: build_simplefin_accountable_attributes(simplefin_account, account_type, subtype),

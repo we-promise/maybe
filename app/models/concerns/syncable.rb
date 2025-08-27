@@ -19,6 +19,11 @@ module Syncable
         if sync
           Rails.logger.info("There is an existing sync, expanding window if needed (#{sync.id})")
           sync.expand_window_if_needed(window_start_date, window_end_date)
+
+          # Update parent relationship if one is provided and sync doesn't already have a parent
+          if parent_sync && !sync.parent_id
+            sync.update!(parent: parent_sync)
+          end
         else
           sync = self.syncs.create!(
             parent: parent_sync,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_08_08_143007) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_13_144520) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -706,16 +706,18 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_08_143007) do
     t.uuid "family_id", null: false
     t.text "access_url"
     t.string "name"
-    t.string "institution_id"
-    t.string "institution_name"
-    t.string "institution_url"
     t.string "status", default: "good"
     t.boolean "scheduled_for_deletion", default: false
     t.jsonb "raw_payload"
-    t.jsonb "raw_institution_payload"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "pending_account_setup", default: false, null: false
+    t.string "institution_id"
+    t.string "institution_name"
+    t.string "institution_domain"
+    t.string "institution_url"
+    t.string "institution_color"
+    t.json "raw_institution_payload"
     t.index ["family_id"], name: "index_simplefin_items_on_family_id"
     t.index ["status"], name: "index_simplefin_items_on_status"
   end

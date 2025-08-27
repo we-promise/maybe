@@ -12,7 +12,12 @@
     <%= form_with url: complete_account_setup_simplefin_item_path(@simplefin_item),
                   method: :post,
                   local: true,
-                  data: { turbo: false },
+                  data: {
+                    controller: "loading-button",
+                    action: "submit->loading-button#showLoading",
+                    loading_button_loading_text_value: "Creating Accounts...",
+                    turbo_frame: "_top"
+                  },
                   class: "space-y-6" do |form| %>
 
       <div class="space-y-4">
@@ -29,7 +34,6 @@
                 <li><strong>Investment</strong> - Brokerage, 401(k), IRA accounts</li>
                 <li><strong>Loan or Mortgage</strong> - Debt accounts</li>
                 <li><strong>Other Asset</strong> - Everything else</li>
-                <li><strong>Skip - don't add</strong> - Don't import this account</li>
               </ul>
             </div>
           </div>
@@ -43,8 +47,6 @@
                   <%= simplefin_account.name %>
                   <% if simplefin_account.org_data.present? && simplefin_account.org_data['name'].present? %>
                     <span class="text-secondary">• <%= simplefin_account.org_data["name"] %></span>
-                  <% elsif @simplefin_item.institution_name.present? %>
-                    <span class="text-secondary">• <%= @simplefin_item.institution_name %></span>
                   <% end %>
                 </h3>
                 <p class="text-sm text-secondary">
@@ -82,7 +84,8 @@
           variant: "primary",
           icon: "plus",
           type: "submit",
-          class: "flex-1"
+          class: "flex-1",
+          data: { loading_button_target: "button" }
         ) %>
         <%= render DS::Link.new(
           text: "Cancel",

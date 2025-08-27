@@ -34,7 +34,7 @@ class SimplefinItem < ApplicationRecord
   end
 
   def process_accounts
-    simplefin_accounts.each do |simplefin_account|
+    simplefin_accounts.joins(:account).each do |simplefin_account|
       SimplefinAccount::Processor.new(simplefin_account).process
     end
   end
@@ -54,18 +54,56 @@ class SimplefinItem < ApplicationRecord
       raw_payload: accounts_snapshot,
     )
 
+    # Extract institution data from the first account if available
+    if accounts_snapshot[:accounts]&.any?
+      first_account = accounts_snapshot[:accounts].first
+      if first_account[:org].present?
+        upsert_institution_data!(first_account[:org])
+      end
+    end
+
     save!
   end
 
-  def upsert_simplefin_institution_snapshot!(institution_snapshot)
+  def upsert_institution_data!(org_data)
     assign_attributes(
-      institution_id: institution_snapshot[:id],
-      institution_name: institution_snapshot[:name],
-      institution_url: institution_snapshot[:url],
-      raw_institution_payload: institution_snapshot
+      institution_id: org_data[:id],
+      institution_name: org_data[:name],
+      institution_domain: org_data[:domain],
+      institution_url: org_data[:url] || org_data[:"sfin-url"],
+      raw_institution_payload: org_data
     )
+  end
 
-    save!
+
+  def has_completed_initial_setup?
+    # Setup is complete if we have any linked accounts
+    accounts.any?
+  end
+
+  def institution_display_name
+    # Try to get institution name from stored metadata
+    institution_name.presence || institution_domain.presence || name
+  end
+
+  def connected_institutions
+    # Get unique institutions from all accounts
+    simplefin_accounts.includes(:account)
+                     .where.not(org_data: nil)
+                     .map { |acc| acc.org_data }
+                     .uniq { |org| org["domain"] || org["name"] }
+  end
+
+  def institution_summary
+    institutions = connected_institutions
+    case institutions.count
+    when 0
+      "No institutions connected"
+    when 1
+      institutions.first["name"] || institutions.first["domain"] || "1 institution"
+    else
+      "#{institutions.count} institutions"
+    end
   end
 
   private
