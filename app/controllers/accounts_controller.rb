@@ -6,6 +6,7 @@ class AccountsController < ApplicationController
     @manual_accounts = family.accounts.manual.alphabetically
     @plaid_items = family.plaid_items.ordered
     @simplefin_items = family.simplefin_items.ordered
+    @wise_items = family.wise_items.ordered
 
     render layout: "settings"
   end

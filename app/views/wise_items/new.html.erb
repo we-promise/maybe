@@ -1,0 +1,42 @@
+<%= turbo_frame_tag "modal" do %>
+  <div data-controller="modal" data-modal-target="container" class="fixed inset-0 flex items-center justify-center z-50 p-4">
+    <div class="absolute inset-0 bg-black/50" data-action="click->modal#close"></div>
+
+    <div class="relative bg-container rounded-xl shadow-border-xs max-w-md w-full">
+      <div class="p-6">
+        <h2 class="text-xl font-semibold text-primary mb-4">Connect Wise</h2>
+
+        <%= form_with model: @wise_item, url: wise_items_path, local: true do |form| %>
+          <div class="mb-4">
+            <%= form.label :api_key, "API Key", class: "block text-sm font-medium text-primary mb-1" %>
+            <%= form.text_field :api_key,
+                placeholder: "Enter your Wise API key",
+                class: "w-full px-3 py-2 border border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500",
+                autocomplete: "off" %>
+            <p class="mt-2 text-sm text-secondary">
+              You can get your API key from the
+              <%= link_to "Wise API settings", "https://wise.com/settings/api-tokens",
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  class: "text-blue-600 hover:underline" %>.
+            </p>
+          </div>
+
+          <% if flash[:alert] %>
+            <div class="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+              <p class="text-sm text-red-600"><%= flash[:alert] %></p>
+            </div>
+          <% end %>
+
+          <div class="flex justify-end gap-3">
+            <%= link_to "Cancel", wise_items_path,
+                class: "btn btn--secondary",
+                data: { turbo_frame: "_top" } %>
+            <%= form.submit "Connect",
+                class: "btn btn--primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,72 @@
+<%= content_for :page_title, @wise_item.name %>
+<%= content_for :header_nav_button do %>
+  <%= link_to wise_items_path, class: "w-9 h-9 rounded-lg bg-container hover:bg-container-hover flex items-center justify-center group", data: { turbo_action: "replace" } do %>
+    <%= icon "arrow-left", class: "w-5 h-5 text-primary group-hover:text-gray-900" %>
+  <% end %>
+<% end %>
+
+<div class="space-y-6">
+  <div class="bg-container rounded-xl shadow-border-xs p-6">
+    <div class="flex justify-between items-start mb-6">
+      <div>
+        <h2 class="text-xl font-semibold text-primary mb-2"><%= @wise_item.name %></h2>
+        <p class="text-secondary">
+          <% if @wise_item.syncing? %>
+            <span class="flex items-center gap-1">
+              <%= icon "refresh-cw", class: "w-4 h-4 animate-spin" %>
+              Currently syncing...
+            </span>
+          <% elsif @wise_item.last_synced_at %>
+            Last synced <%= time_ago_in_words(@wise_item.last_synced_at) %> ago
+          <% else %>
+            Not yet synced
+          <% end %>
+        </p>
+      </div>
+
+      <div class="flex gap-2">
+        <% unless @wise_item.syncing? %>
+          <%= link_to sync_wise_item_path(@wise_item), data: { turbo_method: :post }, class: "btn btn--secondary" do %>
+            <%= icon "refresh-cw", class: "w-4 h-4 mr-1" %>
+            Sync Now
+          <% end %>
+        <% end %>
+
+        <%= link_to @wise_item,
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this Wise connection?" },
+            class: "btn btn--secondary text-red-600 hover:bg-red-50" do %>
+          <%= icon "trash-2", class: "w-4 h-4 mr-1" %>
+          Remove
+        <% end %>
+      </div>
+    </div>
+
+    <% if @wise_item.status == "requires_update" %>
+      <div class="p-4 bg-yellow-50 border border-yellow-200 rounded-lg mb-6">
+        <p class="text-sm text-yellow-800">
+          <%= icon "alert-triangle", class: "w-4 h-4 inline mr-1" %>
+          This connection requires attention. Please check your API key permissions.
+        </p>
+      </div>
+    <% end %>
+
+    <div>
+      <h3 class="font-medium text-primary mb-3">Connected Accounts</h3>
+      <% if @wise_item.accounts.any? %>
+        <div class="space-y-2">
+          <% @wise_item.accounts.each do |account| %>
+            <div class="flex items-center justify-between p-3 bg-container-inset rounded-lg">
+              <div>
+                <p class="font-medium text-primary"><%= account.name %></p>
+                <p class="text-sm text-secondary"><%= account.currency %></p>
+              </div>
+              <p class="font-medium text-primary"><%= format_money(account.balance_money) %></p>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-secondary">No accounts connected yet.</p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -3,13 +3,13 @@
 <%# Assign distinct colors to each provider %>
 <% provider_colors = {
   "Lunch Flow" => "#6471eb",
-  "Plaid" => "#4da568", 
+  "Plaid" => "#4da568",
   "SimpleFin" => "#e99537"
 } %>
 <% provider_color = provider_colors[provider_link[:name]] || "#6B7280" %>
 
-<%= link_to provider_link[:path], 
-            target: provider_link[:target], 
+<%= link_to provider_link[:path],
+            target: provider_link[:target],
             rel: provider_link[:rel],
             class: "flex justify-between items-center p-4 bg-container hover:bg-container-hover transition-colors" do %>
   <div class="flex w-full items-center gap-2.5">
