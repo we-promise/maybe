@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   before_action :set_session, only: :destroy
-  skip_authentication only: %i[new create]
+  skip_authentication only: %i[new create openid_connect failure]
 
   layout "auth"
 
@@ -25,6 +25,20 @@ class SessionsController < ApplicationController
   def destroy
     @session.destroy
     redirect_to new_session_path, notice: t(".logout_successful")
+  end
+
+  def openid_connect
+    auth = request.env["omniauth.auth"]
+    if auth && (user = User.find_by(email: auth.info.email))
+      @session = create_session_for(user)
+      redirect_to root_path
+    else
+      redirect_to new_session_path, alert: t(".failed")
+    end
+  end
+
+  def failure
+    redirect_to new_session_path, alert: t(".failed")
   end
 
   private

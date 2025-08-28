@@ -5,6 +5,8 @@ en:
       invalid_credentials: Invalid email or password.
     destroy:
       logout_successful: You have signed out successfully.
+    openid_connect:
+      failed: Could not authenticate via OpenID Connect.
     new:
       email: Email address
       email_placeholder: you@example.com
@@ -13,3 +15,4 @@ en:
       submit: Log in
       title: Sign in to your account
       password_placeholder: Enter your password
+      openid_connect: Sign in with OpenID Connect
