@@ -50,7 +50,7 @@
 
       <% if %w[buy sell].include?(type) %>
         <%= form.number_field :qty, label: t(".qty"), placeholder: "10", min: 0.000000000000000001, step: "any", required: true %>
-        <%= form.money_field :price, label: t(".price"), required: true %>
+        <%= form.money_field :price, label: t(".price"), step: 'any', precision: 10, required: true %>
       <% end %>
     </div>
 
