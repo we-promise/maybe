@@ -32,7 +32,7 @@
   <%= render DS::Disclosure.new(title: t(".details")) do %>
     <%= f.fields_for :entryable do |ef| %>
       <%= ef.select :tag_ids,
-                    Current.family.tags.alphabetically.pluck(:name, :id),
+                    Current.family.tags.sorted_naturally.pluck(:name, :id),
                     {
                       include_blank: t(".none"),
                       multiple: true,

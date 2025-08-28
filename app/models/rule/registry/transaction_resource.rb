@@ -8,7 +8,7 @@ class Rule::Registry::TransactionResource < Rule::Registry
       Rule::ConditionFilter::TransactionName.new(rule),
       Rule::ConditionFilter::TransactionAmount.new(rule),
       Rule::ConditionFilter::TransactionMerchant.new(rule)
-    ]
+    ].sort_by { |filter| filter.label.downcase }
   end
 
   def action_executors
@@ -24,7 +24,7 @@ class Rule::Registry::TransactionResource < Rule::Registry
       enabled_executors << Rule::ActionExecutor::AutoDetectMerchants.new(rule)
     end
 
-    enabled_executors
+    enabled_executors.sort_by { |executor| executor.label.downcase }
   end
 
   private

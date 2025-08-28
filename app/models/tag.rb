@@ -8,6 +8,15 @@ class Tag < ApplicationRecord
 
   scope :alphabetically, -> { order(:name) }
 
+  scope :sorted_naturally_db, -> {
+    order(
+      Arel.sql(
+        "REGEXP_REPLACE(name, '\\d+$', '') ASC, " \
+        "CAST(REGEXP_REPLACE(name, '\\D+', '') AS INTEGER) ASC"
+      )
+    )
+  }
+
   COLORS = %w[#e99537 #4da568 #6471eb #db5a54 #df4e92 #c44fe9 #eb5429 #61c9ea #805dee #6ad28a]
 
   UNCATEGORIZED_COLOR = "#737373"
@@ -21,6 +30,12 @@ class Tag < ApplicationRecord
       end
 
       destroy!
+    end
+  end
+
+  def self.sorted_naturally
+    all.to_a.sort_by do |tag|
+      tag.name.to_s.scan(/\d+|\D+/).map { |s| s =~ /\d+/ ? s.to_i : s.downcase }
     end
   end
 end
