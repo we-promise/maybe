@@ -81,6 +81,7 @@ gem "after_commit_everywhere", "~> 1.0"
 
 # AI
 gem "ruby-openai"
+gem "fast-mcp"
 gem "langfuse-ruby", "~> 0.1.4", require: "langfuse"
 
 group :development, :test do

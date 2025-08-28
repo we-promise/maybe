@@ -3,7 +3,7 @@ description:
 globs: test/**
 alwaysApply: false
 ---
-Use this rule to learn how to write tests for the Maybe codebase.
+Use this rule to learn how to write tests for this codebase.
 
 Due to the open-source nature of this project, we have chosen Minitest + Fixtures for testing to maximize familiarity and predictability.
 
