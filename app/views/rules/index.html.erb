@@ -4,8 +4,14 @@
     <% if @rules.any? %>
       <%= render DS::Menu.new do |menu| %>
         <% menu.with_item(
+          variant: "link",
+          text: "Apply all",
+          href: confirm_all_rules_path,
+          icon: "refresh-cw",
+          frame: :modal) %>
+        <% menu.with_item(
           variant: "button",
-          text: "Delete all rules",
+          text: "Delete all",
           href: destroy_all_rules_path,
           icon: "trash-2",
           method: :delete,

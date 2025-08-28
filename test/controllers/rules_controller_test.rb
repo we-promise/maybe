@@ -162,4 +162,21 @@ class RulesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to rules_url
   end
+
+  test "should get confirm_all" do
+    get confirm_all_rules_url
+    assert_response :success
+  end
+
+  test "should apply all rules" do
+    rule = rules(:one)
+    rule.update!(active: false)
+
+    assert_enqueued_jobs 1, only: RuleJob do
+      post apply_all_rules_url
+    end
+
+    assert_redirected_to rules_url
+    assert rule.reload.active
+  end
 end

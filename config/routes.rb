@@ -156,6 +156,8 @@ Rails.application.routes.draw do
 
     collection do
       delete :destroy_all
+      get :confirm_all
+      post :apply_all
     end
   end
 

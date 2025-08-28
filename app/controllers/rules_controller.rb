@@ -64,6 +64,19 @@ class RulesController < ApplicationController
     redirect_to rules_path, notice: "All rules deleted"
   end
 
+  def confirm_all
+    @rules = Current.family.rules
+    @affected_resource_count = @rules.sum(&:affected_resource_count)
+  end
+
+  def apply_all
+    Current.family.rules.find_each do |rule|
+      rule.update!(active: true)
+      rule.apply_later(ignore_attribute_locks: true)
+    end
+    redirect_to rules_path, notice: "All rules activated"
+  end
+
   private
     def set_rule
       @rule = Current.family.rules.find(params[:id])

@@ -1,0 +1,18 @@
+<%= render DS::Dialog.new(reload_on_close: true) do |dialog| %>
+  <% dialog.with_header(title: "Confirm applying all rules") %>
+
+  <% dialog.with_body do %>
+    <p class="text-secondary text-sm mb-4">
+      You are about to apply all rules to
+      <span class="text-primary font-medium"><%= @affected_resource_count %> transactions</span>.
+      Please confirm if you wish to proceed with this change.
+    </p>
+
+    <%= render DS::Button.new(
+      text: "Apply all rules",
+      href: apply_all_rules_path,
+      method: :post,
+      full_width: true,
+      data: { turbo_frame: "_top" }) %>
+  <% end %>
+<% end %>
