@@ -36,6 +36,11 @@
   }
 }
 
+.profiler-button {
+  position: fixed;
+  top: env(safe-area-inset-top, 0);
+}
+
 .combobox {
   .hw-combobox__main__wrapper,
   .hw-combobox__input {
