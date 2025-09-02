@@ -1,6 +1,10 @@
-# CLAUDE.md
+---
+applyTo: '**'
+---
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+# Copilot instructions (English — concise)
+
+Purpose: provide short, actionable guidance so Copilot suggestions match project conventions.
 
 ## Common Development Commands
 
@@ -32,43 +36,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Setup
 - `bin/setup` - Initial project setup (installs dependencies, prepares database)
 
-## Pre-Pull Request CI Workflow
-
-ALWAYS run these commands before opening a pull request:
-
-1. **Tests** (Required):
-   - `bin/rails test` - Run all tests (always required)
-   - `bin/rails test:system` - Run system tests (only when applicable, they take longer)
-
-2. **Linting** (Required):
-   - `bin/rubocop -f github -a` - Ruby linting with auto-correct
-   - `bundle exec erb_lint ./app/**/*.erb -a` - ERB linting with auto-correct
-
-3. **Security** (Required):
-   - `bin/brakeman --no-pager` - Security analysis
-
-Only proceed with pull request creation if ALL checks pass.
-
-## General Development Rules
-
-### Authentication Context
-- Use `Current.user` for the current user. Do NOT use `current_user`.
-- Use `Current.family` for the current family. Do NOT use `current_family`.
-
-### Development Guidelines
-- Prior to generating any code, carefully read the project conventions and guidelines
-- Ignore i18n methods and files. Hardcode strings in English for now to optimize speed of development
-- Do not run `rails server` in your responses
-- Do not run `touch tmp/restart.txt`
-- Do not run `rails credentials`
-- Do not automatically run migrations
+## Pre-PR workflow (run locally before opening PR)
+- Tests: bin/rails test (all), bin/rails test:system (when applicable)
+- Linters: bin/rubocop -f github -a; bundle exec erb_lint ./app/**/*.erb -a
+- Security: bin/brakeman --no-pager
 
 ## High-Level Architecture
 
 ### Application Modes
-The Maybe app runs in two distinct modes:
-- **Managed**: The Maybe team operates and manages servers for users (Rails.application.config.app_mode = "managed")
-- **Self Hosted**: Users host the Maybe app on their own infrastructure, typically through Docker Compose (Rails.application.config.app_mode = "self_hosted")
+The app runs in two modes:
+- **Managed** (Rails.application.config.app_mode = "managed")
+- **Self-hosted** (Rails.application.config.app_mode = "self_hosted")
 
 ### Core Domain Model
 The application is built around financial data management with these key relationships:
@@ -81,8 +59,8 @@ The application is built around financial data management with these key relatio
 The application provides both internal and external APIs:
 - Internal API: Controllers serve JSON via Turbo for SPA-like interactions
 - External API: `/api/v1/` namespace with Doorkeeper OAuth and API key authentication
-- API responses use Jbuilder templates for JSON rendering
-- Rate limiting via Rack Attack with configurable limits per API key
+- API responses use Jbuilder templates for JSON rendering.
+- Rate limiting via Rack::Attack with configurable limits per API key
 
 ### Sync & Import System
 Two primary data ingestion methods:
@@ -126,69 +104,35 @@ Sidekiq handles asynchronous tasks:
 - Scoped permissions system for API access
 - Strong parameters and CSRF protection throughout
 
-### Testing Philosophy
-- Comprehensive test coverage using Rails' built-in Minitest
-- Fixtures for test data (avoid FactoryBot)
-- Keep fixtures minimal (2-3 per model for base cases)
-- VCR for external API testing
-- System tests for critical user flows (use sparingly)
-- Test helpers in `test/support/` for common scenarios
-- Only test critical code paths that significantly increase confidence
-- Write tests as you go, when required
+## Key rules
+- Project modes: "managed" or "self_hosted".
+- Domain: User → Accounts → Transactions. Keep business logic in models, controllers thin.
 
-### Performance Considerations
-- Database queries optimized with proper indexes
-- N+1 queries prevented via includes/joins
-- Background jobs for heavy operations
-- Caching strategies for expensive calculations
-- Turbo Frames for partial page updates
+Authentication & context
+- Use Current.user and Current.family (never current_user / current_family).
 
-### Development Workflow
-- Feature branches merged to `main`
-- Docker support for consistent environments
-- Environment variables via `.env` files
-- Lookbook for component development (`/lookbook`)
-- Letter Opener for email preview in development
+Testing conventions
+- Use Minitest + fixtures (no RSpec, no FactoryBot).
+- Use mocha for mocks where needed; VCR for external API tests.
 
-## Project Conventions
+Frontend conventions
+- Hotwire-first: Turbo + Stimulus.
+- Prefer semantic HTML, Turbo Frames, server-side formatting.
+- Use the helper icon for icons (do not use lucide_icon directly).
+- Use Tailwind design tokens (text-primary, bg-container, etc.).
 
-### Convention 1: Minimize Dependencies
-- Push Rails to its limits before adding new dependencies
-- Strong technical/business reason required for new dependencies
-- Favor old and reliable over new and flashy
+Backend & architecture
+- Skinny controllers, fat models.
+- Prefer built-in Rails patterns; add dependencies only with strong justification.
+- Sidekiq for background jobs (e.g., SyncJob, ImportJob, AssistantResponseJob).
 
-### Convention 2: Skinny Controllers, Fat Models
-- Business logic in `app/models/` folder, avoid `app/services/`
-- Use Rails concerns and POROs for organization
-- Models should answer questions about themselves: `account.balance_series` not `AccountSeries.new(account).call`
+API & security
+- External API under /api/v1 with Doorkeeper / API keys; respect CSRF and strong params.
+- Follow rate limits and auth strategies already in project.
 
-### Convention 3: Hotwire-First Frontend
-- **Native HTML preferred over JS components**
-  - Use `<dialog>` for modals, `<details><summary>` for disclosures
-- **Leverage Turbo frames** for page sections over client-side solutions
-- **Query params for state** over localStorage/sessions
-- **Server-side formatting** for currencies, numbers, dates
-- **Always use `icon` helper** in `application_helper.rb`, NEVER `lucide_icon` directly
-
-### Convention 4: Optimize for Simplicity
-- Prioritize good OOP domain design over performance
-- Focus performance only on critical/global areas (avoid N+1 queries, mindful of global layouts)
-
-### Convention 5: Database vs ActiveRecord Validations
-- Simple validations (null checks, unique indexes) in DB
-- ActiveRecord validations for convenience in forms (prefer client-side when possible)
-- Complex validations and business logic in ActiveRecord
-
-## TailwindCSS Design System
-
-### Design System Rules
-- **Always reference `app/assets/tailwind/maybe-design-system.css`** for primitives and tokens
-- **Use functional tokens** defined in design system:
-  - `text-primary` instead of `text-white`
-  - `bg-container` instead of `bg-white`
-  - `border border-primary` instead of `border border-gray-200`
-- **NEVER create new styles** in design system files without permission
-- **Always generate semantic HTML**
+Stimulus & components
+- Keep controllers small (< 7 targets); pass data via data-*-value.
+- Prefer ViewComponents for reusable or complex UI.
 
 ## Component Architecture
 
@@ -235,7 +179,7 @@ Sidekiq handles asynchronous tasks:
 ## Testing Philosophy
 
 ### General Testing Rules
-- **ALWAYS use Minitest + fixtures** (NEVER RSpec or factories)
+- **ALWAYS use Minitest + fixtures + Mocha** (NEVER RSpec or FactoryBot)
 - Keep fixtures minimal (2-3 per model for base cases)
 - Create edge cases on-the-fly within test context
 - Use Rails helpers for large fixture creation needs
@@ -270,3 +214,70 @@ end
 - Use `mocha` gem
 - Prefer `OpenStruct` for mock instances
 - Only mock what's necessary
+
+## Performance Considerations
+- Database queries optimized with proper indexes
+- N+1 queries prevented via includes/joins
+- Background jobs for heavy operations
+- Caching strategies for expensive calculations
+- Turbo Frames for partial page updates
+
+## Development Workflow
+- Feature branches merged to `main`
+- Docker support for consistent environments
+- Environment variables via `.env` files
+- Lookbook for component development (`/design-system`)
+- Letter Opener for email preview in development
+
+## Project Conventions
+
+### Convention 1: Minimize Dependencies
+- Push Rails to its limits before adding new dependencies
+- Strong technical/business reason required for new dependencies
+- Favor old and reliable over new and flashy
+
+### Convention 2: Skinny Controllers, Fat Models
+- Business logic in `app/models/` folder, avoid `app/services/`
+- Use Rails concerns and POROs for organization
+- Models should answer questions about themselves: `account.balance_series` not `AccountSeries.new(account).call`
+
+### Convention 3: Hotwire-First Frontend
+- **Native HTML preferred over JS components**
+  - Use `<dialog>` for modals, `<details><summary>` for disclosures
+  - **Leverage Turbo frames** for page sections over client-side solutions
+  - **Query params for state** over localStorage/sessions
+  - **Server-side formatting** for currencies, numbers, dates
+  - **Always use `icon` helper** in `application_helper.rb`, NEVER `lucide_icon` directly
+
+### Convention 4: Optimize for Simplicity
+- Prioritize good OOP domain design over performance
+- Focus performance only on critical/global areas (avoid N+1 queries, mindful of global layouts)
+
+### Convention 5: Database vs ActiveRecord Validations
+- Simple validations (null checks, unique indexes) in DB
+- ActiveRecord validations for convenience in forms (prefer client-side when possible)
+- Complex validations and business logic in ActiveRecord
+
+## TailwindCSS Design System
+
+### Design System Rules
+- **Always reference `app/assets/tailwind/maybe-design-system.css`** for primitives and tokens
+- **Use functional tokens** defined in design system:
+  - `text-primary` instead of `text-white`
+  - `bg-container` instead of `bg-white`
+  - `border border-secondary` instead of `border border-gray-200`
+- **NEVER create new styles** in design system files without permission
+- **Always generate semantic HTML**
+
+Disallowed suggestions / behaviors
+- Do NOT propose running system commands in PRs (rails server, rails credentials, touching tmp files, auto-running migrations).
+- Avoid adding new global styles to design system without permission.
+- Do not produce offensive, dangerous, or non-technical content.
+
+Style for suggestions
+- Make changes atomic and testable; explain impact briefly.
+- Keep suggestions concise and aligned with existing code.
+- Respect existing tests; add tests when changing critical logic.
+
+Notes from repository config
+- If .gemini/config.yaml disables automated code_review, still provide clear summaries and fix suggestions in PRs.
