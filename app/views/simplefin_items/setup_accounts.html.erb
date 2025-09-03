@@ -12,7 +12,12 @@
     <%= form_with url: complete_account_setup_simplefin_item_path(@simplefin_item),
                   method: :post,
                   local: true,
-                  data: { turbo: false },
+                  data: {
+                    controller: "loading-button",
+                    action: "submit->loading-button#showLoading",
+                    loading_button_loading_text_value: "Creating Accounts...",
+                    turbo_frame: "_top"
+                  },
                   class: "space-y-6" do |form| %>
 
       <div class="space-y-4">
@@ -29,8 +34,26 @@
                 <li><strong>Investment</strong> - Brokerage, 401(k), IRA accounts</li>
                 <li><strong>Loan or Mortgage</strong> - Debt accounts</li>
                 <li><strong>Other Asset</strong> - Everything else</li>
-                <li><strong>Skip - don't add</strong> - Don't import this account</li>
               </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sync Date Range Selection -->
+        <div class="bg-surface border border-primary p-4 rounded-lg">
+          <div class="flex items-start gap-3">
+            <%= icon "calendar", size: "sm", class: "text-primary mt-0.5 flex-shrink-0" %>
+            <div class="flex-1">
+              <p class="text-sm text-primary mb-3">
+                <strong>Historical Data Range:</strong>
+              </p>
+              <%= form.date_field :sync_start_date,
+                    label: "Start syncing transactions from:",
+                    value: @simplefin_item.sync_start_date || 1.year.ago.to_date,
+                    min: 3.years.ago.to_date,
+                    max: Date.current,
+                    class: "w-full max-w-xs",
+                    help_text: "Select how far back you want to sync transaction history. Maximum 3 years of history available." %>
             </div>
           </div>
         </div>
@@ -43,8 +66,6 @@
                   <%= simplefin_account.name %>
                   <% if simplefin_account.org_data.present? && simplefin_account.org_data['name'].present? %>
                     <span class="text-secondary">• <%= simplefin_account.org_data["name"] %></span>
-                  <% elsif @simplefin_item.institution_name.present? %>
-                    <span class="text-secondary">• <%= @simplefin_item.institution_name %></span>
                   <% end %>
                 </h3>
                 <p class="text-sm text-secondary">
@@ -82,7 +103,8 @@
           variant: "primary",
           icon: "plus",
           type: "submit",
-          class: "flex-1"
+          class: "flex-1",
+          data: { loading_button_target: "button" }
         ) %>
         <%= render DS::Link.new(
           text: "Cancel",

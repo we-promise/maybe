@@ -1,0 +1,47 @@
+---
+en:
+  simplefin_items:
+    create:
+      success: SimpleFin connection added successfully! Your accounts will appear shortly as they sync in the background.
+      errors:
+        blank_token: Please enter a SimpleFin setup token.
+        invalid_token: Invalid setup token. Please check that you copied the complete token from SimpleFin Bridge.
+        token_compromised: The setup token may be compromised, expired, or already used. Please create a new one.
+        create_failed: "Failed to connect: %{message}"
+        unexpected: An unexpected error occurred. Please try again or contact support.
+    destroy:
+      success: SimpleFin connection will be removed
+    update:
+      success: SimpleFin connection updated successfully! Your accounts are being reconnected.
+      errors:
+        blank_token: Please enter a SimpleFin setup token.
+        invalid_token: Invalid setup token. Please check that you copied the complete token from SimpleFin Bridge.
+        token_compromised: The setup token may be compromised, expired, or already used. Please create a new one.
+        update_failed: "Failed to update connection: %{message}"
+        unexpected: An unexpected error occurred. Please try again or contact support.
+    edit:
+      setup_token:
+        label: "SimpleFin Setup Token:"
+        placeholder: "Paste your SimpleFin setup token here..."
+        help_text: "The token should be a long string starting with letters and numbers"
+    complete_account_setup:
+      success: SimpleFin accounts have been set up successfully! Your transactions and holdings are being imported in the background.
+    simplefin_item:
+      add_new: Add new connection
+      confirm_accept: Delete connection
+      confirm_body: This will permanently delete all the accounts in this group and all associated data.
+      confirm_title: Delete SimpleFin connection?
+      delete: Delete
+      deletion_in_progress: "(deletion in progress...)"
+      error: Error occurred while syncing data
+      no_accounts_description: This connection doesn't have any synchronized accounts yet.
+      no_accounts_title: No accounts found
+      requires_update: Requires re-authentication
+      setup_needed: New accounts ready to set up
+      setup_description: Choose account types for your newly imported SimpleFin accounts.
+      setup_action: Set Up New Accounts
+      status: Last synced %{timestamp} ago
+      status_never: Never synced
+      status_with_summary: "Last synced %{timestamp} ago • %{summary}"
+      syncing: Syncing...
+      update: Update connection

@@ -85,10 +85,28 @@ class Account < ApplicationRecord
         balance = balance.abs
       end
 
+      # Calculate cash balance correctly for investment accounts
+      cash_balance = balance
+      if account_type == "Investment"
+        begin
+          calculator = SimplefinAccount::Investments::BalanceCalculator.new(simplefin_account)
+          calculated = calculator.cash_balance
+          cash_balance = calculated unless calculated.nil?
+        rescue => e
+          Rails.logger.warn(
+            "Investment cash_balance calculation failed for " \
+            "SimpleFin account #{simplefin_account.id}: #{e.class} - #{e.message}"
+          )
+          # Fallback to zero as suggested
+          cash_balance = 0
+        end
+      end
+
       attributes = {
         family: simplefin_account.simplefin_item.family,
         name: simplefin_account.name,
         balance: balance,
+        cash_balance: cash_balance,
         currency: simplefin_account.currency,
         accountable_type: account_type,
         accountable_attributes: build_simplefin_accountable_attributes(simplefin_account, account_type, subtype),

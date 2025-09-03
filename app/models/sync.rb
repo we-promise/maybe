@@ -21,6 +21,8 @@ class Sync < ApplicationRecord
 
   after_commit :update_family_sync_timestamp
 
+  serialize :sync_stats, coder: JSON
+
   validate :window_valid
 
   # Sync state machine

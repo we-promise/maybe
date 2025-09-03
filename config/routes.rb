@@ -254,7 +254,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :simplefin_items, only: %i[index new create show destroy] do
+  resources :simplefin_items, only: %i[index new create show edit update destroy] do
     member do
       post :sync
       get :setup_accounts

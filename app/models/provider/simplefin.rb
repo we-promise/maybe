@@ -2,7 +2,7 @@ class Provider::Simplefin
   include HTTParty
 
   headers "User-Agent" => "Sure Finance SimpleFin Client"
-  default_options.merge!(verify: true, ssl_verify_mode: :peer)
+  default_options.merge!(verify: true, ssl_verify_mode: OpenSSL::SSL::VERIFY_PEER, timeout: 120)
 
   def initialize
   end
@@ -46,7 +46,15 @@ class Provider::Simplefin
 
 
     # The access URL already contains HTTP Basic Auth credentials
-    response = HTTParty.get(accounts_url)
+    begin
+      response = HTTParty.get(accounts_url)
+    rescue SocketError, Net::OpenTimeout, Net::ReadTimeout => e
+      Rails.logger.error "SimpleFin API: GET /accounts failed: #{e.class}: #{e.message}"
+      raise SimplefinError.new("Exception during GET request: #{e.message}", :request_failed)
+    rescue => e
+      Rails.logger.error "SimpleFin API: Unexpected error during GET /accounts: #{e.class}: #{e.message}"
+      raise SimplefinError.new("Exception during GET request: #{e.message}", :request_failed)
+    end
 
 
     case response.code

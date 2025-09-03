@@ -5,105 +5,85 @@ class SimplefinAccount::Processor
     @simplefin_account = simplefin_account
   end
 
+  # Each step represents different SimpleFin data processing
+  # Processing the account is the first step and if it fails, we halt
+  # Each subsequent step can fail independently, but we continue processing
   def process
-    ensure_account_exists
+    unless simplefin_account.account.present?
+      return
+    end
+
+    process_account!
     process_transactions
+    process_investments
+    process_liabilities
   end
 
   private
 
-    def ensure_account_exists
-      return if simplefin_account.account.present?
-
+    def process_account!
       # This should not happen in normal flow since accounts are created manually
       # during setup, but keeping as safety check
-      Rails.logger.error("SimpleFin account #{simplefin_account.id} has no associated Account - this should not happen after manual setup")
+      if simplefin_account.account.blank?
+        Rails.logger.error("SimpleFin account #{simplefin_account.id} has no associated Account - this should not happen after manual setup")
+        return
+      end
+
+      # Update account balance and cash balance from latest SimpleFin data
+      account = simplefin_account.account
+      balance = simplefin_account.current_balance || simplefin_account.available_balance || 0
+
+      # SimpleFin returns negative balances for credit cards (liabilities)
+      # But Maybe expects positive balances for liabilities
+      if account.accountable_type == "CreditCard" || account.accountable_type == "Loan"
+        balance = balance.abs
+      end
+
+      # Calculate cash balance correctly for investment accounts
+      cash_balance = if account.accountable_type == "Investment"
+        calculator = SimplefinAccount::Investments::BalanceCalculator.new(simplefin_account)
+        calculator.cash_balance
+      else
+        balance
+      end
+
+      account.update!(
+        balance: balance,
+        cash_balance: cash_balance
+      )
     end
 
     def process_transactions
-      return unless simplefin_account.raw_transactions_payload.present?
-
-      account = simplefin_account.account
-      transactions_data = simplefin_account.raw_transactions_payload
-
-      transactions_data.each do |transaction_data|
-        process_transaction(account, transaction_data)
-      end
+      SimplefinAccount::Transactions::Processor.new(simplefin_account).process
+    rescue => e
+      report_exception(e, "transactions")
     end
 
-    def process_transaction(account, transaction_data)
-      # Handle both string and symbol keys
-      data = transaction_data.with_indifferent_access
+    def process_investments
+      return unless simplefin_account.account&.accountable_type == "Investment"
+      SimplefinAccount::Investments::TransactionsProcessor.new(simplefin_account).process
+      SimplefinAccount::Investments::HoldingsProcessor.new(simplefin_account).process
+    rescue => e
+      report_exception(e, "investments")
+    end
 
-
-      # Convert SimpleFin transaction to internal Transaction format
-      amount = parse_amount(data[:amount], account.currency)
-      posted_date = parse_date(data[:posted])
-
-      # Use plaid_id field for external ID (works for both Plaid and SimpleFin)
-      external_id = "simplefin_#{data[:id]}"
-
-      # Check if entry already exists
-      existing_entry = Entry.find_by(plaid_id: external_id)
-
-      unless existing_entry
-        # Create the transaction (entryable)
-        transaction = Transaction.new(
-          external_id: external_id
-        )
-
-        # Create the entry with the transaction
-        Entry.create!(
-          account: account,
-          name: data[:description] || "Unknown transaction",
-          amount: amount,
-          date: posted_date,
-          currency: account.currency,
-          entryable: transaction,
-          plaid_id: external_id
-        )
+    def process_liabilities
+      case simplefin_account.account&.accountable_type
+      when "CreditCard"
+        SimplefinAccount::Liabilities::CreditProcessor.new(simplefin_account).process
+      when "Loan"
+        SimplefinAccount::Liabilities::LoanProcessor.new(simplefin_account).process
       end
     rescue => e
-      Rails.logger.error("Failed to process SimpleFin transaction #{data[:id]}: #{e.message}")
-      # Don't fail the entire sync for one bad transaction
+      report_exception(e, "liabilities")
     end
 
-    def parse_amount(amount_value, currency)
-      parsed_amount = case amount_value
-      when String
-        BigDecimal(amount_value)
-      when Numeric
-        BigDecimal(amount_value.to_s)
-      else
-        BigDecimal("0")
+    def report_exception(error, context)
+      Sentry.capture_exception(error) do |scope|
+        scope.set_tags(
+          simplefin_account_id: simplefin_account.id,
+          context: context
+        )
       end
-
-      # SimpleFin uses banking convention (expenses negative, income positive)
-      # Maybe expects opposite convention (expenses positive, income negative)
-      # So we negate the amount to convert from SimpleFin to Maybe format
-      -parsed_amount
-    rescue ArgumentError => e
-      Rails.logger.error "Failed to parse SimpleFin transaction amount: #{amount_value.inspect} - #{e.message}"
-      BigDecimal("0")
-    end
-
-    def parse_date(date_value)
-      case date_value
-      when String
-        Date.parse(date_value)
-      when Integer, Float
-        # Unix timestamp
-        Time.at(date_value).to_date
-      when Time, DateTime
-        date_value.to_date
-      when Date
-        date_value
-      else
-        Rails.logger.error("SimpleFin transaction has invalid date value: #{date_value.inspect}")
-        raise ArgumentError, "Invalid date format: #{date_value.inspect}"
-      end
-    rescue ArgumentError, TypeError => e
-      Rails.logger.error("Failed to parse SimpleFin transaction date '#{date_value}': #{e.message}")
-      raise ArgumentError, "Unable to parse transaction date: #{date_value.inspect}"
     end
 end

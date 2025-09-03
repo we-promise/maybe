@@ -1,0 +1,62 @@
+<% content_for :title, "Update SimpleFin Connection" %>
+
+<%= render DS::Dialog.new do |dialog| %>
+  <% dialog.with_header(title: "Update SimpleFin Connection") do %>
+    <div class="flex items-center gap-2">
+      <%= icon "building-2", class: "text-primary" %>
+      <span class="text-primary">Get a new setup token to reconnect your SimpleFin account</span>
+    </div>
+  <% end %>
+
+  <% dialog.with_body do %>
+    <%= form_with model: @simplefin_item, local: true, class: "space-y-6" do |form| %>
+      <div class="bg-surface border border-primary p-4 rounded-lg">
+        <div class="flex items-start gap-3">
+          <%= icon "info", size: "sm", class: "text-primary mt-0.5 flex-shrink-0" %>
+          <div>
+            <p class="text-sm text-primary mb-2">
+              <strong>Your SimpleFin connection needs to be updated:</strong>
+            </p>
+            <ol class="text-xs text-secondary space-y-1 list-decimal list-inside">
+              <li>Visit <a href="https://bridge.simplefin.org/simplefin/create" target="_blank" rel="noopener noreferrer" class="text-link hover:text-link underline">SimpleFin Bridge</a> to create a new setup token</li>
+              <li>Copy the token and paste it below</li>
+              <li>Click "Update Connection" to restore access</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <% if @error_message %>
+        <div class="bg-destructive/10 border border-destructive/20 p-4 rounded-lg">
+          <div class="flex items-start gap-3">
+            <%= icon "alert-triangle", size: "sm", class: "text-destructive mt-0.5 flex-shrink-0" %>
+            <p class="text-sm text-destructive"><%= @error_message %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <div>
+        <%= form.label :setup_token, t(".setup_token.label"), class: "block text-sm font-medium text-primary mb-2" %>
+        <%= form.text_area :setup_token,
+            placeholder: t(".setup_token.placeholder"),
+            class: "appearance-none bg-container border border-primary rounded-md px-3 py-2 text-sm leading-6 text-primary focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none w-full h-32 resize-none font-mono" %>
+        <p class="text-xs text-secondary mt-1"><%= t(".setup_token.help_text") %></p>
+      </div>
+
+      <div class="flex gap-3">
+        <%= render DS::Button.new(
+          text: "Update Connection",
+          variant: "primary",
+          icon: "refresh-cw",
+          type: "submit",
+          class: "flex-1"
+        ) %>
+        <%= render DS::Link.new(
+          text: "Cancel",
+          variant: "secondary",
+          href: accounts_path
+        ) %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

@@ -6,55 +6,69 @@
       <div class="flex items-center gap-2">
         <%= icon "chevron-right", class: "group-open:transform group-open:rotate-90" %>
 
-        <% if simplefin_item.logo.attached? %>
-          <div class="flex items-center justify-center h-8 w-8 rounded-full overflow-hidden">
+        <div class="flex items-center justify-center h-8 w-8 bg-success/10 rounded-full">
+          <% if simplefin_item.logo.attached? %>
             <%= image_tag simplefin_item.logo, class: "rounded-full h-full w-full", loading: "lazy" %>
-          </div>
-        <% else %>
-          <%= render DS::FilledIcon.new(
-            variant: :container,
-            text: simplefin_item.name.first.upcase,
-            size: "md"
-          ) %>
-        <% end %>
+          <% else %>
+            <div class="flex items-center justify-center">
+              <%= tag.p simplefin_item.name.first.upcase, class: "text-success text-xs font-medium" %>
+            </div>
+          <% end %>
+        </div>
 
         <div class="pl-1 text-sm">
           <div class="flex items-center gap-2">
-            <div>
-              <%= tag.p simplefin_item.name, class: "font-medium text-primary" %>
-              <% if simplefin_item.institution_name.present? %>
-                <p class="text-secondary text-xs"><%= simplefin_item.institution_name %></p>
-              <% end %>
-            </div>
+            <%= tag.p simplefin_item.name, class: "font-medium text-primary" %>
             <% if simplefin_item.scheduled_for_deletion? %>
-              <p class="text-destructive text-sm animate-pulse">(deletion in progress...)</p>
+              <p class="text-destructive text-sm animate-pulse"><%= t(".deletion_in_progress") %></p>
             <% end %>
           </div>
+          <% if simplefin_item.accounts.any? %>
+            <p class="text-xs text-secondary">
+              <%= simplefin_item.institution_summary %>
+            </p>
+          <% end %>
           <% if simplefin_item.syncing? %>
             <div class="text-secondary flex items-center gap-1">
-              <%= icon "loader", size: "sm", class: "animate-pulse" %>
-              <%= tag.span "Syncing..." %>
+              <%= icon "loader", size: "sm", class: "animate-spin" %>
+              <%= tag.span t(".syncing") %>
             </div>
           <% elsif simplefin_item.requires_update? %>
             <div class="text-warning flex items-center gap-1">
               <%= icon "alert-triangle", size: "sm", color: "warning" %>
-              <%= tag.span "Requires Update" %>
+              <%= tag.span t(".requires_update") %>
             </div>
           <% elsif simplefin_item.sync_error.present? %>
             <div class="text-secondary flex items-center gap-1">
-              <%= icon "alert-circle", size: "sm", color: "destructive" %>
-              <%= tag.span "Error", class: "text-destructive" %>
+              <%= render DS::Tooltip.new(text: simplefin_item.sync_error, icon: "alert-circle", size: "sm", color: "destructive") %>
+              <%= tag.span t(".error"), class: "text-destructive" %>
             </div>
           <% else %>
             <p class="text-secondary">
-              <%= simplefin_item.last_synced_at ? "Last synced #{time_ago_in_words(simplefin_item.last_synced_at)} ago" : "Never synced" %>
+              <% if simplefin_item.last_synced_at %>
+                <% if simplefin_item.sync_status_summary %>
+                  <%= t(".status_with_summary", timestamp: time_ago_in_words(simplefin_item.last_synced_at), summary: simplefin_item.sync_status_summary) %>
+                <% else %>
+                  <%= t(".status", timestamp: time_ago_in_words(simplefin_item.last_synced_at)) %>
+                <% end %>
+              <% else %>
+                <%= t(".status_never") %>
+              <% end %>
             </p>
           <% end %>
         </div>
       </div>
 
       <div class="flex items-center gap-2">
-        <% if Rails.env.development? %>
+        <% if simplefin_item.requires_update? %>
+          <%= render DS::Link.new(
+            text: t(".update"),
+            icon: "refresh-cw",
+            variant: "secondary",
+            href: edit_simplefin_item_path(simplefin_item),
+            frame: "modal"
+          ) %>
+        <% elsif Rails.env.development? %>
           <%= icon(
             "refresh-cw",
             as_button: true,
@@ -65,7 +79,7 @@
         <%= render DS::Menu.new do |menu| %>
           <% menu.with_item(
             variant: "button",
-            text: "Delete",
+            text: t(".delete"),
             icon: "trash-2",
             href: simplefin_item_path(simplefin_item),
             method: :delete,
@@ -83,10 +97,10 @@
 
         <% if simplefin_item.pending_account_setup? %>
           <div class="p-4 flex flex-col gap-3 items-center justify-center">
-            <p class="text-primary font-medium text-sm">New accounts ready to set up</p>
-            <p class="text-secondary text-sm">Choose account types for your newly imported SimpleFin accounts.</p>
+            <p class="text-primary font-medium text-sm"><%= t(".setup_needed") %></p>
+            <p class="text-secondary text-sm"><%= t(".setup_description") %></p>
             <%= render DS::Link.new(
-              text: "Set Up New Accounts",
+              text: t(".setup_action"),
               icon: "settings",
               variant: "primary",
               href: setup_accounts_simplefin_item_path(simplefin_item)
@@ -94,8 +108,8 @@
           </div>
         <% elsif simplefin_item.accounts.empty? %>
           <div class="p-4 flex flex-col gap-3 items-center justify-center">
-            <p class="text-primary font-medium text-sm">No accounts found</p>
-            <p class="text-secondary text-sm">This connection doesn't have any synchronized accounts yet.</p>
+            <p class="text-primary font-medium text-sm"><%= t(".no_accounts_title") %></p>
+            <p class="text-secondary text-sm"><%= t(".no_accounts_description") %></p>
           </div>
         <% end %>
       </div>
