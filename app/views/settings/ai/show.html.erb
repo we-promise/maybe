@@ -1,0 +1,267 @@
+<%= content_for :page_title, t(".page_title") %>
+
+<div class="bg-container rounded-xl shadow-border-xs p-4">
+  <div class="space-y-6">
+    <!-- Header -->
+    <div>
+      <h2 class="font-medium mb-2">AI Provider Settings</h2>
+      <p class="text-secondary text-sm">Configure which AI provider to use for Maybe's AI features.</p>
+    </div>
+
+    <!-- AI Provider Selection Form -->
+    <%= styled_form_with model: Setting.new,
+                         url: settings_ai_path,
+                         method: :patch,
+                         data: {
+                           controller: "ai-settings",
+                           "ai-settings-current-provider-value": Setting.ai_provider || "openrouter"
+                         } do |form| %>
+      
+      <!-- Provider Type Selection -->
+      <div class="space-y-4">
+        <div>
+          <h3 class="text-sm font-medium text-primary mb-3">Model Provider</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <!-- Online Providers -->
+            <div class="space-y-3">
+              <h4 class="text-xs font-medium text-secondary uppercase tracking-wider">Online</h4>
+              
+              <!-- OpenRouter -->
+              <label class="flex items-start gap-3 p-3 border border-secondary rounded-lg cursor-pointer hover:bg-surface-hover dark:hover:bg-gray-700 transition-colors"
+                     data-ai-settings-target="providerOption"
+                     data-provider="openrouter">
+                <%= form.radio_button :ai_provider, "openrouter", 
+                    checked: (Setting.ai_provider || "openrouter") == "openrouter",
+                    class: "mt-0.5",
+                    data: { action: "change->ai-settings#toggleProvider" } %>
+                <div class="flex-1">
+                  <div class="font-medium text-primary">OpenRouter</div>
+                  <div class="text-xs text-secondary">Access to OpenAI, Anthropic, Meta and other AI models through one API</div>
+                </div>
+              </label>
+            </div>
+
+            <!-- Local Providers -->
+            <div class="space-y-3">
+              <h4 class="text-xs font-medium text-secondary uppercase tracking-wider">Local</h4>
+              
+              <!-- Ollama -->
+              <label class="flex items-start gap-3 p-3 border border-secondary rounded-lg cursor-pointer hover:bg-surface-hover dark:hover:bg-gray-700 transition-colors"
+                     data-ai-settings-target="providerOption"
+                     data-provider="ollama">
+                <%= form.radio_button :ai_provider, "ollama", 
+                    checked: Setting.ai_provider == "ollama",
+                    class: "mt-0.5",
+                    data: { action: "change->ai-settings#toggleProvider" } %>
+                <div class="flex-1">
+                  <div class="font-medium text-primary">Ollama</div>
+                  <div class="text-xs text-secondary">Run models locally on your machine</div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Provider-specific Configuration -->
+        
+        <!-- OpenRouter Settings -->
+        <div data-ai-settings-target="providerSettings" 
+             data-provider="openrouter"
+             class="space-y-4"
+             style="<%= Setting.ai_provider != 'openrouter' && Setting.ai_provider.present? ? 'display: none;' : '' %>">
+          <div>
+            <h3 class="text-sm font-medium text-primary mb-3">OpenRouter Configuration</h3>
+            
+            <%= form.password_field :openrouter_api_key,
+                label: "OpenRouter API Key",
+                placeholder: "sk-or-...",
+                value: (Setting.openrouter_api_key.present? ? "********" : nil),
+                autocomplete: "off",
+                autocapitalize: "none",
+                spellcheck: "false",
+                inputmode: "text",
+                data: { "ai-settings-target": "openrouterApiKey" },
+                help_text: "Get your API key from <a href='https://openrouter.ai/keys' target='_blank' class='underline'>OpenRouter</a>".html_safe %>
+
+            <!-- Model Selection -->
+            <div>
+              <%= form.label :ai_model, "Model", class: "block text-sm font-medium text-primary mb-2" %>
+              <%= form.select :ai_model,
+                  options_for_select(Provider::Openrouter::MODELS.map { |model| [model, model] }, Setting.ai_model || "openai/gpt-4o-mini"),
+                  {},
+                  {
+                    class: "w-full px-3 py-2 border border-secondary rounded-lg bg-white dark:bg-gray-800 text-primary dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500",
+                    data: { "ai-settings-target": "modelSelect" }
+                  } %>
+              <p class="text-xs text-secondary mt-1">Choose the AI model to use for chat and categorization</p>
+            </div>
+
+            <!-- Test Connection Button -->
+            <div class="pt-4 mt-4 border-t border-gray-200 dark:border-gray-700">
+              <button type="button"
+                      class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      data-action="click->ai-settings#testConnection"
+                      data-provider="openrouter">
+                <%= icon("wifi", class: "w-4 h-4") %>
+                Test Connection
+              </button>
+              <div data-ai-settings-target="connectionResult" class="mt-3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ollama Settings -->
+        <div data-ai-settings-target="providerSettings" 
+             data-provider="ollama"
+             class="space-y-4"
+             style="<%= Setting.ai_provider != 'ollama' ? 'display: none;' : '' %>">
+          <div>
+            <h3 class="text-sm font-medium text-primary mb-3">Ollama Configuration</h3>
+            
+            <%= form.url_field :ollama_base_url,
+                label: "Ollama Base URL",
+                placeholder: "http://host.docker.internal:11434",
+                value: Setting.ollama_base_url || "http://host.docker.internal:11434",
+                data: { "ai-settings-target": "ollamaBaseUrl" },
+                help_text: "URL of your local Ollama instance. Install from <a href='https://ollama.ai' target='_blank' class='underline'>ollama.ai</a>".html_safe %>
+
+            <!-- Model Selection -->
+            <div>
+              <%= form.label :ai_model, "Model", class: "block text-sm font-medium text-primary mb-2" %>
+              <%= form.select :ai_model,
+                  options_for_select(Provider::Ollama::MODELS.map { |model| [model, model] }, Setting.ai_model || "llama3.2:3b"),
+                  {},
+                  {
+                    class: "w-full px-3 py-2 border border-secondary rounded-lg bg-white dark:bg-gray-800 text-primary dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500",
+                    data: { "ai-settings-target": "modelSelect" }
+                  } %>
+              <p class="text-xs text-secondary mt-1">Choose the AI model to use. Models must be installed locally with <code>ollama pull [model]</code></p>
+            </div>
+
+            <!-- Test Connection Button -->
+            <div class="pt-4 mt-4 border-t border-gray-200 dark:border-gray-700">
+              <button type="button"
+                      class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      data-action="click->ai-settings#testConnection"
+                      data-provider="ollama">
+                <%= icon("wifi", class: "w-4 h-4") %>
+                Test Connection
+              </button>
+              <div data-ai-settings-target="connectionResult" class="mt-3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="flex justify-end pt-4">
+          <%= form.submit "Save Settings", 
+              class: "bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-lg font-medium" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- AI Prompts Section -->
+<div class="bg-container rounded-xl shadow-border-xs p-4 mt-6">
+  <div class="space-y-6">
+    <!-- Header -->
+    <div>
+      <h2 class="font-medium mb-2">AI Prompts</h2>
+      <p class="text-secondary text-sm">Configure and customize AI prompts used throughout Maybe.</p>
+    </div>
+
+    <div class="rounded-xl bg-container-inset space-y-1 p-1">
+      <div class="flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-secondary">
+        <p><%= t("settings.ai_prompts.show.openai_label") %></p>
+      </div>
+
+      <div class="bg-container rounded-lg shadow-border-xs">
+        <div class="space-y-4 p-4">
+          <!-- Main System Prompt Section -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-gray-25 flex justify-center items-center">
+                <%= icon "message-circle" %>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-primary"><%= t("settings.ai_prompts.show.main_system_prompt.title") %></p>
+                <p class="text-xs text-secondary"><%= t("settings.ai_prompts.show.main_system_prompt.subtitle") %></p>
+              </div>
+            </div>
+            
+            <div class="pl-12 space-y-2">
+              <details class="group">
+                <summary class="flex items-center gap-2 cursor-pointer">
+                  <span class="text-xs font-medium text-primary uppercase"><%= t("settings.ai_prompts.show.prompt_instructions") %></span>
+                  <%= icon "chevron-right", class: "group-open:transform group-open:rotate-90" %>
+                </summary>
+                <pre class="whitespace-pre-wrap text-xs font-mono text-primary">[<%= Provider::Openai::MODELS.join(", ") %>]</pre>
+                <div class="mt-2 px-3 py-2 bg-surface-default border border-primary rounded-lg">
+                  <pre class="whitespace-pre-wrap text-xs font-mono text-primary"><%= @assistant_config[:instructions] %></pre>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="border-t border-primary"></div>
+
+          <!-- Auto-Categorization Section -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-gray-25 flex justify-center items-center">
+                <%= icon "brain" %>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-primary"><%= t("settings.ai_prompts.show.transaction_categorizer.title") %></p>
+                <p class="text-xs text-secondary"><%= t("settings.ai_prompts.show.transaction_categorizer.subtitle") %></p>
+              </div>
+            </div>
+            
+            <div class="pl-12 space-y-2">
+              <details class="group">
+                <summary class="flex items-center gap-2 cursor-pointer">
+                  <span class="text-xs font-medium text-primary uppercase"><%= t("settings.ai_prompts.show.prompt_instructions") %></span>
+                  <%= icon "chevron-right", class: "group-open:transform group-open:rotate-90" %>
+                </summary>
+                <pre class="whitespace-pre-wrap text-xs font-mono text-primary">[<%= Provider::Openai::AutoCategorizer::DEFAULT_MODEL %>]</pre>
+                <div class="mt-2 px-3 py-2 bg-surface-default border border-primary rounded-lg">
+                  <pre class="whitespace-pre-wrap text-xs font-mono text-primary"><%= @assistant_config[:auto_categorizer]&.instructions || Provider::Openai::AutoCategorizer.new(nil).instructions %></pre>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="border-t border-primary"></div>
+
+          <!-- Merchant Detection Section -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-gray-25 flex justify-center items-center">
+                <%= icon "store" %>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-primary"><%= t("settings.ai_prompts.show.merchant_detector.title") %></p>
+                <p class="text-xs text-secondary"><%= t("settings.ai_prompts.show.merchant_detector.subtitle") %></p>
+              </div>
+            </div>
+            
+            <div class="pl-12 space-y-2">
+              <details class="group">
+                <summary class="flex items-center gap-2 cursor-pointer">
+                  <span class="text-xs font-medium text-primary uppercase"><%= t("settings.ai_prompts.show.prompt_instructions") %></span>
+                  <%= icon "chevron-right", class: "group-open:transform group-open:rotate-90" %>
+                </summary>
+                <pre class="whitespace-pre-wrap text-xs font-mono text-primary">[<%= Provider::Openai::AutoMerchantDetector::DEFAULT_MODEL %>]</pre>
+                <div class="mt-2 px-3 py-2 bg-surface-default border border-primary rounded-lg">
+                  <pre class="whitespace-pre-wrap text-xs font-mono text-primary"><%= @assistant_config[:auto_merchant]&.instructions || Provider::Openai::AutoMerchantDetector.new(nil, model: "", transactions: [], user_merchants: []).instructions %></pre>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

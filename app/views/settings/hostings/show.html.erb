@@ -2,7 +2,18 @@
 
 <%= settings_section title: t(".general") do %>
     <div class="space-y-6">
-    <%= render "settings/hostings/openai_settings" %>
+    <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+      <div class="flex items-start gap-3">
+        <%= icon("info", class: "text-blue-600 mt-0.5") %>
+        <div>
+          <h3 class="text-sm font-medium text-blue-900">AI Settings Moved</h3>
+          <p class="text-sm text-blue-700 mt-1">
+            AI provider configuration has moved to the dedicated 
+            <%= link_to "AI Settings", settings_ai_path, class: "underline font-medium" %> page.
+          </p>
+        </div>
+      </div>
+    </div>
     <%= render "settings/hostings/brand_fetch_settings" %>
     <%= render "settings/hostings/twelve_data_settings" %>
   </div>

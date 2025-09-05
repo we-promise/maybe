@@ -1,6 +1,9 @@
 ---
 en:
   settings:
+    ai:
+      show:
+        page_title: AI Settings
     ai_prompts:
       show:
         page_title: AI Prompts
@@ -86,6 +89,7 @@ en:
     settings_nav:
       accounts_label: Accounts
       advanced_section_title: Advanced
+      ai_settings_label: AI Settings
       ai_prompts_label: AI Prompts
       api_key_label: API Key
       billing_label: Billing

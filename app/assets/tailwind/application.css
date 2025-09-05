@@ -11,6 +11,23 @@
 @import "./simonweb_pickr.css";
 
 @layer components {
+  .resize-handle-horizontal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 5px;
+    cursor: ew-resize;
+    z-index: 100;
+    transition: background-color 0.2s ease;
+  }
+
+  .resizable-container {
+    position: relative;
+    overflow-x: hidden;
+    transition: width 0.1s ease;
+  }
+
   .pcr-app{
     position: static !important;
     background: none !important;

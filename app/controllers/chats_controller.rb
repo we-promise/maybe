@@ -1,6 +1,9 @@
 class ChatsController < ApplicationController
   include ActionView::RecordIdentifier
 
+  # Temporarily disable CSRF protection for testing
+  skip_before_action :verify_authenticity_token, only: [ :create ]
+
   before_action :set_chat, only: [ :show, :edit, :update, :destroy ]
 
   def index

@@ -1,0 +1,53 @@
+<div class="bg-surface-alt rounded shadow p-6">
+  <div data-controller="langfuse-settings">
+    <h2 class="text-xl font-semibold mb-4">Langfuse Monitoring</h2>
+
+    <p class="text-base mb-4">
+      Langfuse is used to monitor AI interactions in your application. 
+      It tracks prompts, responses, and other metadata from interactions with OpenRouter and Ollama.
+    </p>
+
+    <% if @langfuse_enabled %>
+      <div class="flex items-center gap-2 text-sm text-green-600 dark:text-green-400 mb-4">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+        </svg>
+        Langfuse is configured and active
+      </div>
+
+      <div class="mb-4">
+        <p class="text-sm text-secondary mb-2">Langfuse Host:</p>
+        <p class="text-sm font-mono"><%= @langfuse_host %></p>
+      </div>
+    <% else %>
+      <div class="flex items-center gap-2 text-sm text-red-600 dark:text-red-400 mb-4">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+        </svg>
+        Langfuse is not configured
+      </div>
+
+      <div class="p-4 bg-surface-alt rounded mb-4">
+        <h3 class="text-base font-medium mb-2">Configuration Instructions</h3>
+        <p class="text-sm mb-3">To enable Langfuse, you need to set the following environment variables:</p>
+        <code class="block bg-surface-alt2 p-2 rounded text-xs font-mono mb-1">LANGFUSE_PUBLIC_KEY=your_public_key</code>
+        <code class="block bg-surface-alt2 p-2 rounded text-xs font-mono mb-1">LANGFUSE_SECRET_KEY=your_secret_key</code>
+        <code class="block bg-surface-alt2 p-2 rounded text-xs font-mono mb-3">LANGFUSE_HOST=https://cloud.langfuse.com</code>
+        <p class="text-xs text-secondary">You can get these keys by signing up at <a href="https://langfuse.com" target="_blank" class="text-primary hover:underline">langfuse.com</a></p>
+      </div>
+    <% end %>
+
+    <div class="flex flex-wrap gap-4 mt-6">
+      <button id="test-langfuse-connection" data-action="langfuse-settings#testConnection" class="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90 text-sm">
+        Test Connection
+      </button>
+      <% if @langfuse_enabled %>
+        <button id="view-langfuse-dashboard" data-action="langfuse-settings#viewDashboard" class="px-4 py-2 border border-secondary bg-surface text-primary rounded hover:bg-surface-hover text-sm">
+          View Langfuse Dashboard
+        </button>
+      <% end %>
+    </div>
+
+    <div id="connection-result" data-langfuse-settings-target="connectionResult" class="mt-4 text-sm"></div>
+  </div>
+</div>

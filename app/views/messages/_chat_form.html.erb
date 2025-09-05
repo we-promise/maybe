@@ -7,8 +7,8 @@
                 class: "flex lg:flex-col gap-2 bg-container px-2 py-1.5 rounded-full lg:rounded-lg shadow-border-xs",
                 data: { chat_target: "form" } do |f| %>
 
-    <%# In the future, this will be a dropdown with different AI models %>
-    <%= f.hidden_field :ai_model, value: "gpt-4.1" %>
+    <%# Use the configured AI model from settings %>
+    <%= f.hidden_field :ai_model, value: Setting.ai_model || "openai/gpt-4o-mini" %>
 
     <%= f.text_area :content, placeholder: "Ask anything ...", value: message_hint,
                   class: "w-full border-0 focus:ring-0 text-sm resize-none px-1 bg-transparent",
@@ -16,12 +16,12 @@
                   rows: 1 %>
 
     <div class="flex items-center justify-between gap-1">
-      <div class="items-center gap-1 hidden lg:flex">
+      <%# <div class="items-center gap-1 hidden lg:flex"> %>
         <%# These are disabled for now, but in the future, will all open specific menus with their own context and search %>
-        <% ["plus", "command", "at-sign", "mouse-pointer-click"].each do |icon| %>
-          <%= icon(icon, as_button: true, disabled: true, class: "cursor-not-allowed", title: "Coming soon") %>
-        <% end %>
-      </div>
+        <%# <% ["plus", "command", "at-sign", "mouse-pointer-click"].each do |icon| %>
+          <%# <%= icon(icon, as_button: true, disabled: true, class: "cursor-not-allowed", title: "Coming soon") %>
+        <%# <% end %>
+      <%# </div> %>
 
       <%= icon("arrow-up", as_button: true, type: "submit") %>
     </div>

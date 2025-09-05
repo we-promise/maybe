@@ -88,7 +88,7 @@ class User < ApplicationRecord
   end
 
   def ai_available?
-    !Rails.application.config.app_mode.self_hosted? || ENV["OPENAI_ACCESS_TOKEN"].present? || Setting.openai_access_token.present?
+    !Rails.application.config.app_mode.self_hosted? || any_ai_provider_configured?
   end
 
   def ai_enabled?
@@ -102,6 +102,25 @@ class User < ApplicationRecord
   def deactivate
     update active: false, email: deactivated_email
   end
+
+  private
+    def any_ai_provider_configured?
+      openai_configured? || openrouter_configured? || ollama_configured?
+    end
+
+    def openai_configured?
+      ENV["OPENAI_ACCESS_TOKEN"].present? || Setting.openai_access_token.present?
+    end
+
+    def openrouter_configured?
+      ENV["OPENROUTER_API_KEY"].present? || Setting.openrouter_api_key.present?
+    end
+
+    def ollama_configured?
+      ENV["OLLAMA_BASE_URL"].present? || Setting.ollama_base_url.present?
+    end
+
+  public
 
   def can_deactivate
     if admin? && family.users.count > 1

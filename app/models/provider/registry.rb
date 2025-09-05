@@ -67,6 +67,22 @@ class Provider::Registry
 
         Provider::Openai.new(access_token)
       end
+
+      def openrouter
+        api_key = ENV.fetch("OPENROUTER_API_KEY", Setting.openrouter_api_key)
+
+        return nil unless api_key.present?
+
+        Provider::Openrouter.new(api_key)
+      end
+
+      def ollama
+        base_url = ENV.fetch("OLLAMA_BASE_URL", Setting.ollama_base_url)
+
+        return nil unless base_url.present?
+
+        Provider::Ollama.new(base_url)
+      end
   end
 
   def initialize(concept)
@@ -86,6 +102,17 @@ class Provider::Registry
     self.class.send(provider_method)
   end
 
+  # Get the preferred AI provider based on user settings
+  def preferred_ai_provider
+    return nil unless concept == :llm
+
+    preferred_provider = Setting.ai_provider || "openai"
+    provider = self.class.send(preferred_provider.to_sym)
+
+    # Fall back to any available provider if preferred is not configured
+    provider || providers.compact.first
+  end
+
   private
     attr_reader :concept
 
@@ -96,9 +123,9 @@ class Provider::Registry
       when :securities
         %i[twelve_data]
       when :llm
-        %i[openai]
+        %i[openai openrouter ollama]
       else
-        %i[plaid_us plaid_eu github openai]
+        %i[plaid_us plaid_eu github openai openrouter ollama]
       end
     end
 end

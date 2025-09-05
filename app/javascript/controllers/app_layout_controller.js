@@ -34,9 +34,22 @@ export default class extends Controller {
     if (isCurrentlyOpen) {
       el.classList.remove(...this.expandedSidebarClasses);
       el.classList.add(...this.collapsedSidebarClasses);
+      
+      // If this is the right sidebar (chat), remove the custom width 
+      if (el === this.rightSidebarTarget) {
+        el.style.width = "";
+      }
     } else {
       el.classList.add(...this.expandedSidebarClasses);
       el.classList.remove(...this.collapsedSidebarClasses);
+      
+      // If this is the right sidebar (chat), restore the custom width if it exists
+      if (el === this.rightSidebarTarget) {
+        const savedWidth = localStorage.getItem("chat-sidebar-width");
+        if (savedWidth) {
+          el.style.width = `${savedWidth}px`;
+        }
+      }
     }
   }
 

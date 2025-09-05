@@ -3,14 +3,18 @@
     <%= render "chats/ai_avatar" %>
   </div>
 
-  <h3 class="text-sm font-medium text-primary mb-1 -mt-2 text-center">Enable Maybe AI</h3>
+  <h3 class="text-sm font-medium text-primary mb-1 -mt-2 text-center">Enable Sure AI</h3>
 
   <p class="text-gray-600 mb-4 text-sm text-center">
     <% if Current.user.ai_available? %>
-      Maybe AI can answer financial questions and provide insights based on your data. To use this feature you'll need to explicitly enable it.
+      Sure AI can answer financial questions and provide insights based on your data. To use this feature you'll need to explicitly enable it.
     <% else %>
-      To use the AI assistant, you need to set the <code class="bg-surface-inset px-1 py-0.5 rounded font-mono text-xs">OPENAI_ACCESS_TOKEN</code>
-      environment variable or configure it in the Self-Hosting settings of your instance.
+      To use the AI assistant, you need to configure an AI provider in the 
+      <% if self_hosted? %>
+        <%= link_to "AI Settings", settings_ai_path, class: "underline" %> or Self-Hosting settings.
+      <% else %>
+        AI Settings section of your account.
+      <% end %>
     <% end %>
   </p>
 
@@ -18,7 +22,7 @@
     <%= form_with url: user_path(Current.user), method: :patch, class: "w-full", data: { turbo: false } do |form| %>
       <%= form.hidden_field "user[ai_enabled]", value: true %>
       <%= form.hidden_field "user[redirect_to]", value: "home" %>
-      <%= form.submit "Enable Maybe AI", class: "cursor-pointer hover:bg-inverse-hover w-full py-2 px-4 bg-inverse fg-inverse rounded-lg text-sm font-medium" %>
+      <%= form.submit "Enable Sure AI", class: "cursor-pointer hover:bg-inverse-hover w-full py-2 px-4 bg-inverse fg-inverse rounded-lg text-sm font-medium" %>
     <% end %>
   <% end %>
 
