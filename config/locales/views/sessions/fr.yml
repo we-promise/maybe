@@ -1,0 +1,15 @@
+---
+fr:
+  sessions:
+    create:
+      invalid_credentials: Adresse e-mail ou mot de passe invalide.
+    destroy:
+      logout_successful: Vous avez été déconnecté avec succès.
+    new:
+      email: Adresse e-mail
+      email_placeholder: you@example.com
+      forgot_password: Mot de passe oublié ?
+      password: Mot de passe
+      submit: Se connecter
+      title: Connectez-vous à votre compte
+      password_placeholder: Entrez votre mot de passe

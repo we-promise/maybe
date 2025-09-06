@@ -7,4 +7,4 @@ en:
       cta: Confirm email change
       expiry_notice: This link will expire in %{hours} hours.
       greeting: Hello!
-      subject: 'Maybe: Confirm your email change'
+      subject: 'Sure: Confirm your email change'

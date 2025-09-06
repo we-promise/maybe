@@ -6,16 +6,16 @@
       <summary class="flex items-center justify-between gap-2">
         <div class="flex items-center gap-2">
           <%= icon "triangle-alert", size: "sm", color: "warning" %>
-          <p class="font-medium">Missing historical data</p>
+          <p class="font-medium"><%= t(".missing_historical") %></p>
         </div>
 
         <%= icon("chevron-down", color: "warning", class: "group-open:transform group-open:rotate-180") %>
       </summary>
       <div class="text-xs py-2 space-y-2">
-        <p>Sure uses third party providers to fetch historical exchange rates, security prices, and more.  This data is required to calculate accurate historical account balances.</p>
+        <p><%= t(".describe_party_provider") %></p>
 
         <p>
-          <%= link_to "Configure your providers here.", settings_hosting_path, class: "text-yellow-600 underline" %>
+          <%= link_to t(".describe_party_provider"), settings_hosting_path, class: "text-yellow-600 underline" %>
         </p>
       </div>
     </details>
@@ -23,15 +23,15 @@
 
   <%= render DS::Tabs.new(active_tab: active_tab, session_key: "account_sidebar_tab", testid: "account-sidebar-tabs") do |tabs| %>
     <% tabs.with_nav do |nav| %>
-      <% nav.with_btn(id: "all", label: "All") %>
-      <% nav.with_btn(id: "asset", label: "Assets") %>
-      <% nav.with_btn(id: "liability", label: "Debts") %>
+      <% nav.with_btn(id: "all", label: t(".label_all")) %>
+      <% nav.with_btn(id: "asset", label: t(".label_asset")) %>
+      <% nav.with_btn(id: "liability", label: t(".label_liability")) %>
     <% end %>
 
     <% tabs.with_panel(tab_id: "asset") do %>
       <div class="space-y-2">
         <%= render DS::Link.new(
-          text: "New asset",
+          text: t(".new_asset"),
           variant: "ghost",
           href: new_account_path(step: "method_select", classification: "asset"),
           icon: "plus",
@@ -51,7 +51,7 @@
     <% tabs.with_panel(tab_id: "liability") do %>
       <div class="space-y-2">
         <%= render DS::Link.new(
-            text: "New debt",
+            text: t(".new_debt"),
             variant: "ghost",
             href: new_account_path(step: "method_select", classification: "liability"),
             icon: "plus",
@@ -71,7 +71,7 @@
     <% tabs.with_panel(tab_id: "all") do %>
       <div class="space-y-2">
         <%= render DS::Link.new(
-            text: "New account",
+            text: t(".new_account"),
             variant: "ghost",
             full_width: true,
             href: new_account_path(step: "method_select"),

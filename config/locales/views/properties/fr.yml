@@ -1,0 +1,32 @@
+---
+fr:
+  properties:
+    edit:
+      edit: Modifier %{account}
+    form:
+      address_line1: Adresse
+      address_line1_placeholder: 123, rue de la Paix
+      area: Surface vivable
+      area_placeholder: '2000'
+      area_unit: Unité de mesure
+      country: pays
+      country_placeholder: FR
+      locality: Ville
+      locality_placeholder: Paris
+      none: Aucun
+      postal_code: Code postal/ZIP
+      postal_code_placeholder: '75000'
+      region: État/Province
+      region_placeholder: CA
+      subtype_prompt: Sélectionnez le type de propriété
+      year_built: Année de construction
+      year_built_placeholder: '2000'
+    new:
+      title: Saisir les détails de la propriété
+    overview:
+      living_area: Surface vivable
+      market_value: Valeur du marché
+      purchase_price: Prix d'achat
+      trend: Tendance
+      unknown: Inconnu
+      year_built: Année de construction

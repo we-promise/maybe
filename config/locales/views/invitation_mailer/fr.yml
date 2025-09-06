@@ -1,0 +1,8 @@
+---
+fr:
+  invitation_mailer:
+    invite_email:
+      accept_button: Accepter l'invitation
+      body: "%{inviter} vous a invité à rejoindre la famille %{family} sur Sure !"
+      expiry_notice: Cette invitation expire dans %{days} jours
+      greeting: Bienvenue sur Sure!

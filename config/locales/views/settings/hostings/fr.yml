@@ -1,0 +1,46 @@
+---
+fr:
+  settings:
+    hostings:
+      invite_code_settings:
+        description: Chaque nouvel utilisateur qui rejoint votre instance de Sure ne peut le faire qu'avec un code d'invitation
+        email_confirmation_description: Lorsqu'il est activé, les utilisateurs doivent confirmer leur adresse e-mail lors du changement.
+        email_confirmation_title: Exiger la confirmation de l'e-mail
+        generate_tokens: Générer un nouveau code
+        generated_tokens: Codes générés
+        title: Requérir un code d'invitation pour s'inscrire
+      show:
+        general: Services externes
+        invites: Codes d'invitation
+        title: Hébergement autonome
+        danger_zone: Zone dangereuse
+        clear_cache: Effacer le cache de données
+        clear_cache_warning: L'éffacement du cache de données supprimera toutes les taux d'échange, les prix de sécurité, les soldes de compte et d'autres données. Cela ne supprimera pas les comptes, les transactions, les catégories ou d'autres données possédées par les utilisateurs.
+        confirm_clear_cache:
+          title: Effacer le cache de données ?
+          body: Êtes-vous sûr(e) de vouloir effacer le cache de données ? Cela supprimera toutes les taux d'échange, les prix de sécurité, les soldes de compte et d'autres données. Cette action ne peut pas être annulée.
+      brand_fetch_settings:
+        description: Saisissez l'ID client fourni par Brand Fetch
+        label: ID client
+        placeholder: Entrez votre ID client ici
+        title: Brand Fetch
+      openai_settings:
+        description: Saisissez le jeton d'accès fourni par OpenAI
+        env_configured_message: Configuré avec succès via la variable d'environnement OPENAI_ACCESS_TOKEN.
+        label: Jeton d'accès
+        placeholder: Entrez votre jeton d'accès ici
+        title: OpenAI
+      twelve_data_settings:
+        api_calls_used: "%{used} / %{limit} Appels API journaliers utilisés (%{percentage})"
+        description: Saisissez la clé API fournie par Twelve Data
+        env_configured_message: Configurée avec succès via la variable d'environnement TWELVE_DATA_API_KEY.
+        label: Clé API
+        placeholder: Entrez votre clé API ici
+        plan: "%{plan} Plan"
+        title: Twelve Data
+      update:
+        failure: Valeur de paramètre invalide
+        success: Paramètres mis à jour
+      clear_cache:
+        cache_cleared: Le cache de données a été effacé. Cela peut prendre quelques moments pour être terminé.
+      not_authorized: Vous n'êtes pas autorisé(e) à effectuer cette action

@@ -1,0 +1,21 @@
+---
+fr:
+  activerecord:
+    attributes:
+      account:
+        balance: Solde
+        currency: Devise
+        family: Famille
+        family_id: Famille
+        name: Nom
+        subtype: Sous-type
+    models:
+      account: Compte
+      account/credit: Carte de Crédit
+      account/depository: Compte Bancaire
+      account/investment: Investissement
+      account/loan: Prêt
+      account/other_asset: Autre Actif
+      account/other_liability: Autre Passif
+      account/property: Immobilier
+      account/vehicle: Véhicule

@@ -1,0 +1,14 @@
+---
+fr:
+  shared:
+    confirm_modal:
+      accept: Confirmer
+      body_html: "<p>Vous ne pourrez pas annuler cette décision</p>"
+      cancel: Annuler
+      title: Êtes-vous sûr ?
+    money_field:
+      label: Montant
+    syncing_notice:
+      syncing: Synchronisation des données de compte...
+    trend_change:
+      no_change: "pas de changement"

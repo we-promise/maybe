@@ -1,0 +1,8 @@
+---
+fr:
+  password_mailer:
+    password_reset:
+      cta: Réinitialiser votre mot de passe
+      ignore_if_not_requested: Si vous n'avez pas fait cette demande, vous pouvez ignorer cet e-mail.
+      request_made: Une demande a été faite pour réinitialiser votre mot de passe Sure. Cliquez sur le lien pour le réinitialiser.
+      subject: 'Sure : Réinitialiser votre mot de passe'

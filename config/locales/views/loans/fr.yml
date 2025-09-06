@@ -1,0 +1,23 @@
+---
+fr:
+  loans:
+    edit:
+      edit: Modifier %{account}
+    form:
+      interest_rate: Taux d'intérêt
+      interest_rate_placeholder: '5.25'
+      initial_balance: Équilibre original du prêt
+      rate_type: Type de taux
+      term_months: Durée (mois)
+      term_months_placeholder: '360'
+    new:
+      title: Saisir les détails du prêt
+    overview:
+      interest_rate: Taux d'intérêt
+      monthly_payment: Paiement mensuel
+      not_applicable: N/A
+      original_principal: Principal initial
+      remaining_principal: Principal restant
+      term: Durée
+      type: Type
+      unknown: Inconnu

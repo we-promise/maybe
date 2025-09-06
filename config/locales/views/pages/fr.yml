@@ -1,0 +1,25 @@
+---
+fr:
+  pages:
+    changelog:
+      title: Nouveautés
+    dashboard:
+      welcome_back: Content de te revoir
+      happening_with_finance: Voici ce qui se passe avec vos finances
+      new: Nouveau
+      cashflow_sankey:
+        title: Flux de trésorerie
+        no_cashflow: Aucune donnée de flux de trésorerie pour cette période
+        add_transactions_to_display_cashflow: Ajoutez des transactions pour afficher les données de flux de trésorerie ou étendre la période
+        new: Ajouter une transaction
+      net_worth_chart:
+        data_not_available: Données indisponibles pour la période sélectionnée
+        title: Richesse totale
+      no_account_empty_state:
+        new_account: Nouveau compte
+        no_account_subtitle: Comme aucun compte n'a été ajouté, il n'y a pas de données à afficher. Ajoutez vos premiers comptes pour commencer à consulter les données du tableau de bord.
+        no_account_title: Pas encore de comptes
+      no_account_graph_placeholder:
+        no_account_yet: Pas encore de compte
+        add_account_to_display: Ajouter des comptes pour afficher les données de valeur nette
+        new: Ajouter un compte

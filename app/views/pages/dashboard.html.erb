@@ -1,13 +1,13 @@
 <% content_for :page_header do %>
   <div class="space-y-1 mb-6 flex gap-4 justify-between items-center lg:items-start">
     <div class="space-y-1">
-      <h1 class="text-xl lg:text-3xl font-medium text-primary">Welcome back, <%= Current.user.first_name %></h1>
-      <p class="text-sm lg:text-base text-secondary">Here's what's happening with your finances</p>
+      <h1 class="text-xl lg:text-3xl font-medium text-primary"><%= t(".welcome_back") %>, <%= Current.user.first_name %></h1>
+      <p class="text-sm lg:text-base text-secondary"><%= t(".happening_with_finance") %></p>
     </div>
 
     <%= render DS::Link.new(
       icon: "plus",
-      text: "New",
+      text: t(".new"),
       href: new_account_path,
       frame: :modal,
       class: "hidden lg:inline-flex"

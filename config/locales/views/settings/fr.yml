@@ -1,0 +1,114 @@
+---
+fr:
+  settings:
+    ai_prompts:
+      show:
+        page_title: Prompts IA
+        openai_label: OpenAI
+        prompt_instructions: Instructions pour les prompts
+        main_system_prompt:
+          title: Prompt Système Principal
+          subtitle: Instructions fondamentales qui définissent le comportement de l'assistant AI dans toutes les conversations de chat
+        transaction_categorizer:
+          title: Categoriseur des transactions
+          subtitle: L'IA catégorise automatiquement vos transactions en fonction de vos catégories définies
+        merchant_detector:
+          title: Détection du vendeur
+          subtitle: L'IA identifie et enrichit les données de transaction avec des informations sur le vendeur
+    billings:
+      show:
+        page_title: Facturation
+        subscription_subtitle: Mettez à jour votre abonnement et vos détails de facturation
+        subscription_title: Gérer l'abonnement
+    preferences:
+      show:
+        country: Pays
+        currency: devise
+        date_format: Format de date
+        general_subtitle: Configurez vos préférences
+        general_title: Général
+        default_period: Période par défaut
+        default_account_order: Ordre d'affichage des comptes par défaut
+        language: Langue
+        page_title: Préférences
+        theme_dark: Sombre
+        theme_light: Léger
+        theme_subtitle: Choisissez un thème préféré pour l'application
+        theme_system: Système
+        theme_title: Thème
+        timezone: fuseau horaire
+    profiles:
+      destroy:
+        cannot_remove_self: Vous ne pouvez pas vous enlever de votre compte.
+        member_removal_failed: Il y a eu un problème lors de la suppression du membre.
+        member_removed: Le membre a été supprimé avec succès.
+        not_authorized: Vous n'êtes pas autorisé à supprimer les membres.
+      show:
+        confirm_delete:
+          body: Êtes-vous sûr(e) de vouloir effacer permanemment votre compte ? Cette action est irréversible.
+          title: Supprimer le compte?
+        confirm_reset:
+          body: Êtes-vous sûr(e) de vouloir réinitialiser votre compte ? Cela supprimera tous vos comptes, catégories, vendeurs, étiquettes et autres données. Cette action ne peut pas être annulée.
+          title: Réinitialiser le compte?
+        confirm_remove_invitation:
+          body: Êtes-vous sûr(e) de vouloir supprimer l'invitation pour %{email}?
+          title: Supprimer l'invitation
+        confirm_remove_member:
+          body: Êtes-vous sûr(e) de vouloir supprimer %{name} de votre compte?
+          title: Supprimer le membre
+        danger_zone_title: Zone dangereuse
+        delete_account: Supprimer le compte
+        delete_account_warning: La suppression de votre compte entraînera la suppression permanente de toutes vos données et ne pourra pas être annulée.
+        reset_account: Réinitialiser le compte
+        reset_account_warning: La réinitialisation de votre compte supprimera tous vos comptes, catégories, vendeurs, étiquettes et autres données, mais gardera votre compte utilisateur intact.
+        email: E-mail
+        first_name: Prénom
+        household_form_input_placeholder: Entrez le nom du foyer
+        household_form_label: Nom du foyer
+        household_subtitle: Invitez des membres de la famille, des partenaires et d'autres individus. Les personnes invitées peuvent se connecter à votre foyer et accéder aux comptes partagés.
+        household_title: Foyer
+        invitation_link: Lien d'invitation
+        invite_member: Ajouter un membre
+        last_name: Nom de famille
+        page_title: Informations du profil
+        pending: En attente
+        profile_subtitle: Personnalisez l'apparence de votre profil sur Sure
+        profile_title: Personnel
+        remove_invitation: Supprimer l'invitation
+        remove_member: Supprimer le membre
+        save: Enregistrer
+    securities:
+      show:
+        page_title: Sécurité
+    settings_nav:
+      accounts_label: Comptes
+      advanced_section_title: Avancé
+      ai_prompts_label: Prompts IA
+      api_key_label: Clé API
+      billing_label: Facturation
+      categories_label: Catégories
+      feedback_label: Retour d'information
+      general_section_title: Général
+      imports_label: Importer/Exporter
+      logout: Se déconnecter
+      merchants_label: Vendeurs
+      guides_label: Guides
+      other_section_title: Plusieurs options
+      preferences_label: Préférences
+      profile_label: Informations du profil
+      rules_label: Règles
+      security_label: Sécurité
+      self_hosting_label: Hébergement autonome
+      tags_label: Étiquettes
+      transactions_section_title: Transactions
+      whats_new_label: Dernières nouvelles
+      api_keys_label: Clés API
+      bank_sync_label: Synchronisation de la banque
+    settings_nav_link_large:
+      next: Suivant
+      previous: Précédent
+    user_avatar_field:
+      accepted_formats: JPG ou PNG. 5MB max.
+      choose: Charger une photo
+      choose_label: (facultatif)
+      change: Changer de photo

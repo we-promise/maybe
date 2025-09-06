@@ -3,6 +3,16 @@ en:
   accounts:
     account:
       troubleshoot: Troubleshoot
+    account_sidebar_tabs:
+      missing_historical: Missing historical data
+      describe_party_provider: Sure uses third party providers to fetch historical exchange rates, security prices, and more. This data is required to calculate accurate historical account balances.
+      configure_provider: Configure your providers here.
+      label_all: All
+      label_asset: Assets
+      label_liability: Debts
+      new_asset: New asset
+      new_debt: New debt
+      new_account: New account
     chart:
       data_not_available: Data not available for the selected period
     create:

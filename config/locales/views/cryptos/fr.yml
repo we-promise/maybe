@@ -1,0 +1,7 @@
+---
+fr:
+  cryptos:
+    edit:
+      edit: Éditer %{account}
+    new:
+      title: Saisir le solde du compte

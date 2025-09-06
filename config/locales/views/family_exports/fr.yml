@@ -1,0 +1,7 @@
+---
+fr:
+  family_exports:
+    list:
+      in_progress: En cours
+      complete: Terminé
+      failed: Échoué

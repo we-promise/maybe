@@ -1,0 +1,72 @@
+---
+fr:
+  accounts:
+    account:
+      troubleshoot: Dépannage
+    account_sidebar_tabs:
+      missing_historical: Manque les données historiques
+      describe_party_provider: Sure utilise des fournisseurs tiers pour récupérer l'historique des taux de change, des cours des titres, etc. Ces données sont nécessaires au calcul précis des soldes historiques des comptes.
+      configure_provider: Configurez vos fournisseurs ici.
+      label_all: Tout
+      label_asset: Comptes
+      label_liability: Dettes
+      new_asset: Nouvel actif
+      new_debt: Nouvelle dette
+      new_account: Nouveau compte
+    chart:
+      data_not_available: Données non disponibles pour le période sélectionnée
+    create:
+      success: "Compte %{type} créé"
+    destroy:
+      success: "Le compte %{type} a été préparé à la suppression"
+    empty:
+      empty_message: Ajoutez un compte via une connexion, une importation ou en entrant manuellement.
+      new_account: Nouveau compte
+      no_accounts: Aucun compte pour l'instant
+    form:
+      balance: Solde actuel
+      name_label: Nom du compte
+      name_placeholder: Nom de compte d'exemple
+    index:
+      accounts: Comptes
+      manual_accounts:
+        other_accounts: Autres comptes
+      new_account: Nouveau compte
+      sync: Synchroniser tous
+    new:
+      import_accounts: Importer des comptes
+      method_selector:
+        connected_entry: Lier un compte
+        connected_entry_eu: Lier un compte européen
+        manual_entry: Entrée du solde du compte
+        title: Comment voulez-vous l'ajouter ?
+      title: Que voudriez-vous ajouter ?
+    show:
+      activity:
+        amount: Montant
+        balance: Solde
+        date: Date
+        entries: entrées
+        entry: entrée
+        new: Nouveau
+        new_balance: Nouveau solde
+        new_transaction: Nouvelle transaction
+        no_entries: Aucune entrée trouvée
+        title: Activité
+      chart:
+        balance: Solde
+        owed: Montant dû
+      menu:
+        confirm_accept: Supprimer "%{name}"
+        confirm_body_html: "<p>En supprimant ce compte, vous effacerez son historique de valeur,
+          affectant divers aspects de votre solde global. Cette action aura un impact direct sur vos calculs de valeur nette et les graphiques des comptes.</p><br /> <p>Après la suppression, il n'y a aucun moyen de restaurer l'information du compte car vous aurez besoin d'en ajouter un nouveau.</p>"
+        confirm_title: Supprimer le compte ?
+        edit: Éditer
+        import: Importer des transactions
+        manage: Gérer les comptes
+    update:
+      success: "Compte %{type} mis à jour"
+  email_confirmations:
+    new:
+      invalid_token: Lien de confirmation invalide ou expiré.
+      success_login: Votre email a été confirmé. Veuillez vous identifier avec votre nouvelle adresse email.

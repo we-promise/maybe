@@ -1,0 +1,25 @@
+---
+fr:
+  credit_cards:
+    edit:
+      edit: Éditer %{account}
+    form:
+      annual_fee: Frais annuels
+      annual_fee_placeholder: '99'
+      apr: TAEG
+      apr_placeholder: '15.99'
+      available_credit: Crédit disponible
+      available_credit_placeholder: '10000'
+      expiration_date: Date d'expiration
+      minimum_payment: Paiement minimum
+      minimum_payment_placeholder: '100'
+    new:
+      title: Saisir les détails de la carte de crédit
+    overview:
+      amount_owed: Montant dû
+      annual_fee: Frais annuels
+      apr: TAEG
+      available_credit: Crédit disponible
+      expiration_date: Date d'expiration
+      minimum_payment: Paiement minimum
+      unknown: Inconnu

@@ -4,6 +4,14 @@ en:
     changelog:
       title: What's new
     dashboard:
+      welcome_back: Welcome back
+      happening_with_finance: Here's what's happening with your finances
+      new: New
+      cashflow:
+        title: Cashflow
+        no_cashflow: No cash flow data for this time period
+        add_transactions_to_display_cashflow: Add transactions to display cash flow data or expand the time period
+        new: Add transactions
       net_worth_chart:
         data_not_available: Data not available for the selected period
         title: Net Worth
@@ -12,3 +20,7 @@ en:
         no_account_subtitle: Since no accounts have been added, there's no data to
           display. Add your first accounts to start viewing dashboard data.
         no_account_title: No accounts yet
+      no_account_graph_placeholder:
+        no_account_yet: No accounts yet
+        add_account_to_display: Add accounts to display net worth data
+        new: Add account

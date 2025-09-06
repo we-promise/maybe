@@ -1,0 +1,30 @@
+---
+fr:
+  transfers:
+    create:
+      success: Transfert créé
+    destroy:
+      success: Transfert supprimé
+    form:
+      amount: Montant
+      date: Date
+      expense: Dépense
+      from: D'origine
+      income: Revenu
+      select_account: Sélectionner un compte
+      submit: Créer le transfert
+      to: À destination
+      transfer: Transfert
+    new:
+      title: Nouveau transfert
+    show:
+      delete: Supprimer le transfert
+      delete_subtitle: Ce transfert est supprimé. Il ne supprimera pas les transactions sous-jacentes.
+      delete_title: Voulez-vous vraiment supprimer ce transfert?
+      details: Détails
+      note_label: Notes
+      note_placeholder: Ajoutez une note à ce transfert
+      overview: Aperçu
+      settings: Paramètres
+    update:
+      success: Transfert mis à jour

@@ -1,0 +1,82 @@
+---
+fr:
+  transactions:
+    form:
+      account: Compte
+      account_prompt: Sélectionnez un compte
+      amount: Montant
+      category: Catégorie
+      category_prompt: Sélectionnez une catégorie
+      date: Date
+      description: Libellé
+      description_placeholder: Libellé de la transaction
+      expense: Dépense
+      income: Revenu
+      none: (aucun)
+      note_label: Notes
+      note_placeholder: Entrez une note
+      submit: Ajouter la transaction
+      tags_label: Étiquettes
+      transfer: Transfert
+    new:
+      new_transaction: Nouvelle transaction
+    show:
+      account_label: Compte
+      amount: Montant
+      category_label: Catégorie
+      date_label: Date
+      delete: Supprimer
+      delete_subtitle: Cette action supprime définitivement la transaction, affecte vos soldes historiques et ne peut pas être annulée.
+      delete_title: Supprimer la transaction
+      details: Détails
+      merchant_label: Marchand
+      name_label: Nom
+      nature: Type
+      none: "(aucun)"
+      note_label: Notes
+      note_placeholder: Entrez une note
+      overview: Aperçu
+      settings: Paramètres
+      tags_label: Étiquettes
+      uncategorized: "(non catégorisée)"
+    header:
+      edit_categories: Modifier les catégories
+      edit_imports: Modifier les importations
+      edit_merchants: Modifier les marchands
+      edit_tags: Modifier les étiquettes
+      import: Importer
+    index:
+      transaction: transaction
+      transactions: transactions
+    searches:
+      filters:
+        amount_filter:
+          equal_to: Égal à
+          greater_than: Supérieur à
+          less_than: Inférieur à
+          placeholder: '0'
+        badge:
+          expense: Dépense
+          income: Revenu
+          on_or_after: le %{date} et après
+          on_or_before: le %{date} et avant
+          transfer: Transfert
+        type_filter:
+          expense: Dépense
+          income: Revenu
+          transfer: Transfert
+      menu:
+        account_filter: Compte
+        amount_filter: Montant
+        apply: Appliquer
+        cancel: Annuler
+        category_filter: Catégorie
+        clear_filters: Effacer les filtres
+        date_filter: Date
+        merchant_filter: Marchand
+        tag_filter: Étiquette
+        type_filter: Type
+      search:
+        equal_to: égal à
+        greater_than: supérieur à
+        less_than: inférieur à

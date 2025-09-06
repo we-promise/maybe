@@ -1,0 +1,78 @@
+---
+fr:
+  import:
+    cleans:
+      show:
+        description: Editez vos données dans le tableau ci-dessous. Les cellules rouges sont invalides.
+        errors_notice: Vous avez des erreurs dans vos données. Survoler l'erreur pour voir les détails.
+        errors_notice_mobile: Vous avez des erreurs dans vos données. Cliquez sur la bulle d'aide de l'erreur pour voir les détails.
+        title: Nettoyez vos données
+    configurations:
+      mint_import:
+        date_format_label: Format de date
+      show:
+        description: Sélectionnez les colonnes qui correspondent à chaque champ dans votre CSV.
+        title: Configurez votre importation
+      trade_import:
+        date_format_label: Format de date
+      transaction_import:
+        date_format_label: Format de date
+    confirms:
+      mappings:
+        create_account: Créer un compte
+        csv_mapping_label: "%{mapping} dans le CSV"
+        maybe_mapping_label: "%{mapping} dans Sure"
+        no_accounts: Vous n'avez pas encore de comptes. Veuillez créer un compte que nous pouvons utiliser pour les lignes non affectées de votre CSV ou retournez à l'étape Nettoyer et fournissez un nom de compte que nous pouvons utiliser.
+        rows_label: Lignes
+        unassigned_account: Avez-vous besoin de créer un nouveau compte pour les lignes non affectées?
+      show:
+        account_mapping_description: Affectez tous les comptes de votre fichier importé aux comptes Sure existants. Vous pouvez également ajouter de nouveaux comptes ou les laisser sans catégorie.
+        account_mapping_title: Attribuez vos comptes
+        account_type_mapping_description: Attribuez tous les types de comptes importés dans votre fichier à Sure
+        account_type_mapping_title: Attribuez vos types de comptes
+        category_mapping_description: Attribuez toutes les catégories importées dans votre fichier aux catégories existantes de Sure. Vous pouvez également ajouter de nouvelles catégories ou les laisser non catégorisées.
+        category_mapping_title: Attribuez vos catégories
+        tag_mapping_description: Attribuez toutes les étiquettes importées dans votre fichier aux étiquettes existantes de Sure. Vous pouvez également ajouter de nouvelles étiquettes ou les laisser non catégorisées.
+        tag_mapping_title: Attribuez vos étiquettes
+    uploads:
+      show:
+        description: Coller ou télécharger votre fichier CSV ci-dessous. Veuillez examiner les instructions dans le tableau ci-dessous avant de commencer.
+        instructions_1: Voici un exemple de CSV avec des colonnes disponibles pour l'importation.
+        instructions_2: Votre CSV doit avoir une ligne d'en-tête
+        instructions_3: Vous pouvez nommer vos colonnes ce que vous voulez. Vous les mappez à un stade ultérieur.
+        instructions_4: Les colonnes marquées avec une étoile (*) sont des données requises.
+        instructions_5: Pas de virgules, pas de symboles monétaires et pas de parenthèses dans les nombres.
+        title: Importez vos données
+  imports:
+    empty:
+      message: Aucune importation pour l'instant.
+      new: Nouvelle Importation
+    import:
+      complete: Terminé
+      delete: Supprimer
+      failed: Échoué
+      in_progress: En cours
+      label: "%{type}: %{datetime}"
+      revert_failed: Annulation échouée
+      reverting: Annulation en cours
+      uploading: Traitement des lignes
+      view: Afficher
+    index:
+      imports: Importations
+      new: Nouvelle Importation
+      title: Import/Export
+      exports: Exportations
+      new_export: Nouvelle Exportation
+      no_exports: Aucune exportation pour l'instant.
+    new:
+      description: Vous pouvez manuellement importer divers types de données via CSV ou utiliser un des modèles d'importation que nous proposons comme Mint.
+      import_accounts: Importer les comptes
+      import_mint: Importer depuis Mint
+      import_portfolio: Importer les investissements
+      import_transactions: Importer les transactions
+      resume: Reprendre %{type}
+      sources: Sources
+      title: Nouvelle Importation CSV
+    ready:
+      description: Voici un résumé des nouveaux éléments qui seront ajoutés à votre compte une fois que vous publieriez cette importation.
+      title: Confirmez vos données d'importation

@@ -5,6 +5,6 @@ en:
       cta: Reset your password
       ignore_if_not_requested: If you didn't make this request, you can ignore this
         email.
-      request_made: A request was made to reset your Maybe password. Click the link
+      request_made: A request was made to reset your Sure password. Click the link
         to reset it.
-      subject: 'Maybe: Reset your password'
+      subject: 'Sure: Reset your password'

@@ -3,7 +3,7 @@ en:
   settings:
     hostings:
       invite_code_settings:
-        description: Every new user that joins your instance of Maybe can only do
+        description: Every new user that joins your instance of Sure can only do
           so via an invite code
         email_confirmation_description: When enabled, users must confirm their email
           address when changing it.

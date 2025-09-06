@@ -1,0 +1,27 @@
+---
+fr:
+  onboardings:
+    header:
+      sign_out: Déconnexion
+    preferences:
+      currency: Monnaie
+      date_format: Format de date
+      example: Compte d'exemple
+      locale: Langue
+      preview: Prévisualiser la façon dont les données s'affichent en fonction des préférences.
+      submit: Terminer
+      subtitle: Configurons vos préférences.
+      title: Configurez vos préférences
+    profile:
+      country: Pays
+      first_name: Prénom
+      household_name: Nom de famille (si applicable)
+      last_name: Nom de famille
+      profile_image: Photo de profil
+      submit: Continuer
+      subtitle: Complétons votre profil.
+      title: Configurons les bases
+    show:
+      message: Nous sommes vraiment excités que vous soyez ici. Dans la prochaine étape, nous allons vous poser quelques questions pour compléter votre profil et ensuite configurer votre compte.
+      setup: Configurer le compte
+      title: Rencontrez Sure

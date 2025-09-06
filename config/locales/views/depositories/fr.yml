@@ -1,0 +1,10 @@
+---
+fr:
+  depositories:
+    edit:
+      edit: Éditer %{account}
+    form:
+      none: Aucun
+      subtype_prompt: Sélectionnez le type de compte
+    new:
+      title: Saisir le solde du compte

@@ -1,0 +1,36 @@
+---
+fr:
+  holdings:
+    cash:
+      brokerage_cash: Argent en banque
+    destroy:
+      success: Position supprimée
+    holding:
+      per_share: par action
+      shares: "%{qty} actions"
+    index:
+      average_cost: Coût moyen
+      holdings: Holdings
+      name: Nom
+      new_holding: Nouvelle transaction
+      no_holdings: Aucune position à afficher.
+      return: Retour total
+      weight: Poids
+    missing_price_tooltip:
+      description: Cet investissement a des valeurs manquantes et nous ne pouvons pas calculer
+        son retour ou sa valeur.
+      missing_data: Données manquantes
+    show:
+      avg_cost_label: Coût moyen
+      current_market_price_label: Prix de marché actuel
+      delete: Supprimer
+      delete_subtitle: Cela supprimera la position et toutes vos opérations associées sur ce compte. Cette action ne peut pas être annulée.
+      delete_title: Supprimer la position
+      history: Historique
+      overview: Aperçu
+      portfolio_weight_label: Poids du portefeuille
+      settings: Paramètres
+      ticker_label: Ticker
+      trade_history_entry: "%{qty} actions de %{security} à %{price}"
+      total_return_label: Retour total
+      unknown: Inconnu

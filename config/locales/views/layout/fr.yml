@@ -1,0 +1,13 @@
+---
+fr:
+  layouts:
+    auth:
+      existing_account: Déjà un compte ?
+      no_account: Nouveau sur Sure ?
+      sign_in: Se connecter
+      sign_up: Créer un compte
+      your_account: Votre compte
+    shared:
+      footer:
+        privacy_policy: Politique de confidentialité
+        terms_of_service: Conditions d'utilisation

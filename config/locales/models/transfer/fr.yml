@@ -1,0 +1,22 @@
+---
+fr:
+  activerecord:
+    errors:
+      models:
+        transfer:
+          attributes:
+            base:
+              inflow_cannot_be_in_multiple_transfers: La transaction d'entrée ne peut pas être
+                partie de plusieurs transferts
+              must_be_from_different_accounts: Le transfert doit avoir des comptes différents
+              must_be_from_same_family: Le transfert doit provenir de la même famille
+              must_be_within_date_range: Les dates des transactions de transfert doivent être
+                dans une période d'4 jours
+              must_have_opposite_amounts: Les transactions de transfert doivent avoir des montants
+                opposés
+              must_have_single_currency: Le transfert doit avoir une seule devise
+              outflow_cannot_be_in_multiple_transfers: La transaction de dépense ne peut pas être
+                partie de plusieurs transferts
+  transfer:
+    name: Transfert vers %{to_account}
+    payment_name: Paiement vers %{to_account}

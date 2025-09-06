@@ -15,7 +15,7 @@ en:
         title: "API Key Management"
       no_api_key:
         title: "API Key"
-        description: "Get programmatic access to your Maybe data with a secure API key."
+        description: "Get programmatic access to your Sure data with a secure API key."
         what_you_can_do: "What you can do with the API:"
         feature_1: "Access your account data programmatically"
         feature_2: "Build custom integrations and applications"
@@ -36,7 +36,7 @@ en:
         never_expires: "Never expires"
         permissions: "Permissions"
         usage_instructions_title: "How to use your API key"
-        usage_instructions: "Include your API key in the X-Api-Key header when making requests to the Maybe API:"
+        usage_instructions: "Include your API key in the X-Api-Key header when making requests to the Sure API:"
         regenerate_key: "Create New Key"
         revoke_key: "Revoke Key"
         revoke_confirmation: "Are you sure you want to revoke this API key? This action cannot be undone and will immediately disable all applications using this key."

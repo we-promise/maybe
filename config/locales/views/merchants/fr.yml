@@ -1,0 +1,27 @@
+---
+fr:
+  family_merchants:
+    create:
+      error: 'Erreur lors de la création du marchand : %{error}'
+      success: Marchand créé avec succès
+    destroy:
+      success: Marchand supprimé avec succès
+    edit:
+      title: Modifier le marchand
+    form:
+      name_placeholder: Nom du marchand
+    index:
+      empty: Aucun marchand pour l'instant
+      new: Nouveau marchand
+      title: Marchands
+    merchant:
+      confirm_accept: Supprimer le marchand
+      confirm_body: Êtes-vous sûr de vouloir supprimer ce marchand ? La suppression de ce marchand
+        délierait tous les transactions associées et pourrait affecter votre rapport.
+      confirm_title: Supprimer le marchand ?
+      delete: Supprimer le marchand
+      edit: Modifier le marchand
+    new:
+      title: Nouveau marchand
+    update:
+      success: Marchand mis à jour avec succès

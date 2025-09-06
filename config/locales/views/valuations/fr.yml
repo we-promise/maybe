@@ -1,0 +1,30 @@
+---
+fr:
+  valuations:
+    form:
+      amount: Montant
+      submit: Ajouter une mise à jour du solde
+    header:
+      balance: Solde
+    index:
+      change: changement
+      date: date
+      new_entry: Nouvelle entrée
+      no_valuations: Aucune évaluation pour ce compte pour l'instant
+      valuations: Valeur
+      value: valeur
+    new:
+      title: Nouveau solde
+    show:
+      amount: Montant
+      date_label: Date
+      delete: Supprimer
+      delete_subtitle: Cette action ne peut pas être annulée
+      delete_title: Supprimer l'entrée
+      details: Détails
+      name_label: Nom
+      name_placeholder: Entrez un nom pour cette entrée
+      note_label: Notes
+      note_placeholder: Ajoutez tout détail supplémentaire à ce bilan
+      overview: Aperçu
+      settings: Paramètres

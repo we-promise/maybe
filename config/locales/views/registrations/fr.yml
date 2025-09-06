@@ -1,0 +1,24 @@
+---
+fr:
+  helpers:
+    label:
+      user:
+        invite_code: Code d'invitation
+    submit:
+      user:
+        create: Continuer
+  registrations:
+    create:
+      failure: Il y a eu un problème lors de l'inscription.
+      invalid_invite_code: Code d'invitation invalide, veuillez essayer à nouveau.
+      success: Vous avez été inscrit avec succès.
+    new:
+      invitation_message: "%{inviter} vous a invité pour rejoindre en tant que %{role}"
+      join_family_title: Rejoindre %{family}
+      role_admin: administrateur
+      role_member: membre
+      submit: Créer un compte
+      title: Créez votre compte
+      welcome_body: Pour commencer, vous devez créer un nouveau compte. Vous pourrez ensuite configurer des paramètres supplémentaires à l'intérieur de l'application.
+      welcome_title: Bienvenue sur Sure auto-hébergé !
+      password_placeholder: Entrez votre mot de passe

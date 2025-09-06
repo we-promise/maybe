@@ -1,0 +1,14 @@
+---
+fr:
+  entries:
+    create:
+      success: Entrée créée
+    destroy:
+      success: Entrée supprimée
+    empty:
+      description: Essayez d'ajouter une entrée, de modifier les filtres ou de raffiner votre recherche
+      title: Aucune entrée trouvée
+    loading:
+      loading: Chargement des entrées...
+    update:
+      success: Entrée mise à jour

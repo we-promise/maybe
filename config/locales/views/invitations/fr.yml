@@ -1,0 +1,19 @@
+---
+fr:
+  invitations:
+    create:
+      failure: Impossible d'envoyer l'invitation
+      success: Invitation envoyée avec succès
+    destroy:
+      failure: Il y a eu un problème pour supprimer l'invitation.
+      not_authorized: Vous n'êtes pas autorisé à gérer les invitations.
+      success: L'invitation a été supprimée avec succès.
+    new:
+      email_label: Adresse e-mail
+      email_placeholder: Saisissez une adresse e-mail
+      role_admin: Administrateur
+      role_label: Rôle
+      role_member: Membre
+      submit: Envoyer l'invitation
+      subtitle: Envoyez une invitation pour rejoindre votre compte familial sur Sure
+      title: Inviter quelqu'un
